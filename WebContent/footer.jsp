@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 </head>
 <body>
 
@@ -15,8 +14,8 @@
                     <h4>HELP & SUPPORT</h4>
 
                         <p>24x7 Live help</p>
-                        <p><a href="contactus.jsp">Contact us<br></a></p>
-                        <p><a href="feedbaack.jsp">Feedback</a></p>
+                        <p><a href="contact-us.jsp">Contact us<br></a></p>
+                        <p><a href="feedback.jsp">Feedback</a></p>
                 </div>
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Get In Touch</h4>

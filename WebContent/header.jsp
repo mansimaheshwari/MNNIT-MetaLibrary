@@ -3,8 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-</head>
+    <!-- META TAGS -->
+	<meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <!-- FAV ICON(BROWSER TAB ICON) -->
+    <link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    <!-- FONTAWESOME ICONS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- ALL CSS FILES -->
+    <link href="css/materialize.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+    <link href="css/style-mob.css" rel="stylesheet" />
+    
+    <!--Import jQuery before materialize.js-->
+    <script src="js/main.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+   </head>
 <body>
 
 
@@ -57,11 +80,11 @@
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
                     <h4>Login with social media</h4>
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
+                        <li><a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i> Facebook</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-google"></i> Google+</a>
+                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google"></i> Google+</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+                        <li><a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i> Twitter</a>
                         </li>
                     </ul>
                 </div>
@@ -110,11 +133,11 @@
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
                     <h4>Login with social media</h4>
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
+                        <li><a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i> Facebook</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-google"></i> Google+</a>
+                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google"></i> Google+</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+                        <li><a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i> Twitter</a>
                         </li>
                     </ul>
                 </div>
@@ -153,7 +176,7 @@
                                 <input type="submit" value="Register" class="waves-effect waves-light log-in-btn"> </div>
                         </div>
                         <div>
-                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ? Login</a> </div>
+                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1"><font color="blue">Are you a already member ? Login</font> </a> </div>
                         </div>
                     </form>
                 </div>
@@ -167,11 +190,11 @@
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
                     <h4>Login with social media</h4>
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
+                        <li><a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i> Facebook</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-google"></i> Google+</a>
+                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google"></i> Google+</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+                        <li><a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i> Twitter</a>
                         </li>
                     </ul>
                 </div>
@@ -191,9 +214,9 @@
                             <div class="input-field s4">
                                 <input type="submit" value="Submit" class="waves-effect waves-light log-in-btn"> </div>
                         </div>
-                        <div>
+                        <div><font color="blue">
                             <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ? Login</a> | <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal2">Create a new account</a> </div>
-                        </div>
+                        </font> </div>
                     </form>
                 </div>
             </div>
@@ -226,9 +249,9 @@
                     <div class="col-md-12">
                         <div class="ed-com-t1-left">
                             <ul>
-                                <li><a href="#">Contact: MNNIT Allahabad, Teliar Ganj, Prayagraj, U.P.</a>
+                                <li><a href="#">Address: MNNIT Allahabad, Teliar Ganj, Prayagraj, U.P.</a>
                                 </li>
-                                <li><a href="#">Phone: 0532 - 2545404/07, 2540233, 2545729</a>
+                                <li><a href="tel://0099999999" class="contact-icon">Phone: 0532 - 2545404/07, 2540233, 2545729</a>
                                 </li>
                             </ul>
                         </div>
@@ -241,14 +264,13 @@
                             </ul>
                         </div>
                         <div class="ed-com-t1-social">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
+                    <ul>
+                <li><a href="https://www.facebook.com/MNNIT.Allahabad" ><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                <li><a href="http://www.mnnit.ac.in/" ><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                <li><a href="https://twitter.com/mnnitalld" ><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                <li><a href="https://www.linkedin.com/company/mnnit" ><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+               
+                    </ul>
                         </div>
                     </div>
                 </div>
@@ -266,11 +288,11 @@
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="index.html">Home</a>
+                                <li><a href="index.jsp">Home</a>
                                 </li>
                                 
                                 <li class="about-menu">
-                                    <a href="about.html" class="mm-arr">About us</a>
+                                    <a href="about.jsp" class="mm-arr">About us</a>
                                 </li>   
                                 
                                 <li><a href="showallcourses.jsp">All Courses</a></li>
@@ -289,9 +311,9 @@
                                 </li>
                                 <li><a href="showallteachers.jsp">Faculties</a>
                                 </li>
-                                <li><a href="showallstudents.jsp">Students</a>
+                                <li><a href="contact-us.jsp">Contact us</a>
                                 </li>
-                                <li><a href="contact-us.html">Contact us</a>
+                                <li><a href="search.jsp"><font color="red"><b>Search</b></font></a>
                                 </li>
                             </ul>
                         </div>
@@ -303,40 +325,8 @@
                 </div>
             </div>
         </div>
-        <div class="search-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="search-form">
-                            <form>
-                                <div class="sf-type">
-                                    <div class="sf-input">
-                                        <input type="text" id="sf-box" placeholder="Search courses">
-                                    </div>
-                                    <div class="sf-list"><a href="all-courses.html">
-                                        <ul>
-                                                        <li>Computer Science and Engineering</li>
-                                                        <li>Civil Engineering</li>
-                                                        <li>Machenical Engineering</li>
-                                                        <li>Electronics and Communication Engineering</li>
-                                                        <li>Electrical Engineering</li>
-                                                        <li>Biotechnnology</li>
-                                        </ul></a>
-                                    </div>
-                                </div>
-                                <div class="sf-submit">
-                                    <input type="submit" value="Search Course">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--END HEADER SECTION-->
+	</section>
 
-
-
+<hr>
 </body>
 </html>

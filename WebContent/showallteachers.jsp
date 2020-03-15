@@ -6,20 +6,25 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Teachers </title>
 </head>
 <body>
 
-<table border=5>
+
+<jsp:include page="header.jsp"/>
+
+    
+
+<table border="5">
 	<tr>
-		<th>Name</th>
-		<th>Email</th>
-		<th>Mobile</th>
-		<th>Department</th>
-		<th>Image</th>
-		<th>Profile</th>
+		<th>NAME</th>
+		<th>EMAIL</th>
+		<th>MOBILE</th>
+		<th>DEPRTMENT</th>
+		<th>IMAGE</th>
+		<th>PROFILE</th>
 	</tr>
-	
+	<hr>
 	<% 
 	AllMethods am=new AllMethods();
 	ResultSet rs=am.getTeacher();
@@ -58,5 +63,10 @@
 	
 
 </table>
+
+
+<jsp:include page="footer.jsp"/>
+
+    
 </body>
 </html>

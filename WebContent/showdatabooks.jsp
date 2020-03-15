@@ -9,11 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<jsp:include page="header.jsp"/>
+
 <table border=5>
 	<tr>
 		<th>File Domain</th>
 		<th>File Name</th>
-		<th>File Type</th>
 		<th>Download Link</th>
 	</tr>
 	
@@ -26,7 +29,6 @@
 		<tr>
 			<td><%=rs.getString("bname")%></td>
 			<td><%=rs.getString("domain")%></td>
-			<td><%=rs.getString("type")%></td>
 			<td>Download</td>
 		</tr>
 	<%
@@ -44,5 +46,8 @@
 	
 
 </table>
+
+<jsp:include page="footer.jsp"/>
+
 </body>
 </html>
