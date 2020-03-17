@@ -9,6 +9,43 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>Insert Book</title>
+
+
+
+    <script type="text/javascript">
+        function check() {
+
+
+            var name = document.getElementById('name').value.trim();
+            var isbn = document.getElementById('isbn').value.trim();
+            var file = document.getElementById('file').value.trim();
+            
+                var regexisbn = /^\d{13}$/;
+                var regexname = /.pdf$/;
+
+                alert("hi");
+                
+                
+                if (regexisbn.test(isbn) == false) {
+                    alert("enter a valid 13 digit isbn no.");
+                return false;
+                }
+                else if (regexname.test(name) == false) {
+                    alert("only pdf files are acceptable to rename as");
+                return false;
+                }
+                else if (regexname.test(file) == false) {
+                    alert("only pdf files are acceptable");
+                return false;
+                }
+                document.getElementById('ib').submit();
+               
+                
+
+        }
+
+    </script>
+    
 </head>
 
 
@@ -18,41 +55,84 @@
     <br>
 
 <center><h3 align="center">INSERT BOOK FORM</h3>
-<form  action="insertBook" method="post" enctype="multipart/form-data">
+<form id="ib" action="insertBook" method="post" enctype="multipart/form-data">
 	<table   cellpadding=10 cellspacing=10><caption ></caption>
+		
+		<tr>
+			<td>select the department:</td>
+			<td><select id="department" name="department"></select></td>
+		</tr>
 		<tr>
 			<td>select the domain:</td>
 			<td><select id="domain" name="domain"></select></td>
 		</tr>
 		<tr>
-			<td>enter the name of book along with the extension:</td>
-			<td><input type="text" name="name" placeholder="e.g.: ncert.pdf"/></td>
-		</tr>
-		<tr>
 			<td>enter the ISBN no:</td>
-			<td><input type="number" name="isbn"/></td>
+			<td><input type="number" name="isbn" id="isbn" required/></td>
 		</tr>
 		<tr>
-			<td>File:</td>
-			<td><input type="file" id="file" name="file" placeholder="only pdf/html/docx files are acceptable"  ACCEPT="application/pdf , application/html , application/docx"/></td>
+			<td>Rename as:</td>
+			<td><input type="text" name="name" id="name" placeholder="e.g.: ncert.pdf" required/></td>
 		</tr>
 		<tr>
-			<th><input type="submit" value="submit" id="submit"></input> </th>
-			<th><input type="reset" value="reset" id="reset"></input> </th>
+			<td>File:  <b>"only pdf files are acceptable"</b></td>
+			<td><input type="file" id="file" name="file"  ACCEPT="application/pdf" required/></td>
+		</tr>
+		<tr>
+			<th><input type="button" value="submit"  onclick="check()"></input> </th>
+			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
 	
 	</table>
 </form> 
+
+        <%!Object p;%>
+        <% p=request.getAttribute("msg");
+        	String s=(String)p;
+        	
+        	if(s!=null){
+        %>
+<script>
+alert("${msg}");
+</script>
+
+<% } %>
+
+
 </center>
+
 
                     <script type="text/javascript">
                         $(document).ready(function(){
-                            var doamin = $('#doamin').val();
+                            $.ajax({
+                                request: 'ajax',
+                                method: "POST",
+                                url: "getDept.jsp",
+                                success: function(msg) {
+                                    
+                                        $('#department').html(msg);
+                                    
+                                },
+                                error: function(msg) {
+                                    alert(msg);
+                                }
+                            });
+                            
+                        });
+                    </script>
+                    
+                    <script type="text/javascript">
+                    $('#department').click(function() {
+                    	
+                            var dept = $('#department').val();
                             
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
                                 url: "getDomain.jsp",
+                                data: {
+                                	dept:dept,
+                                },
                                 success: function(msg) {
                                     
                                         $('#domain').html(msg);
@@ -64,7 +144,8 @@
                             });
                             
                         });
-                      </script>  
+                    </script>
+                    
 
 </body>
 </html>

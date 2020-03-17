@@ -29,7 +29,7 @@ public class downloadbook extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int isbn=Integer.parseInt(request.getParameter("isbn"));
+		String isbn=request.getParameter("isbn");
 		
 
 		AllMethods am=new AllMethods();
@@ -38,7 +38,7 @@ public class downloadbook extends HttpServlet {
 			rs = am.downloadbook(isbn);
 	        if (rs.next()) {
 	            String fileName = rs.getString("bname");
-	            Blob blob = rs.getBlob("link");
+	            Blob blob = rs.getBlob("book");
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             

@@ -109,6 +109,26 @@
         </div>
     </section>
 
+    <!-- Regiatration -->
+    <section>
+        <div class="container com-sp pad-bot-0">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="ho-ev-latest ho-ev-latest-bg-3">
+                        <div class="ho-lat-ev"><a href="signup.jsp"><center>Register</center></a>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+
+
+
 <a href="signin.jsp">want to sign in</a><br>
 <a href="signup.jsp">want to sign up</a><br>
 <a href="insertbook.jsp">want to insert book</a><br>
@@ -116,89 +136,6 @@
 <a href="showallteachers.jsp">want to see all teachers</a><br>
 <a href="showallstudents.jsp">want to see all students</a><br>
 <a href="getdata.jsp">want to see our repository according to different choice options</a><br>
-
-
-    <!-- UPCOMING EVENTS -->
-    <section>
-        <div class="container com-sp pad-bot-0">
-            <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                    <!--<div class="ho-ex-title">
-							<h4>Upcoming Event</h4>
-						</div>-->
-                    <div class="ho-ev-latest ho-ev-latest-bg-3">
-                        <div class="ho-lat-ev">
-                            <h4>Register & Login</h4>
-                        </div>
-                    </div>
-                    <div class="ho-st-login">
-                        <ul class="tabs tabs-hom-reg">
-                            <li class="tab col s6"><a href="#hom-vijay">Register</a>
-                            </li>
-                            <li class="tab col s6"><a href="#hom_log">Login</a>
-                            </li>
-                        </ul>
-                        <div id="hom-vijay" class="col s12">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="text" class="validate">
-                                        <label>User name</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="text" class="validate">
-                                        <label>Email id</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="password" class="validate">
-                                        <label>Password</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="password" class="validate">
-                                        <label>Confirm password</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="submit" value="Register" class="waves-effect waves-light light-btn">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div id="hom_log" class="col s12">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="text" class="validate">
-                                        <label>Student user name</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="text" class="validate">
-                                        <label>Password</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="submit" value="Login" class="waves-effect waves-light light-btn">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
 <jsp:include page="footer.jsp"/>

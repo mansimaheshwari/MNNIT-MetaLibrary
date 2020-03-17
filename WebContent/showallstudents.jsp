@@ -16,6 +16,7 @@
 
 <table border=5>
 	<tr>
+		<th>REG. NO.</th>
 		<th>NAME</th>
 		<th>EMAIL</th>
 		<th>MOBILE</th>
@@ -35,6 +36,7 @@
 		String image=am.getImage(blob);
 	%>
 		<tr>
+			<td><%=rs.getString("sid")%></td>
 			<td><%=rs.getString("sname")%></td>
 			<td><%=rs.getString("semail")%></td>
 			<td><%=rs.getString("smobile")%></td>

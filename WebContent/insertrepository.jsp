@@ -13,22 +13,68 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert Repository</title>
+
+<script>
+
+	function check()
+	{
+		alert("hi");
+
+        var type = document.getElementById('types').value;
+        alert(type);
+        if(type=="videos")
+        	{
+        	var reg=/.(mp4|mkv|mov|avi|wmv)/
+        	}
+        else
+        	{
+        	var reg=/.(pdf|log|docx|ppt|txt)/
+        	}
+        
+        var name = document.getElementById('name').value.trim();
+        var i=name.lastIndexOf(".");
+        var ext=name.substring(i);
+        alert(ext);
+
+        var file = document.getElementById('file').value.trim();
+        var ind=file.lastIndexOf(".");
+        var e=file.substring(ind);
+        alert(e);
+        if(reg.test(file) == false){
+            alert("use proper format");
+            return false;
+            }
+        if (name == null || name == "") {
+            alert("name can't blank");
+            return false;
+		}
+        else if(e!=ext)
+        	{
+            alert("use same extension for file names");
+            return false;
+        		
+        	}
+        document.getElementById("irepo").submit();
+    }
+
+</script>
 </head>
 
 
 <body>
 
 
-<% int c=1; %>
+<% int c=20182018; %>
     <br>
     <br>
 
 <center>
-<form  action="insertrepository" method="post" enctype="multipart/form-data">
+<form id="irepo" action="insertrepository" method="post" enctype="multipart/form-data">
 	<table   cellpadding=10 cellspacing=10><caption ><h3 align="center">INSERT REPORITORY FORM</h3></caption>
+		
 		<tr>
-			<td>enter the name of material topic along with the extension:</td>
-			<td><input type="text" name="name" placeholder="e.g.  ncert.pdf"/></select></td>
+			<td>select the department:</td>
+			<td><select id="department" name="department"></select></td>
 		</tr>
 		<tr>
 			<td>select the domain:</td>
@@ -38,31 +84,74 @@
 			<td>select the type of material:</td>
 			<td><select id="types" name="types"></select></td>
 		</tr>
+		<tr>
+			<td>enter the name of material topic along with the extension:</td>
+			<td><input type="text" id="name" name="name" placeholder="e.g.  ncert.pdf" required/></select></td>
+		</tr>
+		<tr>
 			<td>File:</td>
-			<td><input type="file" id="file" name="file" placeholder="only pdf/html/docx files are acceptable"  ACCEPT="application/pdf , application/html , application/docx"/></td>
+			<td><input type="file" id="file" name="file" required></td>
 		</tr>
 	<!-- teacher id also from session -->
-	<input type="hidden" name="tid" value="<%=1%>"/>
+	<input type="hidden" name="tid" value="<%=c%>"/>
 		<tr>
-			<th><input type="submit" value="submit" id="submit"></input> </th>
-			<th><input type="reset" value="reset" id="reset"></input> </th>
+			<th><input type="button" value="submit" onclick="check()"></input> </th>
+			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
 	
 	</table>
 </form> 
 	
+	
+	
+        <%!Object p;%>
+        <% p=request.getAttribute("msg");
+        	String s=(String)p;
+        	
+        	if(s!=null){
+        %>
+<script>
+alert("${msg}");
+</script>
+
+<% } %>
+
 	<!-- teacher id also from session -->
-	<input type="hidden" name="tid" value="<%=1%>"/>
+	<input type="hidden" name="tid" value="<%=c%>"/>
 	 
+
 
                     <script type="text/javascript">
                         $(document).ready(function(){
-                            var doamin = $('#doamin').val();
+                            $.ajax({
+                                request: 'ajax',
+                                method: "POST",
+                                url: "getDept.jsp",
+                                success: function(msg) {
+                                    
+                                        $('#department').html(msg);
+                                    
+                                },
+                                error: function(msg) {
+                                    alert(msg);
+                                }
+                            });
+                            
+                        });
+                    </script>
+                    
+                    <script type="text/javascript">
+                    $('#department').click(function() {
+                    	
+                            var dept = $('#department').val();
                             
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
                                 url: "getDomain.jsp",
+                                data: {
+                                	dept:dept,
+                                },
                                 success: function(msg) {
                                     
                                         $('#domain').html(msg);
@@ -74,8 +163,9 @@
                             });
                             
                         });
-                      </script>  
-                        
+                    </script>
+                    
+                    
                     <script type="text/javascript">
                     $(document).ready(function(){
                             $.ajax({
@@ -94,7 +184,24 @@
                         });
 
                     </script>
-                      
-
+                    
+                    
+                       
+                    <script type="text/javascript">
+                    
+                    $('#types').change(function() {
+                    	
+                            var t = $('#types').val();
+    if(t=="videos")
+    	{
+    	alert("allowed types are : mp4, mkv, mov, avi, wmv");
+    	}
+    else
+    	{
+    	alert("allowed types are : pdf, docx, ppt, log, txt");
+    	}
+                        });
+                    </script>
+--> 
 </body>
 </html>

@@ -32,15 +32,16 @@ public class signup extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
+		String reg=request.getParameter("reg");
 		String name=request.getParameter("name");
-		String email=request.getParameter("email");
-		String cpass=request.getParameter("cpass");
+		String email=request.getParameter("eml");
+		String cpass=request.getParameter("cp");
 		String mob=request.getParameter("mob");
-		System.out.println(request.getParameter("mob"));
 		String dept=request.getParameter("dept");
         Part pic = request.getPart("pic");
         Part profile = request.getPart("profile");
-		String designation=request.getParameter("designation");
+		String designation=request.getParameter("desn");
+		System.out.println(reg);
 		System.out.println(name);
 		System.out.println(email);
 		System.out.println(cpass);
@@ -67,7 +68,8 @@ public class signup extends HttpServlet {
     		try {
              if (!profile.getContentType().equals("application/pdf"))
                 {
- 				request.setAttribute("msg", "alert('only pdf file allowed')");
+             	String msg="only pdf file allowed";
+        		request.setAttribute("msg", msg);
            				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
         				rd.forward(request,response);
                 }
@@ -80,24 +82,25 @@ public class signup extends HttpServlet {
 
             
 			AllMethods am=new AllMethods();
-			int s=am.signup(name,email,cpass,mob,dept,ispic,bytes,designation);
+			int s=am.signup(reg,name,email,cpass,mob,dept,ispic,bytes,designation);
 			if(s>0)
 			{
-				request.setAttribute("msg", "alert('signed successfully')");
-				RequestDispatcher rd=request.getRequestDispatcher("signin.jsp");
+		    	String msg="registered successfully";
+				request.setAttribute("msg", msg);
+				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request,response);
 			}
 			else
 			{
-				request.setAttribute("msg", "alert('enetr details again to signup')");
+		    	String msg="registration no. already registered";
+				request.setAttribute("msg", msg);
 				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
 				rd.forward(request,response);
-        	
-			
 		}
 
     }catch (ClassNotFoundException | IOException | SQLException e) {
-		request.setAttribute("msg", "alert('enter details again to signup')");
+    	String s="exception occured enter details again to signup";
+		request.setAttribute("msg", s);
 		RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
 		rd.forward(request,response);
 		e.printStackTrace();

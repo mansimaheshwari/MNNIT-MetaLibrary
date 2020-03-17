@@ -19,21 +19,33 @@
 
 
 <body>
+ 
+	<%
 
-	<%
-	String dept=request.getParameter("dept");
+
+	//String tid=request.getParameter("tid");
+	String tid="20182018";
 		AllMethods am=new AllMethods();
-		ResultSet rs=am.getDomain(dept);
-		while(rs.next()){
-			System.out.println(rs.getString("domain"));
+		ResultSet rs=am.getTeacher(tid);
+		
+		
+		if(rs.next())
+		{
 			
-	%>
-	<option value="<%=rs.getString("domain")%>"><%=rs.getString("domain")%></option>
-	<%
+
+			Blob blob = rs.getBlob("image");
+			String image=am.getImage(blob);
+		%>
+          <img src="data:image/jpg;base64, <%=image%>" width="100" height="100"/>
+		<%
 		}
-	%>
-	
-                    
+		else
+		{
+		%>
+			<img alt="no image found" width="100" height="100"/>
+		<%
+		}
+		%>
 
 </body>
 </html>

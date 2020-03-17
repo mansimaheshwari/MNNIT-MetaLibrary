@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import experiments.AllMethods;
  * Servlet implementation class insertrepository
  */
 @WebServlet("/insertrepository")
+
+@MultipartConfig   
 public class insertrepository extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,37 +33,47 @@ public class insertrepository extends HttpServlet {
 		String name=request.getParameter("name");
 		String domain=request.getParameter("domain");
 		String types=request.getParameter("types");
-		//int tid=Integer.parseInt(request.getParameter("tid"));
-		int tid=1;
+		String tid=request.getParameter("tid");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println(name);
+		System.out.println(domain);
+		System.out.println(types);
+		System.out.println(tid);
+
         Part filePart = request.getPart("file");
         
         InputStream is = null;
         
 		try {
-         if (!filePart.getContentType().equals("application/pdf"))
-            {
-           			request.setAttribute("msg", "alert('only pdf file allowed')");
-               				RequestDispatcher rd=request.getRequestDispatcher("insertrepository.jsp");
-            				rd.forward(request,response);
-            }
- 
-            is = filePart.getInputStream();  // to get the body of the request as binary data
- 
-            byte[] bytes = is.readAllBytes();;
-            is.read(bytes);
-
+	        if (filePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(filePart.getName());
+	            System.out.println(filePart.getSize());
+	            System.out.println(filePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            is = filePart.getInputStream();
+	        }
+	        
 			AllMethods am=new AllMethods();
-			int s=am.insertrepository(name,domain,types,tid,bytes);
+			int s=am.insertrepository(name,domain,types,tid,is);
 
 			if(s>0)
 			{
-       			request.setAttribute("msg", "alert('successfully added')");
-				RequestDispatcher rd=request.getRequestDispatcher("insertrepository.jsp");
+		    	String msg="successfully added";
+				request.setAttribute("msg", msg);
+				RequestDispatcher rd=request.getRequestDispatcher("showallrepository.jsp");
 				rd.forward(request,response);
 			}
 		}catch(Exception e)
 		{
-			request.setAttribute("msg", "alert('this book already existed')");
+			System.out.println(e);
+	    	String msg="this file already existed";
+			request.setAttribute("msg", msg);
 			RequestDispatcher rd=request.getRequestDispatcher("insertrepository.jsp");
 			rd.forward(request,response);
 		}

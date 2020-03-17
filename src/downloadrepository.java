@@ -37,7 +37,7 @@ public class downloadrepository extends HttpServlet {
 			rs = am.downloadrepository(rid);
 	        if (rs.next()) {
 	            String fileName = rs.getString("rname");
-	            Blob blob = rs.getBlob("link");
+	            Blob blob = rs.getBlob("repo");
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             

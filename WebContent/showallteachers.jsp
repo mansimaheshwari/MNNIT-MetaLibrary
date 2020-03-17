@@ -17,6 +17,7 @@
 
 <table border="5">
 	<tr>
+		<th>REG. NO.</th>
 		<th>NAME</th>
 		<th>EMAIL</th>
 		<th>MOBILE</th>
@@ -31,11 +32,12 @@
 	if(rs.next())
 	{
 	do{
-		int c=rs.getInt("tid");
+		String c=rs.getString("tid");
 		Blob blob = rs.getBlob("image");
 		String image=am.getImage(blob);
 	%>
 		<tr>
+			<td><%=rs.getString("tid")%></td>
 			<td><%=rs.getString("tname")%></td>
 			<td><%=rs.getString("temail")%></td>
 			<td><%=rs.getString("tmobile")%></td>

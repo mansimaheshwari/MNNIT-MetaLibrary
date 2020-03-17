@@ -57,7 +57,7 @@ public class cv extends HttpServlet {
 	            System.out.println("fileLength = " + fileLength);
 	             
 	            // set content properties and header attributes for the response
-				response.setContentType("application/pdf");
+				response.setContentType("text/html");
 	            response.setContentLength(fileLength);
 	            // writes the file to the client
 	            OutputStream outStream = response.getOutputStream();

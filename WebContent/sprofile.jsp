@@ -11,9 +11,12 @@
 </head>
 <body>
 hii
+<br>
 	<%
 	ResultSet rs=(ResultSet)request.getAttribute("details");
+	String c=rs.getString("sid");
 	%>
+	Registration no. : <%=rs.getString("sid") %><br>
 	Name : <%=rs.getString("sname") %><br>
 	Email : <%=rs.getString("semail") %><br>
 	Pass : <%=rs.getString("spass") %><br>

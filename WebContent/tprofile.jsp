@@ -13,15 +13,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Teacher profile</title>
 </head>
 <body>
 	<%
-
-	
 	ResultSet rs=(ResultSet)request.getAttribute("details");
-	int c=rs.getInt("tid");
+	String c=rs.getString("tid");
 	%>
+	Registration no. : <%=rs.getString("tid") %><br>
 	Name : <%=rs.getString("tname") %><br>
 	Email : <%=rs.getString("temail") %><br>
 	Pass : <%=rs.getString("tpass") %><br>

@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Search</title>
 </head>
 
 
@@ -24,20 +24,25 @@
 <form  action="getData" method="post">
 	<table   cellpadding=10 cellspacing=10>
 		<tr>
+			<td>select the department:</td>
+			<td><select id="department" name="department"></select></td>
+		</tr>
+		<tr>
 			<td>select the domain:</td>
 			<td><select id="domain" name="domain"></select></td>
-		<tr>
+		</tr>
 		<tr>
 			<td>select the type of material:</td>
 			<td><select id="types" name="types"></select></td>
 		</tr>
 		<tr class="t" hidden="true">
 			<td>select the teacher:</td>
-			<td><select id="teacher"  name="teacher" class="t" hidden="true"></select></td>
+			<td><select id="teacher"  name="teacher" ></select></td>
 		</tr>
+
 		<tr class="t" hidden="true">
-			<td><img alt="teacher image" src="" class="t" hidden="true" id="tid"/><td>
-			<td></td>
+			<td id="timg"><td>
+			<td><img src="data:image/jpg;base64,${img}" width="100" height="100"/></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="submit" id="submit"></input></td> 
@@ -46,12 +51,38 @@
 	</table>
 </form> 
 </center>
+
                     <script type="text/javascript">
                         $(document).ready(function(){
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
+                                url: "getDept.jsp",
+                                success: function(msg) {
+                                    
+                                        $('#department').html(msg);
+                                    
+                                },
+                                error: function(msg) {
+                                    alert(msg);
+                                }
+                            });
+                            
+                        });
+                    </script>
+                    
+                    <script type="text/javascript">
+                    $('#department').click(function() {
+                    	
+                            var dept = $('#department').val();
+                            
+                            $.ajax({
+                                request: 'ajax',
+                                method: "POST",
                                 url: "getDomain.jsp",
+                                data: {
+                                	dept:dept,
+                                },
                                 success: function(msg) {
                                     
                                         $('#domain').html(msg);
@@ -89,8 +120,9 @@
                     
                         $('#types').change(function() {
 
-                            var types = $('#types').val();
+                            var dept = $('#department').val();
                             var domain = $('#domain').val();
+                            var types = $('#types').val();
                             
                             if(types=="books")
                         	{
@@ -105,6 +137,7 @@
                                 data: {
                                 	types:types,
                                 	domain:domain,
+                                	dept:dept,
                                 },
                                 success: function(msg) {
                                     
@@ -118,6 +151,34 @@
                         });
                         
                     </script>
+                    
+                    
+                    <script type="text/javascript">
+                    
+                        $('#teacher').click(function() {
+
+                            var tid = $('#teacher').val();
+                            alert("teacher");
+                            $.ajax({
+                                request: 'ajax',
+                                method: "POST",
+                                url: "getTeacherImage.jsp",
+                                data: {
+									tid:tid,
+                                },
+                                success: function(img) {
+										
+                                	$('#timg').html(img);
+                                    
+                                },
+                                error: function(img) {
+                                    alert(img);
+                                }
+                            });}
+                        });
+                        
+                    </script>
+                    
                     
 
 </body>

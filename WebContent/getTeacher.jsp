@@ -22,13 +22,15 @@
  
 	<%
 
+
+		String dept=request.getParameter("dept");
 		String domain=request.getParameter("domain");
 		String types=request.getParameter("types");
 		System.out.println("domain in t:" + domain);
 		System.out.println("type in t:" + types);
 		AllMethods am=new AllMethods();
-		ResultSet rs=am.getTeacher(domain,types);
-		//ResultSet rs=am.getTeacher();
+		ResultSet rs=am.getTeacher(dept,domain,types);
+		
 		if(rs.next())
 		{
 		do

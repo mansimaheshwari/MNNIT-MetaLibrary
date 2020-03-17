@@ -18,15 +18,32 @@ import javax.servlet.http.Part;
 
 public class AllMethods {
 
-// to get all domain list
-	public ResultSet getDomain() throws ClassNotFoundException, IOException, SQLException
+
+	// to get all department list
+		public ResultSet getDept() throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from departments";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+
+
+// to get all domain according to department selected
+	public ResultSet getDomain( String dept) throws ClassNotFoundException, IOException, SQLException
 	{
 		Connection con=DBConn.getConn();
 		
-		String query="select * from domain";
-	
-		PreparedStatement pst = con.prepareStatement(query);
+		String query="select * from domain where dept=?";
 		
+		
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setString(1, dept);
 		ResultSet rs=pst.executeQuery();
 		
 		return rs;
@@ -49,6 +66,24 @@ public class AllMethods {
 	}
 	
 
+	 //to get domain teachers list
+		public ResultSet getTeacher(String dept,String domain,String types) throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from teacher natural join repository where domain=? and types=? and dept=?";
+			//String query="select * from teacher";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, domain);
+			pst.setString(2, types);
+			pst.setString(3, dept);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+
 	
 	// to get all teachers list
 		public ResultSet getTeacher() throws ClassNotFoundException, IOException, SQLException
@@ -69,27 +104,12 @@ public class AllMethods {
 
 
 		
-		 //to get domain teachers list
-			public ResultSet getTeacher(String domain,String types) throws ClassNotFoundException, IOException, SQLException
-			{
-				Connection con=DBConn.getConn();
-				
-				String query="select * from teacher natural join repository where domain=? and types=?";
-				//String query="select * from teacher";
-			
-				PreparedStatement pst = con.prepareStatement(query);
-				pst.setString(1, domain);
-				pst.setString(2, types);
-				ResultSet rs=pst.executeQuery();
-				
-				return rs;
-			}
 			
 			
 
 
 			 //to get domain teachers list
-				public ResultSet getTeacher(int tid) throws ClassNotFoundException, IOException, SQLException
+				public ResultSet getTeacher(String tid) throws ClassNotFoundException, IOException, SQLException
 				{
 					Connection con=DBConn.getConn();
 					
@@ -97,7 +117,7 @@ public class AllMethods {
 					//String query="select * from teacher";
 				
 					PreparedStatement pst = con.prepareStatement(query);
-					pst.setInt(1, tid);
+					pst.setString(1, tid);
 					ResultSet rs=pst.executeQuery();
 					
 					return rs;
@@ -121,7 +141,7 @@ public class AllMethods {
 
 
 					 //to get domain teachers list
-						public ResultSet getStudent(int tid) throws ClassNotFoundException, IOException, SQLException
+						public ResultSet getStudent(String tid) throws ClassNotFoundException, IOException, SQLException
 						{
 							Connection con=DBConn.getConn();
 							
@@ -129,7 +149,7 @@ public class AllMethods {
 							//String query="select * from teacher";
 						
 							PreparedStatement pst = con.prepareStatement(query);
-							pst.setInt(1, tid);
+							pst.setString(1, tid);
 							ResultSet rs=pst.executeQuery();
 							
 							return rs;
@@ -150,8 +170,8 @@ public class AllMethods {
 					return rs;
 				}
 
-
-		public ResultSet getVPN(String domain, int teacher, String types) throws ClassNotFoundException, IOException, SQLException 
+//    getVPN --> getrepo
+		public ResultSet getrepo(String domain, String teacher, String types) throws ClassNotFoundException, IOException, SQLException 
 		{
 			Connection con=DBConn.getConn();
 
@@ -161,7 +181,7 @@ public class AllMethods {
 			
 			pst.setString(1,domain);
 			pst.setString(2,types);
-			pst.setInt(3,teacher);
+			pst.setString(3,teacher);
 			
 			ResultSet rs=pst.executeQuery();
 			return rs;
@@ -197,31 +217,68 @@ public class AllMethods {
 
 			
 			
-		public int signup(String name,String email,String cpass,String mob,String dept,InputStream pic,byte[] profile,String designation) throws ClassNotFoundException, IOException, SQLException
+		public int signup(String reg,String name,String email,String cpass,String mob,String dept,InputStream pic,byte[] profile,String designation) throws ClassNotFoundException, IOException, SQLException
 		{
 			int cnt=0;
 			Connection con=DBConn.getConn();
 			String query=null;
 			if(designation.equals("Student"))
 			{
-				query="insert into student(sname,semail,spass,smobile,dept,image,profile) values(?,?,?,?,?,?,?)";
+				query="insert into student(sid,sname,semail,spass,smobile,dept,image,profile) values(?,?,?,?,?,?,?,?)";
 			}
 			else
 			{
-				query="insert into teacher(tname,temail,tpass,tmobile,dept,image,profile) values(?,?,?,?,?,?,?)";
+				query="insert into teacher(tid,tname,temail,tpass,tmobile,dept,image,profile) values(?,?,?,?,?,?,?,?)";
 			}
 			PreparedStatement pst = con.prepareStatement(query);
-			pst.setString(1,name);
-			pst.setString(2,email);
-			pst.setString(3,cpass);
-			pst.setString(4,mob);
-			pst.setString(5,dept);
-			pst.setBlob(6, pic);
-			pst.setBytes(7, profile);
+			pst.setString(1,reg);
+			pst.setString(2,name);
+			pst.setString(3,email);
+			pst.setString(4,cpass);
+			pst.setString(5,mob);
+			pst.setString(6,dept);
+			pst.setBlob(7, pic);
+			pst.setBytes(8, profile);
 			cnt=pst.executeUpdate();
 			return cnt;
 			
 		}
+		
+
+		public String forgotpass(String reg, String name, String email, String mob, String designation) throws SQLException, ClassNotFoundException, IOException {
+
+			Connection con=DBConn.getConn();
+			String query=null;
+			if(designation.equals("Student"))
+			{
+				query="select spass from student where sid=? && sname=? && semail=? && smobile=?";
+			}
+			else
+			{
+				query="select tpass from teacher where tid=? && tname=? && temail=? && tmobile=?";
+			}
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1,reg);
+			pst.setString(2,name);
+			pst.setString(3,email);
+			pst.setString(4,mob);
+			
+			ResultSet rs=pst.executeQuery();
+			String pass=null;
+			if(rs.next()) 
+			{
+				pass="your password : " + rs.getString(1);
+			}
+			else
+			{
+				pass="no user registered with these details";
+			}
+			return pass;
+			
+
+		}
+
+		
 		
 		
 		public String getImage(Blob blob) throws SQLException, IOException
@@ -255,7 +312,19 @@ public class AllMethods {
 			Connection con=DBConn.getConn();
 			
 			String query="select * from book";
-			//String query="select * from type";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+		
+		public ResultSet allrepository() throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from repository natural join teacher";
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
@@ -265,18 +334,18 @@ public class AllMethods {
 
 
 
-		public int insertbook(String name, String isbn, String domain, byte[] bytes) throws ClassNotFoundException, IOException, SQLException {
+		public int insertbook(String name, String isbn,String dept, String domain, byte[] bytes) throws ClassNotFoundException, IOException, SQLException {
 
 			Connection con=DBConn.getConn();
 			
-			String query="insert into book values(?,?,?,?)";
-			//String query="select * from type";
+			String query="insert into book values(?,?,?,?,?)";
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, isbn);
 			pst.setString(2, name);
-			pst.setString(3, domain);
-            pst.setBytes(4,bytes);
+			pst.setString(3, dept);
+			pst.setString(4, domain);
+            pst.setBytes(5,bytes);
 			int rs=pst.executeUpdate();
 			
 			return rs;
@@ -284,14 +353,14 @@ public class AllMethods {
 
 
 
-		public ResultSet downloadbook(int isbn) throws ClassNotFoundException, IOException, SQLException {
+		public ResultSet downloadbook(String isbn) throws ClassNotFoundException, IOException, SQLException {
 
 			Connection con=DBConn.getConn();
 			
 			String query="select * from book where isbn=?";
 		
 			PreparedStatement pst = con.prepareStatement(query);
-			pst.setInt(1, isbn);
+			pst.setString(1, isbn);
 	        ResultSet rs = pst.executeQuery();
 			return rs;
 		}
@@ -299,19 +368,18 @@ public class AllMethods {
 		
 
 
-		public int insertrepository(String name, String domain, String types, int tid, byte[] bytes) throws ClassNotFoundException, IOException, SQLException {
+		public int insertrepository(String name, String domain, String types, String tid, InputStream is) throws ClassNotFoundException, IOException, SQLException {
 
 			Connection con=DBConn.getConn();
 			
-			String query="insert into repository(rname,domain,types,tid,link) values(?,?,?,?,?)";
-			//String query="select * from type";
+			String query="insert into repository(rname,domain,types,tid,repo) values(?,?,?,?,?)";
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, name);
 			pst.setString(2, domain);
 			pst.setString(3, types);
-            pst.setInt(4,tid);
-            pst.setBytes(5,bytes);
+            pst.setString(4,tid);
+            pst.setBlob(5,is);
 			int rs=pst.executeUpdate();
 			
 			return rs;
@@ -330,6 +398,8 @@ public class AllMethods {
 	        ResultSet rs = pst.executeQuery();
 			return rs;
 		}
+
+
 
 		
 		

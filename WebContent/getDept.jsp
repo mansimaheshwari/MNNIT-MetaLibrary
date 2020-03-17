@@ -21,14 +21,13 @@
 <body>
 
 	<%
-	String dept=request.getParameter("dept");
 		AllMethods am=new AllMethods();
-		ResultSet rs=am.getDomain(dept);
+		ResultSet rs=am.getDept();
 		while(rs.next()){
-			System.out.println(rs.getString("domain"));
+			System.out.println(rs.getString("dept"));
 			
 	%>
-	<option value="<%=rs.getString("domain")%>"><%=rs.getString("domain")%></option>
+	<option value="<%=rs.getString("dept")%>"><%=rs.getString("dept")%></option>
 	<%
 		}
 	%>

@@ -17,6 +17,7 @@
 	<tr>
 		<th>ISBN No.</th>
 		<th>Name</th>
+		<th>DEPARTMENT</th>
 		<th>Domain</th>
 		<th>Download Link</th>
 	</tr>
@@ -31,13 +32,13 @@
 		<tr>
 			<td><%=rs.getString("isbn")%></td>
 			<td><%=rs.getString("bname")%></td>
+			<td><%=rs.getString("dept")%></td>
 			<td><%=rs.getString("domain")%></td>
 			<td><form method="post" action="downloadbook">
 						<input type="hidden" name="isbn" value="<%=rs.getString("isbn")%>">
 						<input type="submit"  value="Download"/>
 			
 			</form></td>
-    		<img src="data:image/jpg;base64,${image}" width="100" height="100"/>
 		</tr>
 	<%
 	}while(rs.next());

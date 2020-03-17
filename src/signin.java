@@ -75,15 +75,17 @@ public class signin extends HttpServlet {
 			}
             else
             {
-				request.setAttribute("msg", "alert('null : invalid username and password combination')");
-				RequestDispatcher rd=request.getRequestDispatcher("signin.jsp");
+            	String s="invalid username and password combinatio";
+				request.setAttribute("msg", s);
+				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request,response);            	
             }
 		}
 		catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
-			request.setAttribute("msg", "alert('invalid username and password combination')");
-			RequestDispatcher rd=request.getRequestDispatcher("signin.jsp");
+        	String s="invalid username and password combinatio";
+			request.setAttribute("msg", s);
+			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 			rd.forward(request,response);
 		}
 		

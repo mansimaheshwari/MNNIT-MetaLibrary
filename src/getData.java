@@ -1,4 +1,7 @@
 
+//   for search
+
+
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -48,7 +51,7 @@ public class getData extends HttpServlet {
 				int teacher=Integer.parseInt(request.getParameter("teacher"));
 				System.out.println(teacher);
 				AllMethods am=new AllMethods();
-				rs=am.getVPN(domain,teacher,types);
+				rs=am.getrepo(domain,teacher,types);
 				
 				request.setAttribute("repo", rs);
 				RequestDispatcher rd=request.getRequestDispatcher("showdatarepo.jsp");

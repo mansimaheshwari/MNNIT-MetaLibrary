@@ -33,6 +33,7 @@ public class insertBook extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
 		String name=request.getParameter("name");
+		String dept=request.getParameter("department");
 		String domain=request.getParameter("domain");
 		String isbn=request.getParameter("isbn");
         Part filePart = request.getPart("file");
@@ -42,7 +43,8 @@ public class insertBook extends HttpServlet {
 		try {
          if (!filePart.getContentType().equals("application/pdf"))
             {
-           			request.setAttribute("msg", "alert('only pdf file allowed')");
+		    	String msg="only pdf file allowed";
+				request.setAttribute("msg", msg);
                				RequestDispatcher rd=request.getRequestDispatcher("insertbook.jsp");
             				rd.forward(request,response);
             }
@@ -53,17 +55,19 @@ public class insertBook extends HttpServlet {
             is.read(bytes);
 
 			AllMethods am=new AllMethods();
-			int s=am.insertbook(name,isbn,domain,bytes);
+			int s=am.insertbook(name,isbn,dept,domain,bytes);
 
 			if(s>0)
 			{
-       			request.setAttribute("msg", "alert('inserted successfully')");
+		    	String msg="inserted successfully";
+				request.setAttribute("msg", msg);
 				RequestDispatcher rd=request.getRequestDispatcher("showallbooks.jsp");
 				rd.forward(request,response);
 			}
 		}catch(Exception e)
 		{
-			request.setAttribute("msg", "alert('this book already existed')");
+	    	String msg="this book already existed";
+			request.setAttribute("msg", msg);
 			RequestDispatcher rd=request.getRequestDispatcher("insertbook.jsp");
 			rd.forward(request,response);
 		}

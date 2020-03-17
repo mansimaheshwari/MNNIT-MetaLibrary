@@ -24,7 +24,7 @@
 	
 	<% 
 	AllMethods am=new AllMethods();
-	ResultSet rs=am.allBooks();
+	ResultSet rs=am.allrepository();
 	if(rs.next())
 	{
 	do{

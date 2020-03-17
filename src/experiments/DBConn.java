@@ -34,7 +34,7 @@ public class DBConn {
 
 		System.out.println("load");
 
-	    Connection con=DriverManager.getConnection("jdbc:mysql:///testprog","root","root");
+	    Connection con=DriverManager.getConnection("jdbc:mysql:///mnnitmetalibrary","root","root");
 
 		System.out.println("connection created");
 		return con;
