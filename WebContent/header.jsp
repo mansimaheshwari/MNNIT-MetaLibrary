@@ -69,7 +69,7 @@
                         <a href="#!" class="ed-micon"><i class="fa fa-bars"></i></a>
                         <div class="ed-mm-inn">
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
-                            <h4>All Courses</h4><a href="showalldepartments.jsp">
+                            <h4>All Courses</h4><a href="showAllDeptDomain.jsp">
                                         <ul>
                                                         <li>Biotechnology</li>
 														<li>Chemical Engineering</li>
@@ -312,11 +312,9 @@ alert("${msg}");
                                 <li class="about-menu">
                                     <a href="about.jsp" class="mm-arr">About us</a>
                                 </li>   
-                                
                                 <li class="cour-menu">
-                                    <a href="#!" class="mm-arr">All Departments</a>
-                                        <div class="cour-mm m-menu"><a href="showalldepartments.jsp">
-                                                        
+                                    <a href="#!" class="mm-arr"><a href="showAllDeptDomain.jsp">All Departments</a>
+                                        <div class="cour-mm m-menu">
                                                         <p>Biotechnology</p>
 														<p>Chemical Engineering</p>
                                                         <p>Civil Engineering</p>
@@ -324,8 +322,7 @@ alert("${msg}");
                                                         <p>Electrical Engineering</p>
                                                         <p>Electronics and Communication Engineering</p>
                                                         <p>Mechanical Engineering</p>
-                                                        
-                                        </a>
+                                              
                                         </div>
                                 </li>
                                 <li><a href="showallteachers.jsp">Faculties</a>
@@ -344,6 +341,35 @@ alert("${msg}");
                 </div>
             </div>
         </div>
+        
+        
+        <div class="search-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search-form">
+                            <form action="getdeptdomain" method="post">
+                                <div class="sf-type">
+                                <select id="deptmt" name="deptmt">
+                                	<option value="Biotechnology">Biotechnology</option>
+                                	<option value="Chemical Engineering">Chemical Engineering</option>
+                                	<option value="Civil Engineering">Civil Engineering</option>
+                                	<option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                                	<option value="Electrical Engineering">Electrical Engineering</option>
+                                	<option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                                	<option value="Mechanical Engineering">Mechanical Engineering</option>
+                                </select>
+                                </div>
+                                <div class="sf-submit">
+                                    <input type="submit" value="Search Course">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 	</section>
 </body>
 </html>

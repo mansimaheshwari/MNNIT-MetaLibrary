@@ -12,6 +12,7 @@
 
 <jsp:include page="header.jsp"/>
 
+<hr>
     
 <table border=5>
 	<tr>

@@ -23,8 +23,8 @@
 	<%
 
 
-	//String tid=request.getParameter("tid");
-	String tid="20182018";
+	String tid=request.getParameter("tid");
+	//String tid="20182018";
 		AllMethods am=new AllMethods();
 		ResultSet rs=am.getTeacher(tid);
 		
@@ -36,7 +36,8 @@
 			Blob blob = rs.getBlob("image");
 			String image=am.getImage(blob);
 		%>
-          <img src="data:image/jpg;base64, <%=image%>" width="100" height="100"/>
+		<td></td>
+        <td align="center"><img src="data:image/jpg;base64,<%=image%>" width="100" height="100"/></td>
 		<%
 		}
 		else

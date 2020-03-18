@@ -156,26 +156,29 @@ public class AllMethods {
 						}
 						
 			//to get books of that domain
-				public ResultSet getBook(String domain) throws ClassNotFoundException, IOException, SQLException
+				public ResultSet getBook(String dept,String domain) throws ClassNotFoundException, IOException, SQLException
 				{
 					Connection con=DBConn.getConn();
 					
-					String query="select * from book where domain=?";
-					//String query="select * from type";
+					String query="select * from book where domain=? and dept=?";
 				
 					PreparedStatement pst = con.prepareStatement(query);
 					pst.setString(1,domain);
+					pst.setString(2,dept);
 					ResultSet rs=pst.executeQuery();
 					
 					return rs;
 				}
 
 //    getVPN --> getrepo
+				
+//    no need to specify department as a tid belongs to only one department
+				
 		public ResultSet getrepo(String domain, String teacher, String types) throws ClassNotFoundException, IOException, SQLException 
 		{
 			Connection con=DBConn.getConn();
 
-			String query="select * from repository where domain=? and types=? and tid=?";
+			String query="select * from repository natural join teacher where domain=? and types=? and tid=?";
 			//String query="select * from teacher";
 			PreparedStatement pst = con.prepareStatement(query);
 			
@@ -314,6 +317,33 @@ public class AllMethods {
 			String query="select * from book";
 		
 			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+		
+		public ResultSet deptdomain() throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from domain order by dept";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+
+		public ResultSet deptdomain(String dept) throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from domain where dept=? order by domain";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, dept);
 			ResultSet rs=pst.executeQuery();
 			
 			return rs;

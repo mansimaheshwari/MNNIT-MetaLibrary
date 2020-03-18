@@ -40,9 +40,8 @@
 			<td><select id="teacher"  name="teacher" ></select></td>
 		</tr>
 
-		<tr class="t" hidden="true">
-			<td id="timg"><td>
-			<td><img src="data:image/jpg;base64,${img}" width="100" height="100"/></td>
+		<tr class="t" hidden="true" id="timg">
+		
 		</tr>
 		<tr>
 			<td><input type="submit" value="submit" id="submit"></input></td> 
@@ -158,7 +157,6 @@
                         $('#teacher').click(function() {
 
                             var tid = $('#teacher').val();
-                            alert("teacher");
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
@@ -174,7 +172,7 @@
                                 error: function(img) {
                                     alert(img);
                                 }
-                            });}
+                            });
                         });
                         
                     </script>

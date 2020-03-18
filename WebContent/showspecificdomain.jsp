@@ -10,54 +10,44 @@
 </head>
 <body>
 
+
 <jsp:include page="header.jsp"/>
 
 <hr>
+
 <table border=5>
 	<tr>
-		<th>Name</th>
+		<th>DEPARTMENT</th>
 		<th>Domain</th>
-		<th>Type</th>
-		<th>Teacher name</th>
-		<th>Download Link</th>
 	</tr>
 	
 	<% 
-	ResultSet rs=(ResultSet)request.getAttribute("repo");
+	ResultSet rs=(ResultSet)request.getAttribute("deptdomain");
 	if(rs.next())
 	{
 	do{
 	%>
 		<tr>
-			<td><%=rs.getString("rname")%></td>
+			<td><%=rs.getString("dept")%></td>
 			<td><%=rs.getString("domain")%></td>
-			<td><%=rs.getString("types")%></td>
-			<td><%=rs.getString("tname")%></td>
-			<td><form method="post" action="downloadrepository">
-						<input type="hidden" name="rid" value="<%=rs.getString("rid")%>">
-						<input type="submit"  value="Download"/>
-			</form></td>
-			
 		</tr>
 	<%
-	}while(rs.next()); 
+	}while(rs.next());
 	}
 	else
 	{
 	%>
 	<tr>
-			<td colspan=4>No repositories available for this domain</td>
+			<td colspan=4>No subjects</td>
 	</tr>
 	<%
 	}
 	%>
-
-	
 	
 
 </table>
 
-
 <jsp:include page="footer.jsp"/>
+
 </body>
 </html>

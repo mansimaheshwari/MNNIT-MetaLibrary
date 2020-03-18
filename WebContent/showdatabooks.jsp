@@ -13,10 +13,14 @@
 
 <jsp:include page="header.jsp"/>
 
+<hr>
+
 <table border=5>
 	<tr>
-		<th>File Domain</th>
-		<th>File Name</th>
+		<th>ISBN No.</th>
+		<th>Name</th>
+		<th>DEPARTMENT</th>
+		<th>Domain</th>
 		<th>Download Link</th>
 	</tr>
 	
@@ -27,9 +31,15 @@
 	do{
 	%>
 		<tr>
+			<td><%=rs.getString("isbn")%></td>
 			<td><%=rs.getString("bname")%></td>
+			<td><%=rs.getString("dept")%></td>
 			<td><%=rs.getString("domain")%></td>
-			<td>Download</td>
+			<td><form method="post" action="downloadbook">
+						<input type="hidden" name="isbn" value="<%=rs.getString("isbn")%>">
+						<input type="submit"  value="Download"/>
+			
+			</form></td>
 		</tr>
 	<%
 	}while(rs.next());
