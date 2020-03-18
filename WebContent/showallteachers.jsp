@@ -27,8 +27,11 @@
 	</tr>
 	<hr>
 	<% 
+	String dept=request.getParameter("deptm");
+	
+	System.out.println(dept);
 	AllMethods am=new AllMethods();
-	ResultSet rs=am.getTeacher();
+	ResultSet rs=am.allTeacher(dept);
 	if(rs.next())
 	{
 	do{

@@ -66,13 +66,6 @@ public class signup extends HttpServlet {
             InputStream is = null;
             
     		try {
-             if (!profile.getContentType().equals("application/pdf"))
-                {
-             	String msg="only pdf file allowed";
-        		request.setAttribute("msg", msg);
-           				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
-        				rd.forward(request,response);
-                }
      
      
                 is = profile.getInputStream();  // to get the body of the request as binary data
@@ -94,14 +87,14 @@ public class signup extends HttpServlet {
 			{
 		    	String msg="registration no. already registered";
 				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("register.jsp");
 				rd.forward(request,response);
 		}
 
     }catch (ClassNotFoundException | IOException | SQLException e) {
-    	String s="exception occured enter details again to signup";
+    	String s="registration no. already registered";
 		request.setAttribute("msg", s);
-		RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("register.jsp");
 		rd.forward(request,response);
 		e.printStackTrace();
 	}

@@ -102,13 +102,26 @@ public class AllMethods {
 		
 
 
+		 //to get teachers list based on dept
+			public ResultSet allTeacher(String dept) throws ClassNotFoundException, IOException, SQLException
+			{
+				Connection con=DBConn.getConn();
+				
+				String query="select * from teacher where dept=?";
+			
+				PreparedStatement pst = con.prepareStatement(query);
+				pst.setString(1, dept);
+				ResultSet rs=pst.executeQuery();
+				
+				return rs;
+			}
 
 		
 			
 			
 
 
-			 //to get domain teachers list
+			 //to get teachers based on tid
 				public ResultSet getTeacher(String tid) throws ClassNotFoundException, IOException, SQLException
 				{
 					Connection con=DBConn.getConn();

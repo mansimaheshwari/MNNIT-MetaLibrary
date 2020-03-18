@@ -153,7 +153,9 @@
                         </div>
 						</div>
                         <div>
-                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a> | <a href="signup.jsp" >Create a new account</a> </div>
+                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a>
+                             | 
+                             <a href="register.jsp" >Create a new account</a> </div>
                         </div>
                     </form>
                 </div>
@@ -220,7 +222,9 @@
                         	</div>
                         </div>
                         <div><font color="blue">
-                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ? Login</a> | <a href="signup.jsp" >Create a new account</a> </div>
+                            <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ? Login</a>
+                             | 
+                            <a href="register.jsp" >Create a new account</a> </div>
                         </font> </div>
                     </form>
                 </div>
@@ -313,19 +317,21 @@ alert("${msg}");
                                     <a href="about.jsp" class="mm-arr">About us</a>
                                 </li>   
                                 <li class="cour-menu">
-                                    <a href="#!" class="mm-arr"><a href="showAllDeptDomain.jsp">All Departments</a>
-                                        <div class="cour-mm m-menu">
-                                                        <p>Biotechnology</p>
-														<p>Chemical Engineering</p>
-                                                        <p>Civil Engineering</p>
-                                                        <p>Computer Science and Engineering</p>
-                                                        <p>Electrical Engineering</p>
-                                                        <p>Electronics and Communication Engineering</p>
-                                                        <p>Mechanical Engineering</p>
-                                              
-                                        </div>
-                                </li>
-                                <li><a href="showallteachers.jsp">Faculties</a>
+                                    <a href="#!" class="mm-arr">Faculties</a>
+                                    <div class="cour-mm m-menu  mm1-com mm1-cour-com">
+                                                    <ul>
+                                                        <li><a href="faculties.jsp?deptm=Biotechnology">Biotechnology</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Chemical Engineering">Chemical Engineering</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Civil Engineering">Civil Engineering</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Computer Science and Engineering">Computer Science and Engineering</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Electrical Engineering">Electrical Engineering</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Electronics and Communication Engineering">Electronics and Communication Engineering</a></li>
+                                                        <li><a href="faculties.jsp?deptm=Mechanical Engineering">Mechanical Engineering</a></li>
+	                                                    <li>.</li>
+	                                                    <li>.</li>
+	                                                    <li>.</li>
+	                                                </ul>
+                                    </div>
                                 </li>
                                 <li><a href="contact-us.jsp">Contact us</a>
                                 </li>

@@ -108,7 +108,6 @@
                 return false;
                 }
                 document.getElementById('register').submit();
-;
                
                 
 
@@ -211,8 +210,8 @@
                         </div>
                     </form>
 
-<!--  
--->
+
+
 <p><script>${msg}</script></p>
 
 

@@ -129,6 +129,20 @@
 
 
 
+
+
+<!--  
+
+                <div class="col-md-4">
+                    <div class="bot-gal h-vid ho-event-mob-bot-sp">
+                        <h4>Video Gallery</h4>
+                        <iframe src="https://www.youtube.com/embed/2WqFtiR4-F4?autoplay=0&amp;showinfo=0&amp;controls=0" allowfullscreen></iframe>
+                        <h5>Maecenas sollicitudin lacinia</h5>
+                        <p>Maecenas finibus neque a tellus auctor mattis. Aliquam tempor varius ornare. Maecenas dignissim leo leo, nec posuere purus finibus vitae.</p>
+                        <p>Quisque vitae neque at tellus malesuada convallis. Phasellus in lectus vitae ex euismod interdum non a lorem. Nulla bibendum. Curabitur mi odio, tempus quis risus cursus.</p>
+                    </div>
+                </div>
+-->
 <a href="signin.jsp">want to sign in</a><br>
 <a href="signup.jsp">want to sign up</a><br>
 <a href="insertbook.jsp">want to insert book</a><br>
