@@ -60,8 +60,8 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo">
-                        <a href="index.jsp"><img src="images/logo.png" alt="MNNIT" height="70" />
-						</a>
+                        <img src="images/logo.png" alt="MNNIT" height="70" />
+						
                     </div>
                 </div>
                 <div class="ed-mm-right">
@@ -305,8 +305,8 @@ alert("${msg}");
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="index.html"><img src="images/logo.png" alt="MNNIT" height="70"/>
-                            </a>
+                            <img src="images/logo.png" alt="MNNIT" height="70"/>
+                            
                         </div>
                         <div class="main-menu">
                             <ul>
