@@ -18,7 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import experiments.AllMethods;
 
@@ -42,25 +41,23 @@ public class signin extends HttpServlet {
 			
 			AllMethods am=new AllMethods();
 			ResultSet rs=am.signin(email,cpass,designation);
-			
-			HttpSession session=request.getSession();
             if (rs.next()) 
             {
     			if(designation.equals("Admin"))
     			{
-    				session.setAttribute("details", rs);
-    				RequestDispatcher rd=request.getRequestDispatcher("admin.jsp");
+    	            request.setAttribute("details", rs);
+    				RequestDispatcher rd=request.getRequestDispatcher("aprofile.jsp");
     				rd.forward(request,response);
     			}
     			else
     			{            	
     				Blob blob = rs.getBlob("image");
     				String image=am.getImage(blob);
-    				session.setAttribute("image", image);    				
+    				request.setAttribute("image", image);    				
 
     	            System.out.println("AllMethods...");
     				
-    	            session.setAttribute("details", rs);
+    	            request.setAttribute("details", rs);
     	            System.out.println("hiiii....");
     				if(designation.equals("Student"))
     				{

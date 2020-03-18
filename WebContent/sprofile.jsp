@@ -10,10 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+hii
 <br>
 	<%
-	
-	ResultSet rs=(ResultSet)session.getAttribute("details");
+	ResultSet rs=(ResultSet)request.getAttribute("details");
 	String c=rs.getString("sid");
 	%>
 	Registration no. : <%=rs.getString("sid") %><br>

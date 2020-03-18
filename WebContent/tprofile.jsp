@@ -17,7 +17,7 @@
 </head>
 <body>
 	<%
-	ResultSet rs=(ResultSet)session.getAttribute("details");
+	ResultSet rs=(ResultSet)request.getAttribute("details");
 	String c=rs.getString("tid");
 	%>
 	Registration no. : <%=rs.getString("tid") %><br>
