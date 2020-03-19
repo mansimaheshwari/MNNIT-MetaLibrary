@@ -152,7 +152,7 @@ CREATE TABLE repository (
   rname varchar(70) NOT NULL,
   domain varchar(50) NOT NULL references domain(domain),
   types varchar(50) NOT NULL references types(types),
-  tid int(6) NOT NULL references teacher(tid),
+  tid varchar(8) NOT NULL references teacher(tid),
   repo LONGBLOB NOT NULL
 );
 

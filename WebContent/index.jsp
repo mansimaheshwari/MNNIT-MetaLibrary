@@ -264,7 +264,7 @@
 <a href="insertrepository.jsp">want to insert repository </a><br>
 <a href="showallteachers.jsp">want to see all teachers</a><br>
 <a href="showallstudents.jsp">want to see all students</a><br>
-<a href="getdata.jsp">want to see our repository according to different choice options</a><br>
+<a href="search.jsp">want to see our repository according to different choice options</a><br>
 
 
 

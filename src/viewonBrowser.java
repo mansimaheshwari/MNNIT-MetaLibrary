@@ -36,39 +36,41 @@ public class viewonBrowser extends HttpServlet {
 		try {
 			ResultSet rs=null;
 			Blob blob=null;
+			String val=null;
 			String desig=request.getParameter("desig");
 			if(desig.equals("teacher"))
 			{
 				String tid=request.getParameter("tid");
 				rs=am.getTeacher(tid);
 				System.out.println(tid);
-				blob=rs.getBlob("profile");
+				val="profile";
 			}
 			else if(desig.equals("student"))
 			{
 				String sid=request.getParameter("sid");
 				rs=am.getStudent(sid);
 				System.out.println(sid);
-				blob=rs.getBlob("profile");
+				val="profile";
 			}
 			else if(desig.equals("book"))
 			{
 				String isbn=request.getParameter("isbn");
 				rs=am.getBook(isbn);
 				System.out.println(isbn);
-				blob=rs.getBlob("book");
+				val="book";
 			}
 			else if(desig.equals("repo"))
 			{
 				String rid=request.getParameter("rid");
 				rs=am.getrepo(rid);
 				System.out.println(rid);
-				blob=rs.getBlob("repo");
+				val="repo";
 			}
 			
 			
 			if(rs.next())
 			{
+				blob=rs.getBlob(val);
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             

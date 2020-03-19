@@ -264,7 +264,7 @@
                 <div class="sb2-2-3">
                     <div class="row">
                         <!--== Country Campaigns ==-->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>All Books</h4>
@@ -309,15 +309,15 @@
                                                     <td>
                  <form method="post" action="cv">
 				<input type="hidden" name="desig" value="book"/>
-				<input type="hidden" name="isbn" value="<%=rt.getString("isbn")%>"/>
+				<input type="hidden" name="isbn" value="<%=rb.getString("isbn")%>"/>
 				<input type="submit" value="view" id="profile" class="btn-success"/>
 				</form>
 													</td>
                                                     <td>
                  <form method="post" action="delete">
 				<input type="hidden" name="desig" value="book"/>
-				<input type="hidden" name="tid" value="<%=rb.getString("isbn")%>"/>
-				<input type="submit" value="<%=rb.getString("isbn")%>"class="ad-st-view"/>
+				<input type="hidden" name="isbn" value="<%=rb.getString("isbn")%>"/>
+				<input type="submit" value="<%=rb.getString("bname")%>"class="ad-st-view"/>
 				</form>
 													</td>
                                                 </tr>
@@ -330,7 +330,7 @@
 	{
 	%>
 		
-                    <td colspan="7" > No Books available</td>
+                    <td> No Books available</td>
 	<%
 	}
 	%>
@@ -340,9 +340,14 @@
                                 </div>
                             </div>
                         </div>
+                      </div>
+                    </div>
 
+
+                <div class="sb2-2-3">
+                    <div class="row">
                         <!--== Country Campaigns ==-->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>All Repositories</h4>
@@ -360,7 +365,8 @@
                                                 <tr>
                                                     <th>Department</th>
                                                     <th>Subject</th>
-                                                    <th>ISBN</th>
+                                                    <th>Type</th>
+                                                    <th>Teacher</th>
 													<th>View</th>
 													<th>Delete (File name)</th>
                                                 </tr>
@@ -368,39 +374,40 @@
                                             
                                             
 			<% 
-			ResultSet rr=am.allrepository();
+			ResultSet rrepo=am.allrepository();
 			%>
 			
 			
                                             <tbody>
                                             
           	<%
-          	if(rr.next())
+          	if(rrepo.next())
 			{
 				do{
 			%>
 
                                                 <tr>
-                                                	<td><%=rr.getString("dept")%></td>
-                                                    <td><%=rr.getString("domain")%></td>
-                                                    <td><%=rr.getString("isbn")%></td>
+                                                	<td><%=rrepo.getString("dept")%></td>
+                                                    <td><%=rrepo.getString("domain")%></td>
+                                                    <td><%=rrepo.getString("types")%></td>
+                                                    <td><%=rrepo.getString("tname")%></td>
                                                     <td>
                  <form method="post" action="cv">
 				<input type="hidden" name="desig" value="repo"/>
-				<input type="hidden" name="rid" value="<%=rt.getString("rid")%>"/>
-				<input type="submit" value="view" id="profile" class="btn-success"/>
+				<input type="hidden" name="rid" value="<%=rrepo.getString("rid")%>"/>
+				<input type="submit" value="view"class="btn-success"/>
 				</form>
 													</td>
                                                     <td>
                  <form method="post" action="delete">
 				<input type="hidden" name="desig" value="repo"/>
-				<input type="hidden" name="rid" value="<%=rr.getString("rid")%>"/>
-				<input type="submit" value="<%=rr.getString("rid")%>"class="ad-st-view"/>
+				<input type="hidden" name="rid" value="<%=rrepo.getString("rid")%>"/>
+				<input type="submit" value="<%=rrepo.getString("rid")%>"class="ad-st-view"/>
 				</form>
 													</td>
                                                 </tr>
 							<%
-								}while(rr.next());
+								}while(rrepo.next());
 							%>                             
 	<%
 	}
@@ -408,7 +415,7 @@
 	{
 	%>
 		
-                    <td colspan="7" > No Books available</td>
+                    <td> No Repository available</td>
 	<%
 	}
 	%>
@@ -420,133 +427,6 @@
                         </div>
                     </div>
                 </div>
-			<!--	
-                <div class="sb2-2-3">
-                    <div class="row">
-                        == Listing Enquery ==
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>Exam Time Tables</h4>
-                                
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-5-btn">
-												<i class="fa fa-angle-down"></i>
-											</a>
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-55-btn hb-com">
-												<i class="fa fa-angle-up"></i>
-											</a></div>
-                                <div class="tab-inn time-hide time-hide-4">
-                                    <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Select</th>
-													<th>Degree</th>
-                                                    <th>Exam Name</th>
-                                                    <th>Start Date</th>
-													<th>End Date</th>
-                                                    <th>Timing</th>
-                                                    <th>View</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox" class="filled-in" id="filled-in-box-1" checked="checked" />
-                                                        <label for="filled-in-box-1"></label>
-                                                    </td>
-													<td>MBA</td>
-                                                    <td><span class="list-enq-name">Civil engineering</span><span class="list-enq-city">Illunois, United States</span>
-                                                    </td>
-                                                    <td>10:00am</td>
-													<td>01:00pm</td>
-                                                    <td>03:00Hrs</td>
-                                                    <td>
-                                                        <a href="admin-exam.html" class="ad-st-view">View</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--== Latest Activity ==
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <!--== Latest Activity ==
-                        <div class="col-md-6">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>Latest Activity</h4>
-                                
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-6-btn">
-												<i class="fa fa-angle-down"></i>
-											</a>
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-66-btn hb-com">
-												<i class="fa fa-angle-up"></i>
-											</a></div>
-                                <div class="tab-inn time-hide time-hide-4 list-act-hom">
-                                    <ul>
-                                        <li class="list-act-hom-con">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            <h4><span>12 may, 2017</span> Welcome to Academy</h4>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--== Social Media ==
-                        <div class="col-md-6">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>Social Media</h4>
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-7-btn">
-												<i class="fa fa-angle-down"></i>
-											</a>
-		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-77-btn hb-com">
-												<i class="fa fa-angle-up"></i>
-											</a></div>
-                                <div class="tab-inn time-hide time-hide-4">
-                                    <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Media</th>
-                                                    <th>Name</th>
-                                                    <th>Share</th>
-                                                    <th>Like</th>
-                                                    <th>Members</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><span class="list-img"><img src="images/sm/1.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Linked In</span><span class="list-enq-city">Illunois, United States</span>
-                                                    </td>
-                                                    <td>15K</td>
-                                                    <td>18K</td>
-                                                    <td>
-                                                        <span class="label label-success">263</span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
--->
 
 
 </body>

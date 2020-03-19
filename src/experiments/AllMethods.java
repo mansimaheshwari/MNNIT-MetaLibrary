@@ -289,7 +289,7 @@ public class AllMethods {
 		{
 			Connection con=DBConn.getConn();
 
-			String query="select * from repository rid=?";
+			String query="select * from repository where rid=?";
 			PreparedStatement pst = con.prepareStatement(query);
 			
 			pst.setString(1,rid);
@@ -406,12 +406,16 @@ public class AllMethods {
 		public ResultSet allrepository() throws ClassNotFoundException, IOException, SQLException
 		{
 			Connection con=DBConn.getConn();
-			
-			String query="select * from repository natural join teacher  order by dept,domain,tname";
+
+			String query="select * from repository natural join teacher order by domain,types,rname";
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
-			
+			while(rs.next())
+			{
+				System.out.println(rs.getString("rname"));
+			}
+			rs=pst.executeQuery();
 			return rs;
 		}
 		
@@ -518,13 +522,12 @@ public class AllMethods {
 			return rs;
 		}
 		
-		
+	
 
 
-		public int insertrepository(String name, String domain, String types, String tid, InputStream is) throws ClassNotFoundException, IOException, SQLException {
+		public int insertrepository(String name, String domain, String types,String  tid, InputStream is) throws ClassNotFoundException, IOException, SQLException {
 
 			Connection con=DBConn.getConn();
-			
 			String query="insert into repository(rname,domain,types,tid,repo) values(?,?,?,?,?)";
 		
 			PreparedStatement pst = con.prepareStatement(query);

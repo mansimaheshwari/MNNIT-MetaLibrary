@@ -64,7 +64,7 @@
 <body>
 
 
-<% int c=20182018; %>
+<% String c="2000mmgo"; %>
     <br>
     <br>
 
