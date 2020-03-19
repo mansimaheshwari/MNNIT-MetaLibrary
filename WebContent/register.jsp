@@ -131,9 +131,6 @@
 
         <!-- REGISTER SECTION -->
         
-<script>${msg}</script>
-
-
     
     <section class="c-all p-semi p-event">
         <div class="semi-inn">
@@ -194,7 +191,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <input type="number" id="mobl" name="mob"  class="form-control" placeholder="Mobile No." required>
+                                    <input type="number" id="mobl" name="mob"  class="form-control" maxlength="10"  max="9999999999" min="1000000000" placeholder="Mobile No." required>
                                 </div>
                             </div>
                             <div class="form-group">

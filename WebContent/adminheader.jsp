@@ -36,6 +36,18 @@
 
 <body>
 
+<%!Object p;%>
+<% p=request.getAttribute("msg");
+   String s=(String)p;
+        	
+   if(s!=null){
+%>
+<script>
+alert("${msg}");
+</script>
+<% } %>
+
+
 	<%
 	ResultSet rs=(ResultSet)session.getAttribute("details");
 	%>

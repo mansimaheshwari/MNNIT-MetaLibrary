@@ -54,7 +54,7 @@ public class forgotpass extends HttpServlet {
 			}
 
     }catch (ClassNotFoundException | IOException | SQLException e) {
-    	String s="exception occured";
+    	String s="enter valid details";
 		request.setAttribute("msg", s);
 		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 		rd.forward(request,response);

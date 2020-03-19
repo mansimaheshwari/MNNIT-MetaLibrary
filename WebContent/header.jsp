@@ -46,6 +46,45 @@
             document.getElementById('loginform').submit();
 
         }
+        
+        
+
+        function forgot() {
+            var email = document.getElementById('e').value.trim();
+            var reg = document.getElementById('r').value.trim();
+            var name = document.getElementById('n').value.trim();
+            var mob = document.getElementById('m').value.trim();
+
+            var regex = /^[a-zA-Z ]*$/;
+            
+            if (reg == null || reg == "") {
+                alert("email field can't blank");
+                forgot.r.focus();
+                return false;
+            }
+            else if(regex.test(name) == false){
+                alert("Name must be in alphabets only");
+                forgot.n.focus();
+                return false;
+                }
+            else if (name == null || name == "") {
+                alert("name field can't blank");
+                forgot.n.focus();
+                return false;
+            }
+            else if (email == null || email == "") {
+                alert("email field can't blank");
+                forgot.e.focus();
+                return false;
+            }
+            else if (mob == null || mob == "") {
+                alert("mobile field can't blank");
+                forgot.m.focus();
+                return false;
+            }
+            document.getElementById('forgot').submit();
+
+        }
 
     </script>
     
@@ -82,6 +121,7 @@
                             <h4>User Account</h4>
                             <ul>
                                 <li><a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a></li>
+                                <li><a href="register.jsp" >Sign Up</a></li>
                             </ul>
                         </div>
                     </div>
@@ -184,7 +224,7 @@
                     </a>
                     <h4>Forgot password</h4>
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
-                    <form class="s12" method="post" action="forgotpass">
+                    <form class="s12" method="post" action="forgotpass" id="forgot">
                         
                         <div class="s12">
 	 <label>I am:</label>	<select id="d" name="d">
@@ -212,13 +252,13 @@
                         </div>
                         <div>
                             <div class="input-field s12">
-                                <input type="number" id="m" name="m" required class="validate" data-ng-model="name3" >
+                                <input type="number" id="m" name="m" required class="validate" data-ng-model="name3" maxlength="10" max="9999999999" min="1000000000">
                                 <label>OLD Mobile No.</label>
                             </div>
                         </div>
                         <div>
                             <div class="input-field s4">
-                                <input type="submit" value="Submit" class="waves-effect waves-light log-in-btn"> 
+                                <input type="button" value="Submit" class="waves-effect waves-light log-in-btn" onclick="forgot()"/> 
                         	</div>
                         </div>
                         <div><font color="blue">
@@ -247,17 +287,17 @@
             </ul>
         </div>
         
-        <%!Object p;%>
-        <% p=request.getAttribute("msg");
-        	String s=(String)p;
+<%!Object p;%>
+<% p=request.getAttribute("msg");
+   String s=(String)p;
         	
-        	if(s!=null){
-        %>
+   if(s!=null){
+%>
 <script>
 alert("${msg}");
 </script>
-
 <% } %>
+
     </section>
     
     
@@ -282,6 +322,7 @@ alert("${msg}");
                         <div class="ed-com-t1-right">
                             <ul>
                                 <li><a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
+                                <li><a href="register.jsp" >Sign Up</a></li>
                                 </li>
                             </ul>
                         </div>

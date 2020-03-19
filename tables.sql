@@ -157,3 +157,12 @@ CREATE TABLE repository (
 );
 
 
+drop table review;
+CREATE TABLE review (
+  id int(7) NOT NULL  primary key auto_increment,
+  name varchar(20) NOT NULL,
+  email varchar(20) NOT NULL ,
+  education varchar(20) NOT NULL ,
+  profession varchar(20) NOT NULL ,
+  review varchar(500) NOT NULL 
+);

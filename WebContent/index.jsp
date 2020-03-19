@@ -7,6 +7,50 @@
 <html lang="en">
 <head>
 	<title>MNNIT MetaLibrary</title>
+	
+    <script type="text/javascript">
+        function rev() {
+
+        	//alert("hi");
+            var fname = document.getElementById('nm').value.trim();
+            var email = document.getElementById('el').value.trim();
+            var review = document.getElementById('review').value.trim();
+            
+
+                var regex = /^[a-zA-Z ]*$/;
+
+                //alert("hi");
+              
+                if (fname == null || fname == "") {
+                alert("username field can't blank");
+                reviewf.nm.focus();
+                return false;
+                }
+                else if(regex.test(fname) == false){
+                alert("Name must be in alphabets only");
+                reviewf.nm.focus();
+                return false;
+                }
+                else if (email == null || email == "") {
+                alert("email field can't blank...");
+                reviewf.el.focus();
+                return false;
+                }
+                else if (review == null || review == "") {
+                alert("review field can't blank");
+                reviewf.review.focus();
+                return false;
+                }
+                
+                document.getElementById('reviewf').submit();
+               
+                
+
+        }
+
+    </script>
+    
+    
 </head>
 
 
@@ -82,7 +126,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="showallrepository.jsp">
+                            <a class="course-overlay" href="showallrepository.jsp?type=videos">
                                 <img src="images/h-adm1.jpg" alt="">
                                 <span>Videos</span>
                             </a>
@@ -90,7 +134,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="showallrepository.jsp">
+                            <a class="course-overlay" href="showallrepository.jsp?type=papers">
                                 <img src="images/h-cam.jpg" alt="">
                                 <span>Papers</span>
                             </a>
@@ -98,7 +142,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="showallrepository.jsp">
+                            <a class="course-overlay" href="showallrepository.jsp?type=notes">
                                 <img src="images/h-res.jpg" alt="">
                                 <span>Notes</span>
                             </a>
@@ -109,7 +153,78 @@
         </div>
     </section>
 
-    <!-- Regiatration -->
+
+    <!--SECTION START-->
+    <section class="c-all h-quote">
+        <div class="container">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="all-title quote-title qu-new">
+                    <h2>Reviews</h2>
+                    <p>Provide us with your valuable review and feedback</p>
+                    <p>no need to sign up for giving feedback </p>
+                    <p class="help-line">Mail ID : 
+                    <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+                    <span>admin@mnnit.ac.in</span></a> </p> <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="n-form-com admiss-form">
+                    <div class="col s12">
+                        <form class="form-horizontal" id="reviewf" method="post" action="review">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Full Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="nm" name="nm" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Email Id:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" id="el" name="el" class="form-control" placeholder="Enter email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Education Qualification:</label>
+                                <div class="col-sm-9">
+                                    <select id="edu" name="edu">
+								<option>High School</option>
+								<option>Intermediate</option>
+								<option>Graduate</option>
+								<option>Post Graduate</option>
+								<option>PhD</option>
+							  		</select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Profession:</label>
+                                <div class="col-sm-9">
+                                    <select id="prof" name="prof">
+								<option>Student</option>
+								<option>Teacher</option>
+								<option>Working</option>
+							  		</select>
+							  </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Review / Feedback :</label>
+                                <div class="col-sm-9">
+                                    <textarea rows="3" cols="15" id="review" name="review" class="form-control" maxlength="450" required="required" placeholder="Enter your review"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group mar-bot-0">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper" style=""><input type="button" value="SUBMIT" class="waves-button-input" onclick="rev()"></i>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--SECTION END-->
+    
+    
+    <!-- Regiatration 
     <section>
         <div class="container com-sp pad-bot-0">
             <div class="row">
@@ -117,7 +232,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="ho-ev-latest ho-ev-latest-bg-3">
-                        <div class="ho-lat-ev"><a href="signup.jsp"><center>Register</center></a>
+                        <div class="ho-lat-ev"><a href="register.jsp"><center>Register</center></a>
                         
                         </div>
                     </div>
@@ -144,12 +259,14 @@
                 </div>
 -->
 <a href="signin.jsp">want to sign in</a><br>
-<a href="signup.jsp">want to sign up</a><br>
+<a href="register.jsp">want to sign up</a><br>
 <a href="insertbook.jsp">want to insert book</a><br>
 <a href="insertrepository.jsp">want to insert repository </a><br>
 <a href="showallteachers.jsp">want to see all teachers</a><br>
 <a href="showallstudents.jsp">want to see all students</a><br>
 <a href="getdata.jsp">want to see our repository according to different choice options</a><br>
+
+
 
 
 <jsp:include page="footer.jsp"/>

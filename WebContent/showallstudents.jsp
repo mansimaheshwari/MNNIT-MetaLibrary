@@ -14,56 +14,94 @@
 <jsp:include page="header.jsp"/>
 
 
-<table border=5>
-	<tr>
-		<th>REG. NO.</th>
-		<th>NAME</th>
-		<th>EMAIL</th>
-		<th>MOBILE</th>
-		<th>DEPRTMENT</th>
-		<th>IMAGE</th>
-		<th>PROFILE</th>
-	</tr>
-	<br><br>
+
+
 	<% 
 	AllMethods am=new AllMethods();
 	ResultSet rs=am.getStudent();
-	if(rs.next())
+	%>
+	
+	
+    <!--SECTION START-->
+    <section>
+        <div class="container com-sp pad-bot-70">
+            <div class="row">
+                <div class="cor about-sp">
+
+                    <div class="ed-about-tit">
+                        <div class="con-title">
+                            <h2>Showing All <span> Students</span></h2>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="s18-age-event l-info-pack-days">
+                        <ul>
+                        
+	<%if(rs.next())
 	{
 	do{
-		int c=rs.getInt("sid");
 		Blob blob = rs.getBlob("image");
 		String image=am.getImage(blob);
 	%>
-		<tr>
-			<td><%=rs.getString("sid")%></td>
-			<td><%=rs.getString("sname")%></td>
-			<td><%=rs.getString("semail")%></td>
-			<td><%=rs.getString("smobile")%></td>
-			<td><%=rs.getString("dept")%></td>
-    		<td><img src="data:image/jpg;base64,<%=image%>" width="100" height="100"/></td>
-			<td><form method="post" action="cv">
+                            <li>
+                                <div class="age-eve-com age-eve-1">
+                                    <img src="data:image/jpg;base64,<%=image%>">
+                                </div>
+                                
+									
+                                <div class="s17-eve-time">
+                                    <div class="s17-eve-time-tim">.
+                                    </div>
+                                    <div class="s17-eve-time-msg">
+                                        <h4><%=rs.getString("sname")%></h4>
+                                        <p>Email: <%=rs.getString("semail")%></p>
+                                        <p>Mob. No. <%=rs.getString("smobile")%></p>
+                                        <p>Department: <%=rs.getString("dept")%></p>
+                                      <div class="time-hide time-hide-1">
+                <form method="post" action="cv">
 				<input type="hidden" name="desig" value="student"/>
-				<input type="hidden" name="tid" value="<%=c%>"/>
-				<input type="submit" value="profile" id="profile"/>
+				<input type="hidden" name="tid" value="<%=rs.getString("sid")%>"/>
+				<input type="submit" value="profile" id="profile" class="fa fa-angle-down"/>
 				</form>
-			</td>
-		</tr>
+                                            
+                                        </div>
+                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-1-btn">
+										<i class="fa fa-angle-down"></i>
+									</a>
+                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-11-btn hb-com">
+										<i class="fa fa-angle-up"></i>
+									</a>
+                                    </div>
+                                </div>
+                            </li>
+							<%
+								}while(rs.next());
+							%>
+                            
+                        </ul>
+                    </div>
 	<%
-	}while(rs.next());
 	}
 	else
 	{
 	%>
-	<tr>
-			<td colspan=6>No students available</td>
-	</tr>
+		
+                    <div class="s18-age-event l-info-pack-days">No students available</div>
 	<%
 	}
 	%>
+                    <div class="ed-about-sec1">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6"></div>
+                    </div>
+	
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--SECTION END-->
 	
 
-</table>
 
 <jsp:include page="footer.jsp"/>
 

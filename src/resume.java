@@ -22,7 +22,7 @@ import experiments.AllMethods;
  * Servlet implementation class cv
  */
 @WebServlet("/cv")
-public class cv extends HttpServlet {
+public class resume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -31,15 +31,21 @@ public class cv extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		AllMethods am=new AllMethods();
-		String tid=request.getParameter("tid");
 		try {
 			ResultSet rs;
 			String desig=request.getParameter("desig");
 			if(desig.equals("teacher"))
+			{
+				String tid=request.getParameter("tid");
 				rs=am.getTeacher(tid);
+				System.out.println(tid);
+			}
 			else
-				rs=am.getStudent(tid);
-			System.out.println(tid);
+			{
+				String sid=request.getParameter("sid");
+				rs=am.getStudent(sid);
+				System.out.println(sid);
+			}
 			if(rs.next())
 			{
 				Blob blob=rs.getBlob("profile");

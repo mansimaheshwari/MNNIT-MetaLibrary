@@ -61,7 +61,7 @@
                             </li>
                             <li>
                                 <div class="dash-book dash-b-4">
-                                    <h5>Total Repository</h5>
+                                    <h5>Total Repositories</h5>
                                     <%
                                 	c=am.totRepo();
                                 	%>
@@ -71,17 +71,28 @@
                         </ul>
                     </div>
                 </div>
+                
+                
+                
 
+
+			
+			
                 <!--== User Details ==-->
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Student Details</h4>
-                                    <p>All about students like name, student id, phone, email, country, city and more</p>
-                                </div>
-                                <div class="tab-inn">
+                                    <h4>All Student Details</h4>
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-1-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-11-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-1">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
@@ -90,30 +101,65 @@
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
-                                                    <th>Country</th>
-                                                    <th>Id</th>
-                                                    <th>Date of birth</th>
-													<th>Status</th>
-													<th>View</th>
+                                                    <th>Department</th>
+													<th>Profile</th>
+													<th>Delete (reg. no.)</th>
                                                 </tr>
                                             </thead>
+                                            
+                                            
+			<% 
+			ResultSet rs=am.getStudent();
+			%>
+			
+			
                                             <tbody>
+                                            
+          	<%
+          	if(rs.next())
+			{
+				do{
+					Blob blob = rs.getBlob("image");
+					String image=am.getImage(blob);
+			%>
+
                                                 <tr>
-                                                    <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
+                                                    <td><span class="list-img"><img src="data:image/jpg;base64,<%=image%>"></span>
                                                     </td>
-                                                    <td><a href="#"><span class="list-enq-name">Marsha Hogan</span><span class="list-enq-city">Illunois, United States</span></a>
-                                                    </td>
-                                                    <td>+01 3214 6522</td>
-                                                    <td>chadengle@dummy.com</td>
-                                                    <td>united states</td>
-                                                    <td>ST17241</td>
-													<td>03 Jun 1990</td>
+                                                    <td><a href="#"><span class="list-enq-name"><%=rs.getString("sname")%></span></td>
+                                                    <td><%=rs.getString("smobile")%></td>
+                                                    <td><%=rs.getString("semail")%></td>
+                                                    <td><%=rs.getString("dept")%></td>
                                                     <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-													<td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
+                 <form method="post" action="cv">
+				<input type="hidden" name="desig" value="student"/>
+				<input type="hidden" name="sid" value="<%=rs.getString("sid")%>"/>
+				<input type="submit" value="profile" id="profile" class="btn-success"/>
+				</form>
+													</td>
+                                                    <td>
+                 <form method="post" action="delete">
+				<input type="hidden" name="desig" value="student"/>
+				<input type="hidden" name="sid" value="<%=rs.getString("sid")%>"/>
+				<input type="submit" value="<%=rs.getString("sid")%>"class="ad-st-view"/>
+				</form>
+													</td>
                                                 </tr>
+							<%
+								}while(rs.next());
+							%>                             
+	<%
+	}
+	else
+	{
+	%>
+		
+                    <td colspan="7" > No students available</td>
+	<%
+	}
+	%>
                                             </tbody>
+           
                                         </table>
                                     </div>
                                 </div>
@@ -128,42 +174,83 @@
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Course Details</h4>
-                                    <p>All about courses, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
-                                </div>
-                                <div class="tab-inn">
+                                    <h4>All Teachers Details</h4>
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-2-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-22-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-2">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Image</th>
-                                                    <th>Course Name</th>
-													<th>Category</th>
-                                                    <th>Durations</th>
-													<th>Start Date</th>
-                                                    <th>End Date</th>
-                                                    <th>Total Seats</th>
-													<th>Status</th>
-													<th>View</th>
+                                                <tr>
+                                                    <th>User</th>
+                                                    <th>Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                    <th>Department</th>
+													<th>Profile</th>
+													<th>Delete (reg. no.)</th>
+													
                                                 </tr>
                                             </thead>
+                                            
+                                            
+			<% 
+			ResultSet rt=am.getTeacher();
+			%>
+			
+			
                                             <tbody>
+                                            
+          	<%
+          	if(rt.next())
+			{
+				do{
+					Blob blob = rt.getBlob("image");
+					String image=am.getImage(blob);
+			%>
+
                                                 <tr>
-                                                    <td><span class="list-img"><img src="images/course/sm-1.jpg" alt=""></span>
-                                                    </td>
-                                                    <td><a href="admin-student-details.html"><span class="list-enq-name">Aerospace Engineering</span><span class="list-enq-city">Illunois, United States</span></a>
-                                                    </td>
-                                                    <td>Engineering</td>
-                                                    <td>60 Days(420hrs)</td>
-                                                    <td>03 Jun 2018</td>
-                                                    <td>12 Aug 2018</td>
-													<td>74</td>
+                                                    <td><span class="list-img"><img src="data:image/jpg;base64,<%=image%>"></span></td>
+                                                    <td><span class="list-enq-name"><%=rt.getString("tname")%></span></td>
+                                                    <td><%=rt.getString("tmobile")%></td>
+                                                    <td><%=rt.getString("temail")%></td>
+                                                    <td><%=rt.getString("dept")%></td>
                                                     <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-													<td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
+                 <form method="post" action="cv">
+				<input type="hidden" name="desig" value="teacher"/>
+				<input type="hidden" name="tid" value="<%=rt.getString("tid")%>"/>
+				<input type="submit" value="profile" id="profile" class="btn-success"/>
+				</form>
+													</td>
+                                                    <td>
+                 <form method="post" action="delete">
+				<input type="hidden" name="desig" value="teacher"/>
+				<input type="hidden" name="tid" value="<%=rt.getString("tid")%>"/>
+				<input type="submit" value="<%=rt.getString("tid")%>"class="ad-st-view"/>
+				</form>
+													</td>
                                                 </tr>
+							<%
+								}while(rt.next());
+							%>                             
+	<%
+	}
+	else
+	{
+	%>
+		
+                    <td colspan="7" > No students available</td>
+	<%
+	}
+	%>
                                             </tbody>
+           
                                         </table>
                                     </div>
                                 </div>
@@ -171,6 +258,8 @@
                         </div>
                     </div>
                 </div>
+                
+                
 				
                 <div class="sb2-2-3">
                     <div class="row">
@@ -178,10 +267,15 @@
                         <div class="col-md-6">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Job Openings</h4>
-                                    <p>Randomised words which don't look even slightly believable. If you are going to use a passage</p>
-                                </div>
-                                <div class="tab-inn">
+                                    <h4>All Books</h4>
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-3-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-33-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-3">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
@@ -215,10 +309,15 @@
                         <div class="col-md-6">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Event Details</h4>
-                                    <p>Education is about teaching, learning skills and knowledge.</p>
-                                </div>
-                                <div class="tab-inn">
+                                    <h4>All Repositories</h4>
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-4-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-44-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-4">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
@@ -252,17 +351,22 @@
                         </div>
                     </div>
                 </div>
-				
+			<!--	
                 <div class="sb2-2-3">
                     <div class="row">
-                        <!--== Listing Enquiry ==-->
+                        == Listing Enquery ==
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>Exam Time Tables</h4>
-                                    <p>Education is about teaching, learning skills and knowledge.</p>
-                                </div>
-                                <div class="tab-inn">
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-5-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-55-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-4">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
@@ -301,17 +405,22 @@
                     </div>
                 </div>
 
-                <!--== Latest Activity ==-->
+                <!--== Latest Activity ==
                 <div class="sb2-2-3">
                     <div class="row">
-                        <!--== Latest Activity ==-->
+                        <!--== Latest Activity ==
                         <div class="col-md-6">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>Latest Activity</h4>
-                                    <p>Education is about teaching, learning skills and knowledge.</p>
-                                </div>
-                                <div class="tab-inn list-act-hom">
+                                
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-6-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-66-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-4 list-act-hom">
                                     <ul>
                                         <li class="list-act-hom-con">
                                             <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -323,14 +432,18 @@
                             </div>
                         </div>
 
-                        <!--== Social Media ==-->
+                        <!--== Social Media ==
                         <div class="col-md-6">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>Social Media</h4>
-                                    <p>Education is about teaching, learning skills and knowledge.</p>
-                                </div>
-                                <div class="tab-inn">
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-7-btn">
+												<i class="fa fa-angle-down"></i>
+											</a>
+		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-77-btn hb-com">
+												<i class="fa fa-angle-up"></i>
+											</a></div>
+                                <div class="tab-inn time-hide time-hide-4">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
@@ -364,10 +477,9 @@
                 </div>
             </div>
 
-
+-->
 
 
 </body>
-
-
 </html>
+
