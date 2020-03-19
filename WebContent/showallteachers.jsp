@@ -12,12 +12,6 @@
 
 
 		<jsp:include page="header.jsp"/>
-
-
-			
-
-
-
 			<% 
 
 			//String dept=request.getParameter("deptm");

@@ -1,4 +1,6 @@
 
+//  show documents on browser
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +24,7 @@ import experiments.AllMethods;
  * Servlet implementation class cv
  */
 @WebServlet("/cv")
-public class resume extends HttpServlet {
+public class viewonBrowser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -32,23 +34,41 @@ public class resume extends HttpServlet {
 
 		AllMethods am=new AllMethods();
 		try {
-			ResultSet rs;
+			ResultSet rs=null;
+			Blob blob=null;
 			String desig=request.getParameter("desig");
 			if(desig.equals("teacher"))
 			{
 				String tid=request.getParameter("tid");
 				rs=am.getTeacher(tid);
 				System.out.println(tid);
+				blob=rs.getBlob("profile");
 			}
-			else
+			else if(desig.equals("student"))
 			{
 				String sid=request.getParameter("sid");
 				rs=am.getStudent(sid);
 				System.out.println(sid);
+				blob=rs.getBlob("profile");
 			}
+			else if(desig.equals("book"))
+			{
+				String isbn=request.getParameter("isbn");
+				rs=am.getBook(isbn);
+				System.out.println(isbn);
+				blob=rs.getBlob("book");
+			}
+			else if(desig.equals("repo"))
+			{
+				String rid=request.getParameter("rid");
+				rs=am.getrepo(rid);
+				System.out.println(rid);
+				blob=rs.getBlob("repo");
+			}
+			
+			
 			if(rs.next())
 			{
-				Blob blob=rs.getBlob("profile");
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             

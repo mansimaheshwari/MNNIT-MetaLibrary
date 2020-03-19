@@ -245,7 +245,7 @@
 	{
 	%>
 		
-                    <td colspan="7" > No students available</td>
+                    <td colspan="7" > No teachers available</td>
 	<%
 	}
 	%>
@@ -280,24 +280,60 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Company</th>
-                                                    <th>Openings</th>
-                                                    <th>Date</th>
-                                                    <th>Location</th>
-                                                    <th>Status</th>
+                                                    <th>Department</th>
+                                                    <th>Subject</th>
+                                                    <th>ISBN</th>
+													<th>View</th>
+													<th>Delete (File name)</th>
                                                 </tr>
                                             </thead>
+                                            
+                                            
+			<% 
+			ResultSet rb=am.allBooks();
+			%>
+			
+			
                                             <tbody>
+                                            
+          	<%
+          	if(rb.next())
+			{
+				do{
+			%>
+
                                                 <tr>
-                                                    <td><span class="txt-dark weight-500">Samsing</span>
-                                                    </td>
-                                                    <td>50</td>
-                                                    <td>15 April 2018</td>
-                                                    <td>New york, United States</td>
+                                                	<td><%=rb.getString("dept")%></td>
+                                                    <td><%=rb.getString("domain")%></td>
+                                                    <td><%=rb.getString("isbn")%></td>
                                                     <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
+                 <form method="post" action="cv">
+				<input type="hidden" name="desig" value="book"/>
+				<input type="hidden" name="isbn" value="<%=rt.getString("isbn")%>"/>
+				<input type="submit" value="view" id="profile" class="btn-success"/>
+				</form>
+													</td>
+                                                    <td>
+                 <form method="post" action="delete">
+				<input type="hidden" name="desig" value="book"/>
+				<input type="hidden" name="tid" value="<%=rb.getString("isbn")%>"/>
+				<input type="submit" value="<%=rb.getString("isbn")%>"class="ad-st-view"/>
+				</form>
+													</td>
                                                 </tr>
+							<%
+								}while(rb.next());
+							%>                             
+	<%
+	}
+	else
+	{
+	%>
+		
+                    <td colspan="7" > No Books available</td>
+	<%
+	}
+	%>
                                             </tbody>
                                         </table>
                                     </div>
@@ -322,27 +358,60 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>State</th>
-                                                    <th>Client</th>
-                                                    <th>Changes</th>
-                                                    <th>Budget</th>
-                                                    <th>Status</th>
+                                                    <th>Department</th>
+                                                    <th>Subject</th>
+                                                    <th>ISBN</th>
+													<th>View</th>
+													<th>Delete (File name)</th>
                                                 </tr>
                                             </thead>
+                                            
+                                            
+			<% 
+			ResultSet rr=am.allrepository();
+			%>
+			
+			
                                             <tbody>
+                                            
+          	<%
+          	if(rr.next())
+			{
+				do{
+			%>
+
                                                 <tr>
-                                                    <td><span class="txt-dark weight-500">California</span>
-                                                    </td>
-                                                    <td>Beavis</td>
-                                                    <td><span class="txt-success"><i class="fa fa-angle-up" aria-hidden="true"></i><span>2.43%</span></span>
-                                                    </td>
+                                                	<td><%=rr.getString("dept")%></td>
+                                                    <td><%=rr.getString("domain")%></td>
+                                                    <td><%=rr.getString("isbn")%></td>
                                                     <td>
-                                                        <span class="txt-dark weight-500">$1478</span>
-                                                    </td>
+                 <form method="post" action="cv">
+				<input type="hidden" name="desig" value="repo"/>
+				<input type="hidden" name="rid" value="<%=rt.getString("rid")%>"/>
+				<input type="submit" value="view" id="profile" class="btn-success"/>
+				</form>
+													</td>
                                                     <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
+                 <form method="post" action="delete">
+				<input type="hidden" name="desig" value="repo"/>
+				<input type="hidden" name="rid" value="<%=rr.getString("rid")%>"/>
+				<input type="submit" value="<%=rr.getString("rid")%>"class="ad-st-view"/>
+				</form>
+													</td>
                                                 </tr>
+							<%
+								}while(rr.next());
+							%>                             
+	<%
+	}
+	else
+	{
+	%>
+		
+                    <td colspan="7" > No Books available</td>
+	<%
+	}
+	%>
                                             </tbody>
                                         </table>
                                     </div>

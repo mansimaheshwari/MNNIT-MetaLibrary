@@ -249,6 +249,21 @@ public class AllMethods {
 					
 					return rs;
 				}
+				
+				
+
+				public ResultSet getBook(String isbn) throws ClassNotFoundException, IOException, SQLException
+				{
+					Connection con=DBConn.getConn();
+					
+					String query="select * from book where isbn=?";
+				
+					PreparedStatement pst = con.prepareStatement(query);
+					pst.setString(1,isbn);
+					ResultSet rs=pst.executeQuery();
+					
+					return rs;
+				}
 
 //    getVPN --> getrepo
 				
@@ -264,6 +279,20 @@ public class AllMethods {
 			pst.setString(1,domain);
 			pst.setString(2,types);
 			pst.setString(3,teacher);
+			
+			ResultSet rs=pst.executeQuery();
+			return rs;
+		}
+		
+		
+		public ResultSet getrepo(String rid) throws ClassNotFoundException, IOException, SQLException 
+		{
+			Connection con=DBConn.getConn();
+
+			String query="select * from repository rid=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			
+			pst.setString(1,rid);
 			
 			ResultSet rs=pst.executeQuery();
 			return rs;
@@ -374,33 +403,6 @@ public class AllMethods {
 		}
 		
 		
-		public ResultSet deptdomain() throws ClassNotFoundException, IOException, SQLException
-		{
-			Connection con=DBConn.getConn();
-			
-			String query="select * from domain order by dept,domain";
-		
-			PreparedStatement pst = con.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-			return rs;
-		}
-		
-
-		public ResultSet deptdomain(String dept) throws ClassNotFoundException, IOException, SQLException
-		{
-			Connection con=DBConn.getConn();
-			
-			String query="select * from domain where dept=? order by dept,domain";
-		
-			PreparedStatement pst = con.prepareStatement(query);
-			pst.setString(1, dept);
-			ResultSet rs=pst.executeQuery();
-			
-			return rs;
-		}
-		
-		
 		public ResultSet allrepository() throws ClassNotFoundException, IOException, SQLException
 		{
 			Connection con=DBConn.getConn();
@@ -429,6 +431,33 @@ public class AllMethods {
 		
 
 
+		
+		public ResultSet deptdomain() throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from domain order by dept,domain";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+
+		public ResultSet deptdomain(String dept) throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from domain where dept=? order by dept,domain";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, dept);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
 		
 		
 		public String getImage(Blob blob) throws SQLException, IOException
