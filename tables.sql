@@ -1,4 +1,19 @@
 
+drop table departments;
+create table departments(
+	dept varchar(50) primary key
+);
+insert into departments values("Computer Science and Engineering"),
+	("Civil Engineering"),
+	("Electrical Engineering"),
+	("Electronics and Communication Engineering"),
+	("Chemical Engineering"),
+	("Biotechnology"),
+	("Mechanical Engineering")
+;
+
+
+
 
 
 drop table domain;
@@ -71,21 +86,6 @@ insert into domain values("Computer Networking","Computer Science and Engineerin
 	
 	
 	
-
-drop table departments;
-create table departments(
-	dept varchar(50) primary key
-);
-insert into departments values("Computer Science and Engineering"),
-	("Civil Engineering"),
-	("Electrical Engineering"),
-	("Electronics and Communication Engineering"),
-	("Chemical Engineering"),
-	("Biotechnology"),
-	("Mechanical Engineering")
-;
-
-
 
 
 drop table teacher;

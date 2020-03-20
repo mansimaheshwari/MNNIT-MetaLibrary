@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,8 +53,7 @@ alert("${msg}");
 	<%
 	ResultSet rs=(ResultSet)session.getAttribute("details");
 	%>
-	Email : <%=rs.getString("aemail") %><br>
-	Mob. : <%=rs.getString("amobile") %><br>
+	
 	
 	
     <!--== MAIN CONTRAINER ==-->
@@ -60,8 +61,6 @@ alert("${msg}");
         <div class="row">
             <!--== LOGO ==-->
             <div class="col-md-2 col-sm-3 col-xs-6 sb1-1">
-                <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
-                <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
                 <a href="#" class="logo"><img src="images/logo1.png" alt="" />
                 </a>
             </div>
@@ -71,31 +70,23 @@ alert("${msg}");
             </div>
             
             <div class="col-md-2 col-sm-2 col-xs-6">
-                	<a href="admin.jsp"><font color="white">Dashboard</font></a>
+                 	<a  href="admin.jsp" class="top-user-pro"><font color="white"><i class="fa fa-bar-chart" aria-hidden="true">Dashboard</i></font></a>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-6">
-                	<a href="index.jsp"><font color="white"><i class="fa fa-home" aria-hidden="true">Home</i></font></a>
+                	<a  href="index.jsp" class="top-user-pro"><font color="white"><i class="fa fa-home" aria-hidden="true">Home</i></font></a>
             </div>
-            
             <!--== MY ACCCOUNT ==-->
-            <div class="col-md-9 col-sm-6 col-xs-6">
+            <div class="col-md-2 col-sm-2 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a class='waves-effect dropdown-button top-user-pro' href='#' data-activates='top-menu'><img src="images/mansi.jpeg" alt="" /><%=rs.getString("aname") %><i class="fa fa-angle-down" aria-hidden="true"></i>
+                <a href='logout' class="top-user-pro"><font color="white"><i class="fa fa-sign-out" aria-hidden="true">Logout</i></font>
                 </a>
 
-                <!-- Dropdown Structure -->
-                <ul id='top-menu' class='dropdown-content top-menu-sty'>
-                    <li><a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Admin Setting</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
 
 
+<br>
 
                 
     <!--== BODY CONTNAINER ==-->
@@ -109,132 +100,56 @@ alert("${msg}");
                         </li>
                         <li>
                             <h5><%=rs.getString("aname") %></h5>
-                            <h5>Email:<span><%=rs.getString("aemail") %></span></h5>
-                            <h5>Mob.:<span><%=rs.getString("amobile")%></span></h5>
+                            <h5><span><%=rs.getString("aemail") %></span></h5>
+                            <h5><span><%=rs.getString("amobile")%></span></h5>
                         </li>
                     </ul>
                 </div>
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li><a href="admin.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
+                                            
+                        <li><a href="profileSetn.jsp"><i class="fa fa-cogs" aria-hidden="true"></i>Profile Setting</a>
                         </li>
-						<li><a href="admin-setting.html"><i class="fa fa-cogs" aria-hidden="true"></i> Site Setting</a>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All Courses</a>
+                        
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-pencil" aria-hidden="true"></i>Delete</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="admin-all-courses.html">All Course</a>
+                                    <li><a href="deleteTeacher.jsp">Teacher</a>
                                     </li>
-                                    <li><a href="admin-add-courses.html">Add New Course</a>
+                                    <li><a href="deleteStudent.jsp">Students</a>
                                     </li>
-                                    <li><a href="admin-trash-courses.html">Trash Course</a>
+                                    <li><a href="deleteBook.jsp">Book</a>
+                                    </li>
+                                    <li><a href="deleteRepo.jsp">Material</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+                        
+                        
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> Add</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="admin-user-all.html">All Users</a>
+                                    <li><a href="adddept.jsp">Department</a>
                                     </li>
-                                    <li><a href="admin-user-add.html">Add New user</a>
+                                    <li><a href="addCourse.jsp">Course</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bookmark-o" aria-hidden="true"></i>All Pages</a>
+                        <li><a href="#" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Reviews</a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download" aria-hidden="true"></i>Study Material</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="admin-page-all.html">Pages</a>
+                                    <li><a href="#">Books</a>
                                     </li>
-                                    <li><a href="admin-page-add.html">Create New Page</a>
+                                    <li><a href="#">Notes</a>
                                     </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-main-menu.html">Main menu</a></li>
-									<li><a href="admin-about-menu.html">About menu</a></li>
-									<li><a href="admin-admission-menu.html">Admission menu</a></li>
-									<li><a href="admin-all-menu.html">All page menu</a></li>
-                                </ul>
-                            </div>
-                        </li>
-						<li><a href="admin-slider.html"><i class="fa fa-image" aria-hidden="true"></i> Slider</a>
-                        </li>
-						<li><a href="admin-quick-link.html"><i class="fa fa-external-link-square" aria-hidden="true"></i> Slider quick link</a>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i> Events</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-event-all.html">All Events</a>
+                                    <li><a href="#">Papers</a>
                                     </li>
-                                    <li><a href="admin-event-add.html">Create New Events</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bullhorn" aria-hidden="true"></i> Seminar</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-seminar-all.html">All Seminar</a>
-                                    </li>
-                                    <li><a href="admin-seminar-add.html">Create New Seminar</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Job Vacants</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-job-all.html">All Jobs</a>
-                                    </li>
-                                    <li><a href="admin-job-add.html">Create New Job</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-pencil" aria-hidden="true"></i> Exam time table</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-exam-all.html">All Exams</a></li>
-                                    <li><a href="admin-exam-add.html">Add New Exam</a></li>
-                                    <li><a href="admin-exam-group-all.html">All Groups</a></li>
-                                    <li><a href="admin-exam-group-add.html">Create New Groups</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i> Students</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-user-all.html">All Students</a>
-                                    </li>
-                                    <li><a href="admin-user-add.html">Add New Students</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i> Enquiry</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-all-enquiry.html">All Enquiry</a></li>
-									<li><a href="admin-course-enquiry.html">Course Enquiry</a></li>
-									<li><a href="admin-admission-enquiry.html">Admission Enquiry</a></li>
-									<li><a href="admin-seminar-enquiry.html">Seminar Enquiry</a></li>
-									<li><a href="admin-event-enquiry.html">Event Enquiry</a></li>
-									<li><a href="admin-common-enquiry.html">Common Enquiry</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import & Export</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="admin-export-data.html">Export all datas</a>
-                                    </li>
-                                    <li><a href="admin-import-data.html">Import all datas</a>
+                                    <li><a href="#">Videos</a>
                                     </li>
                                 </ul>
                             </div>

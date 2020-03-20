@@ -50,6 +50,13 @@
 
     </script>
     
+    <script type="text/javascript">
+
+    //var len=history.length - 1
+	//history.go(-len);
+	
+   //window.histoty.fordward(0);
+    </script>
     
 </head>
 

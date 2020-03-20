@@ -631,6 +631,51 @@ public class AllMethods {
 		}
 
 
+		public int adminChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update admin set amobile=?,apass=? where aid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, phone);
+			pst.setString(2, pass);
+			pst.setString(3, id);
+            
+			int rs=pst.executeUpdate();
+			
+			return rs;
+
+		}
+
+
+		public int addDept(String dept) throws ClassNotFoundException, IOException, SQLException {
+			Connection con=DBConn.getConn();
+			
+			String query="insert into departments values(?)";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, dept);
+			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
+
+
+		public int addCoure(String dept, String name) throws ClassNotFoundException, IOException, SQLException {
+			Connection con=DBConn.getConn();
+			
+			String query="insert into domain values(?,?)";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, name);
+			pst.setString(2, dept);
+			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
+
+
 
 		
 		

@@ -34,6 +34,11 @@ public class signin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+	    //response.setHeader("Cache-Control", "no-store");
+	    //response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+	    //response.setDateHeader("Expires", 0);
+	    
 		String email=request.getParameter("email");
 		String cpass=request.getParameter("cpass");
 		String designation=request.getParameter("designation");
