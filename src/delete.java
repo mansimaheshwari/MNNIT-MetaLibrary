@@ -71,6 +71,28 @@ public class delete extends HttpServlet {
 				System.out.println(rid);
 				path="Repo";
 			}
+			else if(desig.equals("review"))
+			{
+				String id=request.getParameter("id");
+				rs=am.deleteReview(id);
+				System.out.println(id);
+				path="Review";
+			}
+			else if(desig.equals("dept"))
+			{
+				String dept=request.getParameter("dept");
+				rs=am.deleteDept(dept);
+				System.out.println(dept);
+				path="Dept";
+			}
+			else if(desig.equals("domain"))
+			{
+				String domain=request.getParameter("domain");
+				String dept=request.getParameter("department");
+				rs=am.deleteDomain(dept,domain);
+				System.out.println(domain);
+				path="Domain";
+			}
 			
 			if(rs>0)
 			{
@@ -86,11 +108,10 @@ public class delete extends HttpServlet {
 	} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
-		catch(Exception e)
+	}catch(Exception e)
 		{
 	    	String msg="you have signed out";
 			System.out.println(msg);

@@ -79,23 +79,17 @@ public class signup extends HttpServlet {
 			if(s>0)
 			{
 		    	String msg="registered successfully";
-				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				rd.forward(request,response);
+	        	response.sendRedirect("index.jsp?msg="+msg);
 			}
 			else
 			{
 		    	String msg="registration no. already registered";
-				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("register.jsp");
-				rd.forward(request,response);
+	        	response.sendRedirect("index.jsp?msg="+msg);
 		}
 
     }catch (ClassNotFoundException | IOException | SQLException e) {
-    	String s="registration no. already registered";
-		request.setAttribute("msg", s);
-		RequestDispatcher rd=request.getRequestDispatcher("register.jsp");
-		rd.forward(request,response);
+    	String msg="error occured";
+    	response.sendRedirect("index.jsp?msg="+msg);
 		e.printStackTrace();
 	}
    }

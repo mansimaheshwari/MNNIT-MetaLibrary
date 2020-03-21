@@ -24,7 +24,7 @@ import experiments.AllMethods;
  * Servlet implementation class cv
  */
 @WebServlet("/cv")
-public class viewonBrowser extends HttpServlet {
+public class showResume_cv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -52,6 +52,7 @@ public class viewonBrowser extends HttpServlet {
 				System.out.println(sid);
 				val="profile";
 			}
+			/*
 			else if(desig.equals("book"))
 			{
 				String isbn=request.getParameter("isbn");
@@ -66,7 +67,7 @@ public class viewonBrowser extends HttpServlet {
 				System.out.println(rid);
 				val="repo";
 			}
-			
+			*/
 			
 			if(rs.next())
 			{
@@ -92,15 +93,15 @@ public class viewonBrowser extends HttpServlet {
 		}
         else
         {
-        	System.out.println("error");
+        	String s="can't display";
+        	response.sendRedirect("admin.jsp?msg="+s);
+        	
         }
-	} catch (IOException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
+	} catch (IOException | SQLException  | ClassNotFoundException e) {
 		e.printStackTrace();
-	}
+    	String s="error occured";
+    	response.sendRedirect("index.jsp?msg="+s);
+		}
 	}
 
 }

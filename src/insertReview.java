@@ -38,7 +38,7 @@ public class review extends HttpServlet {
 		try {
 			
 			AllMethods am=new AllMethods();
-			int c=am.review(name,email,edu,prof,review);
+			int c=am.insertReview(name,email,edu,prof,review);
 			String s=null;
             if (c>0) 
             {
@@ -49,16 +49,12 @@ public class review extends HttpServlet {
             {
             	s="review not submitted";
             }
-			request.setAttribute("msg", s);
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request,response);            
+			response.sendRedirect("index.jsp?msg="+s);            
 		}
 		catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
         	String s="review not submitted";
-			request.setAttribute("msg", s);
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request,response);
+			response.sendRedirect("index.jsp?msg="+s); 
 		}
 		
 		

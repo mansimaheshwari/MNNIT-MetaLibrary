@@ -48,16 +48,17 @@ public class forgotpass extends HttpServlet {
 			
 			if(s != null)
 			{
-				request.setAttribute("msg",s);
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				rd.forward(request,response);
+	        	response.sendRedirect("index.jsp?msg="+s);
+			}
+			else
+			{
+		    	s="enter valid details";
+		    	response.sendRedirect("index.jsp?msg="+s);
 			}
 
     }catch (ClassNotFoundException | IOException | SQLException e) {
-    	String s="enter valid details";
-		request.setAttribute("msg", s);
-		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-		rd.forward(request,response);
+    	String s="error occured";
+    	response.sendRedirect("index.jsp?msg="+s);
 		e.printStackTrace();
 	}
    }

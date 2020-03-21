@@ -78,7 +78,7 @@ alert("${msg}");
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-2 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a href='logout' class="top-user-pro"><font color="white"><i class="fa fa-sign-out" aria-hidden="true">Logout</i></font>
+                <a href='logout.jsp' class="top-user-pro"><font color="white"><i class="fa fa-sign-out" aria-hidden="true">Logout</i></font>
                 </a>
 
             </div>
@@ -115,6 +115,10 @@ alert("${msg}");
                         <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-pencil" aria-hidden="true"></i>Delete</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
+                                    <li><a href="deleteDept.jsp">Department</a>
+                                    </li>
+                                    <li><a href="deleteDomain.jsp">Subject</a>
+                                    </li>
                                     <li><a href="deleteTeacher.jsp">Teacher</a>
                                     </li>
                                     <li><a href="deleteStudent.jsp">Students</a>
@@ -123,6 +127,8 @@ alert("${msg}");
                                     </li>
                                     <li><a href="deleteRepo.jsp">Material</a>
                                     </li>
+                        			<li><a href="deleteReview.jsp">Reviews</a>
+                        			</li>
                                 </ul>
                             </div>
                         </li>
@@ -140,21 +146,7 @@ alert("${msg}");
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="#" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Reviews</a>
-                        </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download" aria-hidden="true"></i>Study Material</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="#">Books</a>
-                                    </li>
-                                    <li><a href="#">Notes</a>
-                                    </li>
-                                    <li><a href="#">Papers</a>
-                                    </li>
-                                    <li><a href="#">Videos</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <li><a href="studyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
                         </li>
                     </ul>
                 </div>

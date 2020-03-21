@@ -401,7 +401,18 @@ public class AllMethods {
 			
 			return rs;
 		}
+
+		public ResultSet allReviews() throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from review order by id desc";
 		
+			PreparedStatement pst = con.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
 		
 		public ResultSet allrepository() throws ClassNotFoundException, IOException, SQLException
 		{
@@ -556,7 +567,7 @@ public class AllMethods {
 		}
 
 
-		public int review(String name, String email, String edu, String prof, String review) throws ClassNotFoundException, IOException, SQLException {
+		public int insertReview(String name, String email, String edu, String prof, String review) throws ClassNotFoundException, IOException, SQLException {
 			
 			Connection con=DBConn.getConn();
 			
@@ -631,22 +642,21 @@ public class AllMethods {
 		}
 
 
-		public int adminChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
-
+		public int deleteReview(String i) throws ClassNotFoundException, IOException, SQLException {
 			Connection con=DBConn.getConn();
-			
-			String query="update admin set amobile=?,apass=? where aid=?";
+			int id=Integer.parseInt(i);
+			String query="delete from review where id=?";
 		
 			PreparedStatement pst = con.prepareStatement(query);
-			pst.setString(1, phone);
-			pst.setString(2, pass);
-			pst.setString(3, id);
-            
+			pst.setInt(1, id);
+			
 			int rs=pst.executeUpdate();
 			
 			return rs;
 
 		}
+		
+
 
 
 		public int addDept(String dept) throws ClassNotFoundException, IOException, SQLException {
@@ -675,6 +685,55 @@ public class AllMethods {
 			return rs;
 		}
 
+
+
+		public int adminChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update admin set amobile=?,apass=? where aid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, phone);
+			pst.setString(2, pass);
+			pst.setString(3, id);
+            
+			int rs=pst.executeUpdate();
+			
+			return rs;
+
+		}
+
+
+		public int deleteDept(String dept) throws ClassNotFoundException, IOException, SQLException {
+			
+			Connection con=DBConn.getConn();
+			
+			String query="delete from departments where dept=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, dept);
+			
+			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
+
+
+		public int deleteDomain(String dept, String domain) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="delete from domain where dept=? and domain=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, dept);
+			pst.setString(2, domain);
+			
+			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
 
 
 		

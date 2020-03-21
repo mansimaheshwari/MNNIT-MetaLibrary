@@ -21,7 +21,7 @@ import experiments.AllMethods;
 @WebServlet("/insertrepository")
 
 @MultipartConfig   
-public class insertrepository extends HttpServlet {
+public class insertRepository extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

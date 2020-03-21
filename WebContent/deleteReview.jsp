@@ -17,7 +17,6 @@ else
 
 %>
 
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>
@@ -26,84 +25,35 @@ else
 <html>
 <head>
 <meta charset="ISO-8859-1">
-    <title>Admin</title>
+    <title>Delete Reviews</title>
 </head>
 
 <body>
 
 
-<%!Object p;%>
-<% p=request.getAttribute("msg");
-   String s=(String)p;
-        	
-   if(s!=null){
-%>
-<script>
-alert("${msg}");
-</script>
-<% } %>
 
+
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from delete....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+                    
+                    
 
 <jsp:include page="adminheader.jsp"/>
 
-            <!--== BODY INNER CONTAINER ==-->
-            <div class="sb2-2">
-                <!--== breadcrumbs ==-->
-                
-                <!--== DASHBOARD INFO ==-->
-                <%
+<%
 
             	AllMethods am=new AllMethods();
-                int c=0;
-                %>
+%>
                 
-                <div class="sb2-2-1">
-                    <h2>Admin Dashboard</h2>
-                    <p></p>
-                    <div class="db-2">
-                        <ul>
-                            <li>
-                                <div class="dash-book dash-b-1">
-                                    <h5>Total Teachers</h5>
-                                    <%
-                                	c=am.totTeacher();
-                                	%>
-                                    <h4><%=c%></h4>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-2">
-                                    <h5>Total Students</h5>
-                                    <%
-                                	c=am.totStudent();
-                                	%>
-                                    <h4><%=c%></h4>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-3">
-                                    <h5>Total No. of Books</h5>
-                                    <%
-                                	c=am.totBook();
-                                	%>
-                                    <h4><%=c%></h4>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-4">
-                                    <h5>Total Repositories</h5>
-                                    <%
-                                	c=am.totRepo();
-                                	%>
-                                    <h4><%=c%></h4>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
+            <div class="sb2-2">
                 <!--== User Details ==-->
                 <div class="sb2-2-3">
                     <div class="row">
@@ -111,7 +61,7 @@ alert("${msg}");
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Display All Reviews</h4>
+                                    <h4>All Reviews</h4>
                                 
 		                                        <a href="#!" class="s17-sprit age-dwarr-btn time-hide-3-btn">
 												<i class="fa fa-angle-down"></i>
@@ -129,6 +79,7 @@ alert("${msg}");
                                                     <th>Education</th>
 													<th>Profession</th>
 													<th>Review</th>
+													<th>Delete</th>
                                                 </tr>
                                             </thead>
                                             
@@ -152,6 +103,14 @@ alert("${msg}");
                                                     <td><%=rb.getString("education")%></td>
                                                     <td><%=rb.getString("profession")%></td>
                                                     <td><%=rb.getString("review")%></td>
+                                                    
+                                                    <td>
+                 <form method="post" action="delete">
+				<input type="hidden" name="desig" value="review"/>
+				<input type="hidden" name="id" value="<%=rb.getString("id")%>"/>
+				<input type="submit" value="delete" class="ad-st-view"/>
+				</form>
+													</td>
                                                 </tr>
 							<%
 								}while(rb.next());
@@ -178,14 +137,9 @@ alert("${msg}");
                 
              </div>
 				
-             
-                
-                
 
-
+</body>
+</html>
 <%
 }
 %>
-</body>
-</html>
-

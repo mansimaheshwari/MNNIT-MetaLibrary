@@ -105,7 +105,7 @@ public class signin extends HttpServlet {
 		}
 		catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
-        	String s="invalid username and password combinatio";
+        	String s="error occured";
         	response.sendRedirect("index.jsp?msg="+s);
 		}
 		

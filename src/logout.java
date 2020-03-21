@@ -38,9 +38,7 @@ public class logout extends HttpServlet {
 			System.out.println("session invalidated" );
 				
 				String msg="logging out";
-				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				rd.forward(request,response);
+		    	response.sendRedirect("index.jsp?msg="+msg);
 	}
 
 }
