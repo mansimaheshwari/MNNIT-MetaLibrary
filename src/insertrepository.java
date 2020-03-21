@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import experiments.AllMethods;
@@ -28,8 +29,6 @@ public class insertrepository extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
-        
 		String name=request.getParameter("name");
 		String domain=request.getParameter("domain");
 		String types=request.getParameter("types");
@@ -47,8 +46,16 @@ public class insertrepository extends HttpServlet {
         Part filePart = request.getPart("file");
         
         InputStream is = null;
-        
+
+		HttpSession session=request.getSession(false);
+
 		try {
+
+			if(session.getAttribute("id")==null)
+			{
+				throw new Exception();
+			}
+			
 	        if (filePart != null) {
 	            // prints out some information for debugging
 	            System.out.println(filePart.getName());
@@ -65,17 +72,21 @@ public class insertrepository extends HttpServlet {
 			if(s>0)
 			{
 		    	String msg="successfully added";
-				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("showallrepository.jsp");
-				rd.forward(request,response);
+				System.out.println(msg);
+		    	response.sendRedirect("insertrepository.jsp?msg="+msg);
 			}
-		}catch(Exception e)
+			else
+			{
+		    	String msg="already existed";
+				System.out.println(msg);
+		    	response.sendRedirect("insertrepository.jsp?msg="+msg);
+			}
+		}
+		catch(Exception e)
 		{
-			System.out.println(e);
-	    	String msg="this file already existed";
-			request.setAttribute("msg", msg);
-			RequestDispatcher rd=request.getRequestDispatcher("insertrepository.jsp");
-			rd.forward(request,response);
+	    	String msg="you have signed out";
+			System.out.println(msg);
+			response.sendRedirect("index.jsp?msg="+msg);
 		}
         
         

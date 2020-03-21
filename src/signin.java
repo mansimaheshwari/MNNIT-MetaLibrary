@@ -53,7 +53,11 @@ public class signin extends HttpServlet {
             {
     			if(designation.equals("Admin"))
     			{
-    				session.setAttribute("details", rs);
+    				session.setAttribute("id", rs.getString("aid"));
+    				session.setAttribute("name", rs.getString("aname"));
+    				session.setAttribute("email", rs.getString("aemail"));
+    				session.setAttribute("mobile", rs.getString("amobile"));
+    				session.setAttribute("pass", rs.getString("apass"));
     				RequestDispatcher rd=request.getRequestDispatcher("admin.jsp");
     				rd.forward(request,response);
     			}
@@ -69,12 +73,24 @@ public class signin extends HttpServlet {
     	            System.out.println("hiiii....");
     				if(designation.equals("Student"))
     				{
+        				session.setAttribute("id", rs.getString("sid"));
+        				session.setAttribute("name", rs.getString("sname"));
+        				session.setAttribute("email", rs.getString("semail"));
+        				session.setAttribute("mobile", rs.getString("smobile"));
+        				session.setAttribute("pass", rs.getString("spass"));
+        				session.setAttribute("dept", rs.getString("dept"));
     					RequestDispatcher rd=request.getRequestDispatcher("sprofile.jsp");
     					rd.forward(request,response);
 				
     				}
     				else
     				{
+        				session.setAttribute("id", rs.getString("tid"));
+        				session.setAttribute("name", rs.getString("tname"));
+        				session.setAttribute("email", rs.getString("temail"));
+        				session.setAttribute("mobile", rs.getString("tmobile"));
+        				session.setAttribute("pass", rs.getString("tpass"));
+        				session.setAttribute("dept", rs.getString("dept"));
     					RequestDispatcher rd=request.getRequestDispatcher("tprofile.jsp");
     					rd.forward(request,response);
     				}
@@ -84,17 +100,13 @@ public class signin extends HttpServlet {
             else
             {
             	String s="invalid username and password combinatio";
-				request.setAttribute("msg", s);
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				rd.forward(request,response);            	
+            	response.sendRedirect("index.jsp?msg="+s);       	
             }
 		}
 		catch (ClassNotFoundException | IOException | SQLException e) {
 			e.printStackTrace();
         	String s="invalid username and password combinatio";
-			request.setAttribute("msg", s);
-			RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-			rd.forward(request,response);
+        	response.sendRedirect("index.jsp?msg="+s);
 		}
 		
 		

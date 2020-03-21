@@ -1,3 +1,21 @@
+
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>
@@ -12,6 +30,19 @@
 <body>
 
 
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from delete....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+                    
+                    
+                    
 <jsp:include page="adminheader.jsp"/>
 
 <%
@@ -116,3 +147,4 @@
 
 </body>
 </html>
+<%}%>

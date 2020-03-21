@@ -1,4 +1,23 @@
 
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String msg="you have signed out";
+	System.out.println(msg);
+	response.sendRedirect("index.jsp?msg="+msg);
+	
+	
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -102,19 +121,19 @@
 	</table>
 </form> 
 	
-	
-	
-        <%!Object p;%>
-        <% p=request.getAttribute("msg");
-        	String s=(String)p;
-        	
-        	if(s!=null){
-        %>
-<script>
-alert("${msg}");
-</script>
 
-<% } %>
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from insert....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+
+
 
 	<!-- teacher id also from session -->
 	<input type="hidden" name="tid" value="<%=c%>"/>
@@ -202,6 +221,6 @@ alert("${msg}");
     	}
                         });
                     </script>
---> 
 </body>
 </html>
+<%}%>

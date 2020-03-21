@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import experiments.AllMethods;
@@ -39,16 +40,22 @@ public class insertBook extends HttpServlet {
         Part filePart = request.getPart("file");
         
         InputStream is = null;
-        
+
+		HttpSession session=request.getSession(false);
+
 		try {
+
+			if(session.getAttribute("id")==null)
+			{
+				throw new Exception();
+			}
          if (!filePart.getContentType().equals("application/pdf"))
             {
 		    	String msg="only pdf file allowed";
-				request.setAttribute("msg", msg);
-               				RequestDispatcher rd=request.getRequestDispatcher("insertbook.jsp");
-            				rd.forward(request,response);
+	           	response.sendRedirect("insertbook.jsp?msg="+msg);
             }
- 
+         else 
+         {
             is = filePart.getInputStream();  // to get the body of the request as binary data
  
             byte[] bytes = is.readAllBytes();;
@@ -60,16 +67,24 @@ public class insertBook extends HttpServlet {
 			if(s>0)
 			{
 		    	String msg="inserted successfully";
-				request.setAttribute("msg", msg);
-				RequestDispatcher rd=request.getRequestDispatcher("showallbooks.jsp");
-				rd.forward(request,response);
+		    	System.out.println();
+		    	System.out.println("inserted successfully");
+		    	System.out.println();
+	           	response.sendRedirect("insertbook.jsp?msg="+msg);
 			}
-		}catch(Exception e)
+			else
+			{
+		    	String msg="this book already existed";
+	           	response.sendRedirect("insertbook.jsp?msg="+msg);	
+			}
+         }
+           	
+		} 
+		catch(Exception e)
 		{
-	    	String msg="this book already existed";
-			request.setAttribute("msg", msg);
-			RequestDispatcher rd=request.getRequestDispatcher("insertbook.jsp");
-			rd.forward(request,response);
+	    	String msg="you have signed out";
+			System.out.println(msg);
+			response.sendRedirect("index.jsp?msg="+msg);
 		}
         
         

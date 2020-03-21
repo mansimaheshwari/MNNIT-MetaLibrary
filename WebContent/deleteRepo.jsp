@@ -1,3 +1,22 @@
+
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);
+	
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>
@@ -11,6 +30,19 @@
 
 <body>
 
+
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from delete....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+                    
+                    
 
 <jsp:include page="adminheader.jsp"/>
 
@@ -44,8 +76,8 @@
                                                     <th>Subject</th>
                                                     <th>Type</th>
                                                     <th>Teacher</th>
-													<th>View</th>
-													<th>Delete (File name)</th>
+													<th>File name</th>
+													<th>Delete</th>
                                                 </tr>
                                             </thead>
                                             
@@ -68,18 +100,13 @@
                                                     <td><%=rrepo.getString("domain")%></td>
                                                     <td><%=rrepo.getString("types")%></td>
                                                     <td><%=rrepo.getString("tname")%></td>
-                                                    <td>
-                 <form method="post" action="cv">
-				<input type="hidden" name="desig" value="repo"/>
-				<input type="hidden" name="rid" value="<%=rrepo.getString("rid")%>"/>
-				<input type="submit" value="view"class="btn-success"/>
-				</form>
-													</td>
+                                                    <td><%=rrepo.getString("rname")%></td>
+                                                    
                                                     <td>
                  <form method="post" action="delete">
 				<input type="hidden" name="desig" value="repo"/>
 				<input type="hidden" name="rid" value="<%=rrepo.getString("rid")%>"/>
-				<input type="submit" value="<%=rrepo.getString("rid")%>"class="ad-st-view"/>
+				<input type="submit" value="delete"class="ad-st-view"/>
 				</form>
 													</td>
                                                 </tr>
@@ -109,3 +136,6 @@
 
 </body>
 </html>
+<%
+}
+%>

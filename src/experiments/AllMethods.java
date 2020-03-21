@@ -617,7 +617,7 @@ public class AllMethods {
 		}
 
 
-		public int deleteRrpo(String rid) throws ClassNotFoundException, IOException, SQLException {
+		public int deleteRepo(String rid) throws ClassNotFoundException, IOException, SQLException {
 			Connection con=DBConn.getConn();
 			
 			String query="delete from repository where rid=?";

@@ -1,4 +1,21 @@
 
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,7 +35,7 @@
 
 	function check()
 	{
-		alert("hi");
+	//	alert("hi");
 
         var fname = document.getElementById('name').value.trim();
         
@@ -45,8 +62,24 @@
 
 
 <body>
+
+
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from insert....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+
+
+
+
 <%
-	session.setAttribute("details", (Object)request.getParameter("details"));
+System.out.println("session:id: " + session.getAttribute("id"));
 %>
 <center>
 <form id="ac" action="addCourse" method="post" >
@@ -64,7 +97,10 @@
 			<th><input type="button" value="submit" onclick="check()"></input> </th>
 			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
-	
+		<tr>
+			<th colspan="2" align="center"><a href="admin.jsp">Done Adding Books</a>
+			</th>
+		</tr>
 	</table>
 </form> 
 
@@ -90,3 +126,4 @@
                     
 </body>
 </html>
+<%}%>

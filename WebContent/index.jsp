@@ -64,7 +64,19 @@
 <body>
 
 
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from index....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
 
+                    <% } %>
+                    
+
+    
     
 <jsp:include page="header.jsp"/>
 

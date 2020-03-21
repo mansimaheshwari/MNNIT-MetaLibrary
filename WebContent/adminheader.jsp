@@ -44,17 +44,17 @@
         	
    if(s!=null){
 %>
+
 <script>
 alert("${msg}");
 </script>
 <% } %>
 
 
+	
 	<%
-	ResultSet rs=(ResultSet)session.getAttribute("details");
+	System.out.println("session:java:id: " + session.getAttribute("id"));
 	%>
-	
-	
 	
     <!--== MAIN CONTRAINER ==-->
     <div class="container-fluid sb1">
@@ -99,9 +99,9 @@ alert("${msg}");
                         <li><img src="images/mansi.jpeg" alt="">
                         </li>
                         <li>
-                            <h5><%=rs.getString("aname") %></h5>
-                            <h5><span><%=rs.getString("aemail") %></span></h5>
-                            <h5><span><%=rs.getString("amobile")%></span></h5>
+                            <h5><%=session.getAttribute("name")%></h5>
+                            <h5><span><%=session.getAttribute("email") %></span></h5>
+                            <h5><span><%=session.getAttribute("mobile")%></span></h5>
                         </li>
                     </ul>
                 </div>
@@ -109,7 +109,7 @@ alert("${msg}");
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
                                             
-                        <li><a href="profileSetn.jsp"><i class="fa fa-cogs" aria-hidden="true"></i>Profile Setting</a>
+                        <li><a href="aprofileSetn.jsp"><i class="fa fa-cogs" aria-hidden="true"></i>Profile Setting</a>
                         </li>
                         
                         <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-pencil" aria-hidden="true"></i>Delete</a>
@@ -131,9 +131,11 @@ alert("${msg}");
                         <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> Add</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="adddept.jsp">Department</a>
+                                    <li><a href="insertdept.jsp">Department</a>
                                     </li>
-                                    <li><a href="addCourse.jsp">Course</a>
+                                    <li><a href="insertCourse.jsp">Course</a>
+                                    </li>
+                                    <li><a href="insertbook.jsp">Book</a>
                                     </li>
                                 </ul>
                             </div>

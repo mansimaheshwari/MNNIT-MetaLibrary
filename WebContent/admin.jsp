@@ -1,11 +1,14 @@
 
 <%
-ResultSet rs=(ResultSet)session.getAttribute("details");
 
-if(session.getAttribute("details")==null)
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
 {
-	System.out.println("innnnnnnnnnnnnnnn valid session");
-	response.sendRedirect("index.jsp");
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);
 	
 }
 else
@@ -27,6 +30,19 @@ else
 </head>
 
 <body>
+
+
+<%!Object p;%>
+<% p=request.getAttribute("msg");
+   String s=(String)p;
+        	
+   if(s!=null){
+%>
+<script>
+alert("${msg}");
+</script>
+<% } %>
+
 
 <jsp:include page="adminheader.jsp"/>
 

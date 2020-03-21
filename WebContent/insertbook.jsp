@@ -1,4 +1,22 @@
 
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);	
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -51,6 +69,21 @@
 
 <body>
 
+
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from insert....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+
+
+
+
     <br>
     <br>
 
@@ -68,7 +101,7 @@
 		</tr>
 		<tr>
 			<td>enter the ISBN no:</td>
-			<td><input type="number" name="isbn" id="isbn" required/></td>
+			<td><input type="number" name="isbn" id="isbn" maxlength="13" required/></td>
 		</tr>
 		<tr>
 			<td>Rename as:</td>
@@ -82,28 +115,33 @@
 			<th><input type="button" value="submit"  onclick="check()"></input> </th>
 			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
+		<tr>
+		<tr>
+			<th colspan="2" align="center"><a href="admin.jsp">Done Adding Books</a>
+			</th>
+		</tr>
+		</tr>
 	
 	</table>
 </form> 
 
-        <%!Object p;%>
-        <% p=request.getAttribute("msg");
-        	String s=(String)p;
-        	
-        	if(s!=null){
-        %>
-<script>
-alert("${msg}");
-</script>
-
-<% } %>
 
 
 </center>
 
+<script>
+function back()
+{
+	window.history.back();	
+}
 
+</script>
                     <script type="text/javascript">
+                    
                         $(document).ready(function(){
+                        	
+
+
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
@@ -149,3 +187,4 @@ alert("${msg}");
 
 </body>
 </html>
+<%}%>

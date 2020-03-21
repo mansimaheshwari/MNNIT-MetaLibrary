@@ -30,19 +30,17 @@ public class logout extends HttpServlet {
 			
 			if(session!=null)
 			{
-				System.out.println("session");
-				session.setAttribute("details",null);
+				System.out.println("logging out : "+session.getAttribute("id"));
+				session.setAttribute("id",null);
 			}
             session.invalidate();
 
-			System.out.println("session");
-
+			System.out.println("session invalidated" );
+				
+				String msg="logging out";
+				request.setAttribute("msg", msg);
 				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 				rd.forward(request,response);
-
-
-
-
 	}
 
 }

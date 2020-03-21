@@ -1,4 +1,22 @@
 
+<%
+
+System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+
+if(session.getAttribute("id")==null)
+{
+	String s="you have logged out";
+	System.out.println(s);
+	response.sendRedirect("index.jsp?msg=" + s);
+	
+}
+else
+{
+	System.out.println("valid session");
+
+%>
+
 <%@page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -44,12 +62,22 @@
 </head>
 
 <body>
+
+
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from profile....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+                    
 <jsp:include page="adminheader.jsp"/>
 
 
-	<%
-	ResultSet rs=(ResultSet)session.getAttribute("details");
-	%>
 	
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
@@ -67,26 +95,26 @@
                                    <form method="post" action="profileSetn" id="change">
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                Name: <input type="text" name="name" value="<%=rs.getString("aname")%>" class="validate" disabled="disabled" required>
-                                                <input type="text" name="id" value="<%=rs.getString("aid")%>" class="validate" hidden="true" >
+                                                Name: <input type="text" name="name" value="<%=session.getAttribute("name")%>" class="validate" disabled="disabled" required>
+                                                <input type="text" name="id" value="<%=session.getAttribute("id")%>" class="validate" hidden="true" >
                                                
                                             </div>
                                             <div class="input-field col s6">
-                                                Email: <input type="text" name="email" class="validate" value="<%=rs.getString("aemail") %>" disabled="disabled" required>
+                                                Email: <input type="text" name="email" class="validate" value="<%=session.getAttribute("email") %>" disabled="disabled" required>
                                                 
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                Mobile no.: <input id="phone" name="phone" type="number" value="<%=rs.getString("amobile") %>" class="validate" required>
+                                                Mobile no.: <input id="phone" name="phone" type="number" value="<%=session.getAttribute("mobile") %>" class="validate" maxlength="10" required>
                                             </div>
                                             <div class="input-field col s6">
-                                                New Password: <input id="pass" name="pass" type="password" value="<%=rs.getString("apass") %>" class="validate">
+                                                New Password: <input id="pass" name="pass" type="password" value="<%=session.getAttribute("pass") %>" class="validate">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <i class="waves-effect waves-light btn-large waves-input-wrapper" style=""><input type="button" class="waves-button-input" value="submit" onclick="check()"></input></i>
+                                                <i class="waves-effect waves-light btn-large waves-input-wrapper" style=""><input type="button" class="waves-button-input" value="submit  " onclick="check()"></input></i>
                                             </div>
                                         </div>
                                     </form>
@@ -100,3 +128,6 @@
 
 
 </html>
+<%
+}
+%>
