@@ -56,7 +56,7 @@ alert("${msg}");
                     <% } %>
 
 
-<jsp:include page="adminheader.jsp"/>
+<jsp:include page="teachheader.jsp"/>
 
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">

@@ -17,6 +17,8 @@
 	String type=request.getParameter("type");
 	AllMethods am=new AllMethods();
 	ResultSet rs=am.allrepository(type);
+
+    int	c=am.totRepo(type);
 	%>
     <section>
         <div class="container com-sp">
@@ -24,7 +26,7 @@
                 <div class="cor about-sp">
                     <div class="ed-about-tit">
                         <div class="con-title">
-                            <h2>Showing All<span> <%=type%></span></h2>
+                            <h2>Showing All<span> <%=type%></span> ( <%=c%> )</h2>
                             <p></p>
                         </div>
                         <div>
@@ -45,16 +47,7 @@
                                             	<p>Teacher name: <%=rs.getString("tname")%></p>
                                             	<span><%=rs.getString("rname")%></span>
                                         </div>
-                                        <div class="pg-eve-reg">
-                                        	<form method="post" action="downloadrepository">
-                            							<input type="hidden" name="rid" value="<%=rs.getString("rid")%>">
-                            							<input type="submit"  value="Download"/>
-                            				</form>
-                                        </div>
-                                        <div class="pg-eve-reg">
-                                            
-                                            <a href="event-details.html">Read more</a>
-                                        </div>
+                                        
                                     </li>
                             		<%
                             		}while(rs.next());%>

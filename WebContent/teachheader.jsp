@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Header</title>
+<title>Teacher Header</title>
     <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,7 @@ alert("${msg}");
             </div>
             
             <div class="col-md-2 col-sm-2 col-xs-6">
-                 	<a  href="admin.jsp" class="top-user-pro"><font color="white"><i class="fa fa-bar-chart" aria-hidden="true">Dashboard</i></font></a>
+                 	<a  href="teacher.jsp" class="top-user-pro"><font color="white"><i class="fa fa-bar-chart" aria-hidden="true">Dashboard</i></font></a>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-6">
                 	<a  href="index.jsp" class="top-user-pro"><font color="white"><i class="fa fa-home" aria-hidden="true">Home</i></font></a>
@@ -96,7 +96,7 @@ alert("${msg}");
                 <!--== USER INFO ==-->
                 <div class="sb2-12">
                     <ul>
-                        <li><img src="images/mansi.jpeg" alt="">
+                        <li><img src="data:image/jpg;base64,${image}" alt="">
                         </li>
                         <li>
                             <h5><%=session.getAttribute("name")%></h5>
@@ -109,26 +109,14 @@ alert("${msg}");
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
                                             
-                        <li><a href="aprofile.jsp"><i class="fa fa-cogs" aria-hidden="true"></i>Profile Setting</a>
+                        <li><a href="tprofile.jsp"><i class="fa fa-cogs" aria-hidden="true"></i>Profile Setting</a>
                         </li>
                         
                         <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-pencil" aria-hidden="true"></i>Delete</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="deleteDept.jsp">Department</a>
+                                    <li><a href="tdeleteRepo.jsp">Material</a>
                                     </li>
-                                    <li><a href="deleteDomain.jsp">Subject</a>
-                                    </li>
-                                    <li><a href="deleteTeacher.jsp">Teacher</a>
-                                    </li>
-                                    <li><a href="deleteStudent.jsp">Students</a>
-                                    </li>
-                                    <li><a href="deleteBook.jsp">Book</a>
-                                    </li>
-                                    <li><a href="deleteRepo.jsp">Material</a>
-                                    </li>
-                        			<li><a href="deleteReview.jsp">Reviews</a>
-                        			</li>
                                 </ul>
                             </div>
                         </li>
@@ -137,16 +125,14 @@ alert("${msg}");
                         <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> Add</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="insertdept.jsp">Department</a>
-                                    </li>
-                                    <li><a href="insertCourse.jsp">Course</a>
-                                    </li>
                                     <li><a href="insertbook.jsp">Book</a>
+                                    </li>
+                                    <li><a href="insertrepository.jsp">Material</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="studyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
+                        <li><a href="tstudyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
                         </li>
                     </ul>
                 </div>

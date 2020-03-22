@@ -18,31 +18,71 @@
 
 <body>
 
+<center>
 <form  action="getData" method="post">
 	
-	select the domain:<select id="domain" name="domain">
-	</select>
+	<table   cellpadding=10 cellspacing=10><caption ><h3 align="center">SEARCH REPORITORY FORM</h3></caption>
+		
+		<tr>
+			<td>select the department:</td>
+			<td><select id="department" name="department"></select></td>
+		</tr>
+		
+	<tr>
+		<td>select the domain:</td>
+		<td><select id="domain" name="domain"></td>
+	</tr>
+	<tr>
+		<td>select the type of material:</td>
+		<td><select id="types" name="types"></td>
+	</tr>
+	<tr class="t" hidden="true">
+		<td>select the teacher:</td>
+		<td><select id="teacher"  name="teacher" ></td>
+	</tr>
+	<tr class="t" hidden="true" >
+		<td><img alt="no image found" src="" id="tid"/></td>
+		<td></td>
+	</tr>
+		<td><input type="submit" value="submit" id="submit"></input> </td>
+		<td><input type="reset" value="reset" id="reset"></input> </td>
+	</tr>
 	
-	<br>select the type of material:<select id="types" name="types">
-	</select>
-	
-	<br>select the teacher:<select id="teacher"  name="teacher" class="t" hidden="true">
-	</select>
-	
-	<img alt="teacher image" src="" class="t" hidden="true" id="tid"/>
-	
-	
-	<br> <input type="submit" value="submit" id="submit"></input> 
-	<br> <input type="reset" value="reset" id="reset"></input> 
+	</table>
 </form> 
-
+</center>
 
                     <script type="text/javascript">
                         $(document).ready(function(){
                             $.ajax({
                                 request: 'ajax',
                                 method: "POST",
+                                url: "getDept.jsp",
+                                success: function(msg) {
+                                    
+                                        $('#department').html(msg);
+                                    
+                                },
+                                error: function(msg) {
+                                    alert(msg);
+                                }
+                            });
+                            
+                        });
+                    </script>
+                    
+                    <script type="text/javascript">
+                    $('#department').click(function() {
+                    	
+                            var dept = $('#department').val();
+                            
+                            $.ajax({
+                                request: 'ajax',
+                                method: "POST",
                                 url: "getDomain.jsp",
+                                data: {
+                                	dept:dept,
+                                },
                                 success: function(msg) {
                                     
                                         $('#domain').html(msg);
@@ -55,6 +95,7 @@
                             
                         });
                     </script>
+                    
                     
                     <script type="text/javascript">
                     $(document).ready(function(){

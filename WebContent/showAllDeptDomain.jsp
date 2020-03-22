@@ -14,6 +14,8 @@
 	<% 
 	AllMethods am=new AllMethods();
 	ResultSet rs=am.deptdomain();
+    int	c=am.totDept();
+    int sb=am.totDomain();
 	%>
     <section>
         <div class="container com-sp">
@@ -21,7 +23,7 @@
                 <div class="cor about-sp">
                     <div class="ed-about-tit">
                         <div class="con-title">
-                            <h2><span>DEPARTMENT </span> AND <span> SUBJECTS</span></h2>
+                            <h2><span>DEPARTMENT </span>( <%=c%> ) AND <span>SUBJECTS </span>( <%=sb%> )</h2>
                             <p></p>
                         </div>
                         <div>

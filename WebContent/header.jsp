@@ -382,10 +382,13 @@ alert("${msg}");
 	                                                </ul>
                                     </div>
                                 </li>
+                                <li><a href="showAllDeptDomain.jsp">Departments</a>
+                                </li>
+                                <li><a href="viewReviews.jsp">Reviews</a>
+                                </li>
                                 <li><a href="contact-us.jsp">Contact us</a>
                                 </li>
-                                <li><a href="search.jsp"><font color="red"><b>Search</b></font></a>
-                                </li>
+                                <li><a href="checkProfile.jsp" >My Profile</a></li>
                             </ul>
                         </div>
                     </div>

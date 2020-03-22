@@ -20,6 +20,9 @@ else
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.sql.*" %>
+<%@page import="experiments.*" %>
 <!DOCTYPE html>
 <html>
 
@@ -83,7 +86,33 @@ else
 <body>
 
 
-<% String c="2000mmgo"; %>
+<%!Object p;%>
+<% p=request.getAttribute("msg");
+   String s=(String)p;
+        	
+   if(s!=null){
+%>
+<script>
+alert("${msg}");
+</script>
+<% } %>
+
+
+
+                            <% String str=(String)request.getParameter("msg");
+                            	System.out.println("from profile....." + str);
+                            	
+                            	if(str!=null){
+                            %>
+                    <script>
+                    alert("<%=str%>");
+                    </script>
+
+                    <% } %>
+
+
+
+<% String c=(String)session.getAttribute("id"); %>
     <br>
     <br>
 
@@ -117,21 +146,14 @@ else
 			<th><input type="button" value="submit" onclick="check()"></input> </th>
 			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
+		<tr>
+			<th colspan="2" align="center"><a href="checkProfile.jsp">Done Adding Books</a>
+			</th>
+		</tr>
 	
 	</table>
 </form> 
 	
-
-                            <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from insert....." + s);
-                            	
-                            	if(s!=null){
-                            %>
-                    <script>
-                    alert("<%=s%>");
-                    </script>
-
-                    <% } %>
 
 
 

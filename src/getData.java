@@ -52,7 +52,7 @@ public class getData extends HttpServlet {
 			{
 				System.out.println(teacher);
 				AllMethods am=new AllMethods();
-				rs=am.getrepo(domain,teacher,types);
+				rs=am.getrepo(dept,domain,teacher,types);
 				
 				request.setAttribute("repo", rs);
 				RequestDispatcher rd=request.getRequestDispatcher("showdatarepo.jsp");

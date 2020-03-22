@@ -38,7 +38,7 @@
 			System.out.println(rs.getString("tname"));
 			
 		%>
-			<option value="<%=rs.getInt("tid")%>"><%=rs.getString("tname")%></option>
+			<option value="<%=rs.getString("tid")%>"><%=rs.getString("tname")%></option>
 		<%
 		}while(rs.next());
 		}

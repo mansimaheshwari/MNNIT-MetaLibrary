@@ -242,51 +242,6 @@
     </section>
     <!--SECTION END-->
     
-    
-    <!-- Regiatration 
-    <section>
-        <div class="container com-sp pad-bot-0">
-            <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                    <div class="ho-ev-latest ho-ev-latest-bg-3">
-                        <div class="ho-lat-ev"><a href="register.jsp"><center>Register</center></a>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<br>
-
-
-
-
-
-<!--  
-
-                <div class="col-md-4">
-                    <div class="bot-gal h-vid ho-event-mob-bot-sp">
-                        <h4>Video Gallery</h4>
-                        <iframe src="https://www.youtube.com/embed/2WqFtiR4-F4?autoplay=0&amp;showinfo=0&amp;controls=0" allowfullscreen></iframe>
-                        <h5>Maecenas sollicitudin lacinia</h5>
-                        <p>Maecenas finibus neque a tellus auctor mattis. Aliquam tempor varius ornare. Maecenas dignissim leo leo, nec posuere purus finibus vitae.</p>
-                        <p>Quisque vitae neque at tellus malesuada convallis. Phasellus in lectus vitae ex euismod interdum non a lorem. Nulla bibendum. Curabitur mi odio, tempus quis risus cursus.</p>
-                    </div>
-                </div>
--->
-<a href="signin.jsp">want to sign in</a><br>
-<a href="register.jsp">want to sign up</a><br>
-<a href="insertbook.jsp">want to insert book</a><br>
-<a href="insertrepository.jsp">want to insert repository </a><br>
-<a href="showallteachers.jsp">want to see all teachers</a><br>
-<a href="showallstudents.jsp">want to see all students</a><br>
-<a href="search.jsp">want to see our repository according to different choice options</a><br>
-
-
-
 
 <jsp:include page="footer.jsp"/>
     

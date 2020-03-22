@@ -69,7 +69,19 @@ public class delete extends HttpServlet {
 				String rid=request.getParameter("rid");
 				rs=am.deleteRepo(rid);
 				System.out.println(rid);
-				path="Repo";
+				
+				String stype=(String)session.getAttribute("signintype");
+				if(stype.equals("teacher"))
+						{
+					System.out.println(rid);
+					RequestDispatcher rd=request.getRequestDispatcher("tdeleteRepo.jsp?msg=deleted");
+			    	rd.forward(request, response);
+					
+						}
+				else 
+				{
+					path="Repo";
+				}
 			}
 			else if(desig.equals("review"))
 			{

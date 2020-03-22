@@ -58,6 +58,7 @@ public class signin extends HttpServlet {
     				session.setAttribute("email", rs.getString("aemail"));
     				session.setAttribute("mobile", rs.getString("amobile"));
     				session.setAttribute("pass", rs.getString("apass"));
+    				session.setAttribute("signintype", "admin");
     				RequestDispatcher rd=request.getRequestDispatcher("admin.jsp");
     				rd.forward(request,response);
     			}
@@ -79,7 +80,8 @@ public class signin extends HttpServlet {
         				session.setAttribute("mobile", rs.getString("smobile"));
         				session.setAttribute("pass", rs.getString("spass"));
         				session.setAttribute("dept", rs.getString("dept"));
-    					RequestDispatcher rd=request.getRequestDispatcher("sprofile.jsp");
+        				session.setAttribute("signintype", "student");
+    					RequestDispatcher rd=request.getRequestDispatcher("student.jsp");
     					rd.forward(request,response);
 				
     				}
@@ -91,7 +93,8 @@ public class signin extends HttpServlet {
         				session.setAttribute("mobile", rs.getString("tmobile"));
         				session.setAttribute("pass", rs.getString("tpass"));
         				session.setAttribute("dept", rs.getString("dept"));
-    					RequestDispatcher rd=request.getRequestDispatcher("tprofile.jsp");
+        				session.setAttribute("signintype", "teacher");
+    					RequestDispatcher rd=request.getRequestDispatcher("teacher.jsp");
     					rd.forward(request,response);
     				}
 			

@@ -10,15 +10,26 @@
 </head>
 <body>
 
+                            <% String s=(String)request.getParameter("msg");
+                            	System.out.println("from profile....." + s);
+                            	
+                            	if(s!=null){
+                            %>
+                    <script>
+                    alert("<%=s%>");
+                    </script>
+
+                    <% } %>
+
 
 <jsp:include page="header.jsp"/>
 
-<hr>
+<br>
 
-<table border=5>
+<table>
 	<tr>
-		<th>DEPARTMENT</th>
-		<th>Domain</th>
+		<th><b>DEPARTMENT</b></th>
+		<th><b>Domain</b></th>
 	</tr>
 	
 	<% 

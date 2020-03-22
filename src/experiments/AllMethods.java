@@ -118,6 +118,7 @@ public class AllMethods {
 			}
 			
 			
+			
 
 			 //to get total no of student
 				public int totStudent() throws ClassNotFoundException, IOException, SQLException
@@ -165,7 +166,51 @@ public class AllMethods {
 							System.out.println("no of repository" + c);
 							return c;
 						}
-				
+						
+						public int totRepo(String type) throws ClassNotFoundException, IOException, SQLException
+						{
+							Connection con=DBConn.getConn();
+							
+							String query="select count(*) from repository where types=?";
+							int c=0;
+							PreparedStatement pst = con.prepareStatement(query);
+							pst.setString(1, type);
+							ResultSet rs=pst.executeQuery();
+							if(rs.next())
+								c=rs.getInt(1);
+							System.out.println("no of repository" + c);
+							return c;
+						}
+						
+						
+						public int totDept() throws ClassNotFoundException, IOException, SQLException
+						{
+							Connection con=DBConn.getConn();
+							
+							String query="select count(*) from departments";
+							int c=0;
+							PreparedStatement pst = con.prepareStatement(query);
+							ResultSet rs=pst.executeQuery();
+							if(rs.next())
+								c=rs.getInt(1);
+							System.out.println("no of dept " + c);
+							return c;
+						}
+						
+						public int totDomain() throws ClassNotFoundException, IOException, SQLException
+						{
+							Connection con=DBConn.getConn();
+							
+							String query="select count(*) from domain";
+							int c=0;
+							PreparedStatement pst = con.prepareStatement(query);
+							ResultSet rs=pst.executeQuery();
+							if(rs.next())
+								c=rs.getInt(1);
+							System.out.println("no of domain" + c);
+							return c;
+						}
+						
 			
 			
 			
@@ -269,16 +314,17 @@ public class AllMethods {
 				
 //    no need to specify department as a tid belongs to only one department
 				
-		public ResultSet getrepo(String domain, String teacher, String types) throws ClassNotFoundException, IOException, SQLException 
+		public ResultSet getrepo( String dept,String domain, String teacher, String types) throws ClassNotFoundException, IOException, SQLException 
 		{
 			Connection con=DBConn.getConn();
 
-			String query="select * from repository natural join teacher where domain=? and types=? and tid=? order by dept,domain,tname,bname";
+			String query="select * from repository natural join teacher where domain=? and types=? and tid=? and dept=? order by dept,domain,tname,rname";
 			PreparedStatement pst = con.prepareStatement(query);
 			
 			pst.setString(1,domain);
 			pst.setString(2,types);
 			pst.setString(3,teacher);
+			pst.setString(4,dept);
 			
 			ResultSet rs=pst.executeQuery();
 			return rs;
@@ -422,11 +468,6 @@ public class AllMethods {
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
-			while(rs.next())
-			{
-				System.out.println(rs.getString("rname"));
-			}
-			rs=pst.executeQuery();
 			return rs;
 		}
 		
@@ -439,6 +480,20 @@ public class AllMethods {
 		
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, type);
+			ResultSet rs=pst.executeQuery();
+			
+			return rs;
+		}
+		
+		//  show based on tid
+		public ResultSet allrepository(String tid,String x) throws ClassNotFoundException, IOException, SQLException
+		{
+			Connection con=DBConn.getConn();
+			
+			String query="select * from repository natural join teacher where tid=? order by domain,types,rname";
+		System.out.println(x);
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, tid);
 			ResultSet rs=pst.executeQuery();
 			
 			return rs;
@@ -729,6 +784,49 @@ public class AllMethods {
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, dept);
 			pst.setString(2, domain);
+			
+			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
+
+
+		public int stuChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update student set smobile=?,spass=? where sid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, phone);
+			pst.setString(2, pass);
+			pst.setString(3, id);
+
+			System.out.println(phone);
+			System.out.println(pass);
+			System.out.println(id);
+			
+			int rs=pst.executeUpdate();
+			
+			return rs;
+
+		}
+
+
+		public int teachChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update teacher set tmobile=?,tpass=? where tid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, phone);
+			pst.setString(2, pass);
+			pst.setString(3, id);
+
+			System.out.println(phone);
+			System.out.println(pass);
+			System.out.println(id);
 			
 			int rs=pst.executeUpdate();
 			

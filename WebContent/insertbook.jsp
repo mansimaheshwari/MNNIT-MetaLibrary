@@ -117,7 +117,7 @@ else
 		</tr>
 		<tr>
 		<tr>
-			<th colspan="2" align="center"><a href="admin.jsp">Done Adding Books</a>
+			<th colspan="2" align="center"><a href="checkProfile.jsp">Done Adding Books</a>
 			</th>
 		</tr>
 		</tr>

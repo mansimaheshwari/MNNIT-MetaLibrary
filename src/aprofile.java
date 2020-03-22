@@ -18,7 +18,7 @@ import experiments.AllMethods;
  * Servlet implementation class profileSetn
  */
 @WebServlet("/profileSetn")
-public class aprofileSetn extends HttpServlet {
+public class aprofile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -49,8 +49,11 @@ public class aprofileSetn extends HttpServlet {
 		if(s>0)
 		{
 	    	String msg="changed successfully";
-				System.out.println(msg);
-		    	response.sendRedirect("aprofileSetn.jsp?msg="+msg);
+			System.out.println(msg);
+	    	session.setAttribute("mobile",phone);
+	    	session.setAttribute("pass",pass);
+			RequestDispatcher rd=request.getRequestDispatcher("aprofile.jsp?msg="+msg);
+			rd.forward(request,response);
 			
 		}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
@@ -58,7 +61,7 @@ public class aprofileSetn extends HttpServlet {
 			e.printStackTrace();
 	    	String msg="error occured";
 				System.out.println(msg);
-		    	response.sendRedirect("aprofileSetn.jsp?msg="+msg);
+		    	response.sendRedirect("aprofile.jsp?msg="+msg);
 		}
 		catch(Exception e)
 		{

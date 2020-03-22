@@ -26,7 +26,7 @@ else
 <html>
 <head>
 <meta charset="ISO-8859-1">
-    <title>Admin</title>
+    <title>Teacher</title>
 </head>
 
 <body>
@@ -58,7 +58,7 @@ alert("${msg}");
 
 
 
-<jsp:include page="adminheader.jsp"/>
+<jsp:include page="teachheader.jsp"/>
 
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
@@ -72,7 +72,7 @@ alert("${msg}");
                 %>
                 
                 <div class="sb2-2-1">
-                    <h2>Admin Dashboard</h2>
+                    <h2>Teacher Dashboard</h2>
                     <p></p>
                     <div class="db-2">
                         <ul>
