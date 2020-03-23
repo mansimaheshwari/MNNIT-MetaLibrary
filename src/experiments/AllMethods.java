@@ -266,7 +266,7 @@ public class AllMethods {
 
 
 					 //to get domain teachers list
-						public ResultSet getStudent(String tid) throws ClassNotFoundException, IOException, SQLException
+						public ResultSet getStudent(String sid) throws ClassNotFoundException, IOException, SQLException
 						{
 							Connection con=DBConn.getConn();
 							
@@ -274,7 +274,7 @@ public class AllMethods {
 							//String query="select * from teacher";
 						
 							PreparedStatement pst = con.prepareStatement(query);
-							pst.setString(1, tid);
+							pst.setString(1, sid);
 							ResultSet rs=pst.executeQuery();
 							
 							return rs;
@@ -742,24 +742,6 @@ public class AllMethods {
 
 
 
-		public int adminChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
-
-			Connection con=DBConn.getConn();
-			
-			String query="update admin set amobile=?,apass=? where aid=?";
-		
-			PreparedStatement pst = con.prepareStatement(query);
-			pst.setString(1, phone);
-			pst.setString(2, pass);
-			pst.setString(3, id);
-            
-			int rs=pst.executeUpdate();
-			
-			return rs;
-
-		}
-
-
 		public int deleteDept(String dept) throws ClassNotFoundException, IOException, SQLException {
 			
 			Connection con=DBConn.getConn();
@@ -790,6 +772,22 @@ public class AllMethods {
 			return rs;
 		}
 
+		public int adminChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update admin set amobile=?,apass=? where aid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, phone);
+			pst.setString(2, pass);
+			pst.setString(3, id);
+            
+			int rs=pst.executeUpdate();
+			
+			return rs;
+
+		}
 
 		public int stuChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
 
@@ -813,6 +811,39 @@ public class AllMethods {
 		}
 
 
+		public int stuChange(String id, InputStream pic) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update student set image=? where sid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+
+			pst.setBlob(1, pic);
+			pst.setString(2, id);
+			
+			int rs=pst.executeUpdate();
+			
+			return rs;
+
+		}
+
+		public int stuChange(String id, byte[] bytes) throws ClassNotFoundException, IOException, SQLException {
+			
+			Connection con=DBConn.getConn();
+			
+			String query="update student set profile=? where sid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setBytes(1, bytes);
+			pst.setString(2, id);
+			
+			int rs=pst.executeUpdate();
+			System.out.println("changing resume");
+			
+			return rs;
+		}
+
 		public int teachChange(String id, String phone, String pass) throws ClassNotFoundException, IOException, SQLException {
 
 			Connection con=DBConn.getConn();
@@ -829,6 +860,40 @@ public class AllMethods {
 			System.out.println(id);
 			
 			int rs=pst.executeUpdate();
+			
+			return rs;
+		}
+
+
+		public int teachChange(String id, InputStream pic) throws ClassNotFoundException, IOException, SQLException {
+
+			Connection con=DBConn.getConn();
+			
+			String query="update teacher set image=? where tid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setBlob(1, pic);
+			pst.setString(2, id);
+			
+			int rs=pst.executeUpdate();
+			System.out.println("changing pic");
+			
+			return rs;
+
+		}
+
+
+		public int teachChange(String id, byte[] bytes) throws ClassNotFoundException, IOException, SQLException {
+			Connection con=DBConn.getConn();
+			
+			String query="update teacher set profile=? where tid=?";
+		
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setBytes(1, bytes);
+			pst.setString(2, id);
+			
+			int rs=pst.executeUpdate();
+			System.out.println("changing resume");
 			
 			return rs;
 		}

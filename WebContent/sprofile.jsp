@@ -56,6 +56,38 @@ else
             document.getElementById('change').submit();
            
 	}
+
+
+	function ppic()
+	{
+		alert("hi");
+        var pic = document.getElementById('pic').value.trim();
+            var regexpic = /.(jpg|jpeg|png)$/;
+
+        if (regexpic.test(pic) == false) {
+            alert("only jpg/jpeg/png images are acceptable for profile pic");
+            register.pic.focus();
+        return false;
+        }
+        document.getElementById('picup').submit();
+       
+	}
+
+	function pres()
+	{
+		alert("hi");
+        var profile = document.getElementById('pf').value.trim();
+        var regexprof = /.pdf$/;
+
+        if (regexprof.test(profile) == false) {
+            alert("only pdf files are acceptable profile document");
+            register.profile.focus();
+        return false;
+        }
+        document.getElementById('resup').submit();
+       
+	}
+	
 </script>
 
 </head>
@@ -74,17 +106,6 @@ else
                     <% } %>
 
 
-
-                            <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from profile....." + s);
-                            	
-                            	if(s!=null){
-                            %>
-                    <script>
-                    alert("<%=s%>");
-                    </script>
-
-                    <% } %>
 		<jsp:include page="sheader.jsp"/>
 		
 
@@ -92,7 +113,7 @@ else
                     <div class="udb">
 
                         <div class="udb-sec udb-prof">
-                            <h4><img src="images/icon/db1.png" alt="" /> My Profile</h4>
+                            <h4><img src="images/icon/db1.png" alt="" />Profile</h4>
                             <div class="sdb-tabl-com sdb-pro-table">
                                 <table class="responsive-table bordered">
                                     <tbody>
@@ -116,7 +137,19 @@ else
                                             <td>:</td>
                                             <td><%=session.getAttribute("dept")%></td>
                                         </tr>
-                                        <form method="post" action="sprofileSetn" id="change">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                                        
+                                        
+                                        
+                        <div class="udb-sec udb-prof">
+                            <h4><i class="fa fa-pencil"></i>Edit Mobile no. and/or Password</h4>
+                            <div class="sdb-tabl-com sdb-pro-table">
+                                <table class="responsive-table bordered">
+                                    <tbody>
+                                        <form method="post" action="changeprofile" id="change">
                                         <tr>
                                             <td>Mobile no.</td>
                                             <td>:</td>
@@ -128,7 +161,7 @@ else
                                             <td><input id="pass" name="pass" type="password" value="<%=session.getAttribute("pass") %>" required></td>
                                         </tr>
                                         <tr>
-                                        	<td colspan="3"><i class="fa fa-pencil"></i><input type="button" class="waves-button-input" value="Edit My Profile  " onclick="check()"></input>
+                                        	<td colspan="3"><input type="button" class="waves-button-input" value="Edit My Profile  " onclick="check()"></input>
                                         	</td>
                                         </tr>
                                     </form>
@@ -136,6 +169,52 @@ else
                                 </table>
                             </div>
                         </div>
+                        
+                        <div class="udb-sec udb-prof">
+                            <h4><i class="fa fa-picture-o"></i>Change your picture</h4>
+                            <div class="sdb-tabl-com sdb-pro-table">
+                                <table class="responsive-table bordered">
+                                    <tbody>
+                                	 <form  id="picup" method="post" enctype="multipart/form-data" action="picupload">
+                                        <tr>
+                                            <td>Passport size photo:'only jpg/jpeg/png images are acceptable'</td>
+                                            <td>:</td>
+                                            <td><input type="file" id="pic" name="pic"  ACCEPT="image/jpg , image/jpeg , image/png" required> 
+                                           </tr>
+                                        <tr>
+                                        <tr>
+                                        	<td colspan="3"><input type="button" class="waves-button-input" value="Upload  " onclick="ppic()"/></input>
+                                        	</td>
+                                        </tr>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="udb-sec udb-prof">
+                            <h4><i class="fa fa-book"></i>Change your resume</h4>
+                            <div class="sdb-tabl-com sdb-pro-table">
+                                <table class="responsive-table bordered">
+                                    <tbody>
+                                	 <form  id="resup" method="post" enctype="multipart/form-data" action="resupload">
+                                        <tr>
+                                            <td>Profile:'only pdf files are acceptable'</td>
+                                            <td>:</td>
+                                            <td> <input type="file" id="pf" name="profile"  ACCEPT="application/pdf"  required>
+                                            </tr>
+                                        <tr>
+                                        	<td colspan="3"><input type="button" class="waves-button-input" value="Upload  " onclick="pres()"/></input>
+                                        	</td>
+                                        </tr>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+    
+                                			
+                        
                     </div>
                 </div>
             </div>

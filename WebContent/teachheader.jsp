@@ -96,12 +96,20 @@ alert("${msg}");
                 <!--== USER INFO ==-->
                 <div class="sb2-12">
                     <ul>
-                        <li><img src="data:image/jpg;base64,${image}" alt="">
+                    <% String image=(String)session.getAttribute("image"); %>
+                        <li><img src="data:image/jpg;base64,<%=image%>" alt="">
                         </li>
                         <li>
                             <h5><%=session.getAttribute("name")%></h5>
                             <h5><span><%=session.getAttribute("email") %></span></h5>
                             <h5><span><%=session.getAttribute("mobile")%></span></h5>
+                            <h5>
+				<form method="post" action="cv">
+				<input type="hidden" name="desig" value="teacher"/>
+				<input type="hidden" name="tid" value="<%=(String)session.getAttribute("id")%>"/>
+				<input type="submit" value="profile" id="profile"/>
+				</form>
+							</h5>
                         </li>
                     </ul>
                 </div>

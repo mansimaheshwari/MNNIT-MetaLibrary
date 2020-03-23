@@ -51,7 +51,8 @@
             <div class="container pg-inn">
                 <div class="col-md-3">
                     <div class="pro-user">
-                        <img src="data:image/jpg;base64,${image}" alt="user">
+                    <%String image=(String)session.getAttribute("image"); %>
+                        <img src="data:image/jpg;base64,<%=image%>" alt="user">
                     </div>
                     <div class="pro-user-bio">
                         <ul>
@@ -60,6 +61,14 @@
                             </li>
                             <li>Student Id: <%=session.getAttribute("id")%></li>
                             <li><%=session.getAttribute("email")%></li>
+                            <li>
+				<form method="post" action="cv">
+				<input type="hidden" name="desig" value="student"/>
+				<input type="hidden" name="sid" value="<%=(String)session.getAttribute("id")%>"/>
+				<input type="submit" value="profile" id="profile"/>
+				</form>
+				
+							</li>
                         </ul>
                     </div>
                 </div>

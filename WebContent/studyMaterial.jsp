@@ -3,7 +3,6 @@
 
 System.out.println("session:admin:id: " + session.getAttribute("id"));
 
-
 if(session.getAttribute("id")==null)
 {
 	String s="you have logged out";

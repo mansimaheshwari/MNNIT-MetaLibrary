@@ -94,7 +94,7 @@ public class showResume_cv extends HttpServlet {
         else
         {
         	String s="can't display";
-        	response.sendRedirect("admin.jsp?msg="+s);
+        	response.sendRedirect("index.jsp?msg="+s);
         	
         }
 	} catch (IOException | SQLException  | ClassNotFoundException e) {

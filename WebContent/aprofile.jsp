@@ -92,7 +92,7 @@ else
                                     <p>.</p>
                                 </div>
                                 <div class="tab-inn">
-                                   <form method="post" action="profileSetn" id="change">
+                                   <form method="post" action="changeprofile" id="change">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 Name: <input type="text" name="name" value="<%=session.getAttribute("name")%>" class="validate" disabled="disabled" required>

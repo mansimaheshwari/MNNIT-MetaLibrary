@@ -50,8 +50,7 @@ public class signup extends HttpServlet {
 
 		
 		InputStream ispic=null;
-		InputStream isprofile=null;
-		Reader rprofile=null;
+
         if (pic != null) {
             // prints out some information for debugging
             System.out.println(pic.getName());
