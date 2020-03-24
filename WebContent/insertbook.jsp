@@ -41,7 +41,7 @@ else
                 var regexisbn = /^\d{13}$/;
                 var regexname = /.pdf$/;
 
-                alert("hi");
+                //alert("hi");
                 
                 
                 if (regexisbn.test(isbn) == false) {

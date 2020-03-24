@@ -80,6 +80,9 @@ else
 			<td><input type="submit" value="submit" id="submit"></input></td> 
 			<td><input type="reset" value="reset" id="reset"></input></td>
 		</tr>
+		<tr>
+			<td><a href="checkProfile.jsp">back to profile</a></td>
+		</tr>
 	</table>
 </form> 
 </center>

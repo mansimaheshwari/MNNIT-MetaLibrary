@@ -60,7 +60,7 @@ else
 
 	function ppic()
 	{
-		alert("hi");
+		//alert("hi");
         var pic = document.getElementById('pic').value.trim();
             var regexpic = /.(jpg|jpeg|png)$/;
 
@@ -75,7 +75,7 @@ else
 
 	function pres()
 	{
-		alert("hi");
+		//alert("hi");
         var profile = document.getElementById('pf').value.trim();
         var regexprof = /.pdf$/;
 

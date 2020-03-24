@@ -140,7 +140,7 @@ alert("${msg}");
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="tstudyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
+                        <li><a href="studyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
                         </li>
                     </ul>
                 </div>

@@ -30,7 +30,7 @@ else
 <script type="text/javascript">
 	function check()
 	{
-alert("hi");
+		//alert("hi");
         var minNumberofChars = 6;
         var maxNumberofChars = 15;
         
@@ -63,7 +63,7 @@ alert("hi");
 
 	function ppic()
 	{
-		alert("hi");
+		//alert("hi");
         var pic = document.getElementById('pic').value.trim();
             var regexpic = /.(jpg|jpeg|png)$/;
 
@@ -78,7 +78,7 @@ alert("hi");
 
 	function pres()
 	{
-		alert("hi");
+		//alert("hi");
         var profile = document.getElementById('pro').value;
         var regexprof = /.pdf$/;
 

@@ -34,7 +34,7 @@ else
             var regex = /^[a-zA-Z ]*$/;
                 
 
-                alert("hi");
+                //alert("hi");
                            
                 if (dept == null || dept == "") {
                 alert("Department name can't blank");

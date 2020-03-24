@@ -40,10 +40,10 @@ else
 
 	function check()
 	{
-		alert("hi");
+		//alert("hi");
 
         var type = document.getElementById('types').value;
-        alert(type);
+        //alert(type);
         if(type=="videos")
         	{
         	var reg=/.(mp4|mkv|mov|avi|wmv)/
@@ -56,12 +56,12 @@ else
         var name = document.getElementById('name').value.trim();
         var i=name.lastIndexOf(".");
         var ext=name.substring(i);
-        alert(ext);
+        //alert(ext);
 
         var file = document.getElementById('file').value.trim();
         var ind=file.lastIndexOf(".");
         var e=file.substring(ind);
-        alert(e);
+        //alert(e);
         if(reg.test(file) == false){
             alert("use proper format");
             return false;
