@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -22,6 +24,7 @@ import experiments.AllMethods;
 @WebServlet("/downloadrepository")
 public class downloadrepository extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("downloadrepository.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +44,7 @@ public class downloadrepository extends HttpServlet {
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             
-	            System.out.println("fileLength = " + fileLength);
+	            log.info("fileLength = " + fileLength);
 
 	            ServletContext context = getServletContext();
 
@@ -73,7 +76,7 @@ public class downloadrepository extends HttpServlet {
 		}
 	        else
 	        {
-	        	System.out.println("error");
+	        	log.info("error");
 	        }
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,6 +1,8 @@
 <%@page import="experiments.AllMethods"%>
 <%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.*" %>
+<%@page import="org.apache.log4j.Logger" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -19,15 +21,14 @@
 
 
 <body>
- 
-	<%
+ <%final Logger log = Logger.getLogger("getTeacher.jsp");
 
 
 		String dept=request.getParameter("dept");
 		String domain=request.getParameter("domain");
 		String types=request.getParameter("types");
-		System.out.println("domain in t:" + domain);
-		System.out.println("type in t:" + types);
+		log.info("domain in t:" + domain);
+		log.info("type in t:" + types);
 		AllMethods am=new AllMethods();
 		ResultSet rs=am.getTeacher(dept,domain,types);
 		
@@ -35,7 +36,7 @@
 		{
 		do
 		{
-			System.out.println(rs.getString("tname"));
+			log.info(rs.getString("tname"));
 			
 		%>
 			<option value="<%=rs.getString("tid")%>"><%=rs.getString("tname")%></option>

@@ -64,8 +64,8 @@
                 register.eml.focus();
                 return false;
                 }
-                else if(designation == "Teacher" && regexmail.test(email) == false){
-                    alert("teachers have to use mnnit email id");
+                else if(regexmail.test(email) == false){
+                    alert("use mnnit email id");
                     register.eml.focus();
                     return false;
                         
@@ -142,16 +142,7 @@
                     <p >Join us for free!</p>
                     <p>.</p>
                     <p>.</p>
-                   <div class="semi-deta eve-deta">
-                    <ul>
-                        <li><a href="https://en-gb.facebook.com/login/"><span><i class="fa fa-facebook"></i></span> Facebook</a>
-                        </li>
-                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
-                         <span><i class="fa fa-google"></i></span> Google+</a>
-                        </li>
-                        <li><a href="https://twitter.com/login?lang=en"><span><i class="fa fa-twitter"></i></span> Twitter</a>
-                        </li>
-                    </ul>
+                   <div class="semi-deta eve-deta"> 
                     </div>
                     
                     <p>.</p>

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -19,6 +21,7 @@ import experiments.AllMethods;
 @WebServlet("/getdeptdomain")
 public class getdeptdomain extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("getdeptdomain.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,8 +29,14 @@ public class getdeptdomain extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String dept=request.getParameter("deptmt");
-		
-System.out.println(dept);
+		if(dept=="")
+		{
+			log.info("invalid department selected");
+			response.sendRedirect("index.jsp?msg=Select a valid department");
+		}
+		else 
+		{
+		log.info(dept);
 		ResultSet rs=null;
 		try
 		{
@@ -44,6 +53,7 @@ System.out.println(dept);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
 		}
 	}
 

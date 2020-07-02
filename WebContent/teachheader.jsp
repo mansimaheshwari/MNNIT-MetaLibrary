@@ -1,5 +1,7 @@
 
 <%@page import="java.sql.*" %>
+<%@page import="org.apache.log4j.Logger" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -48,12 +50,10 @@
 <script>
 alert("${msg}");
 </script>
-<% } %>
+<% } 
 
-
-	
-	<%
-	System.out.println("session:java:id: " + session.getAttribute("id"));
+	final Logger log = Logger.getLogger("admin.jsp");
+	log.info("session:java:id: " + session.getAttribute("id"));
 	%>
 	
     <!--== MAIN CONTRAINER ==-->

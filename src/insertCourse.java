@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -19,6 +21,7 @@ import experiments.AllMethods;
 @WebServlet("/addCourse")
 public class insertCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("insertCourse.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +37,7 @@ public class insertCourse extends HttpServlet {
 				throw new Exception();
 			}
 			
-			System.out.println("session:java:id: " + session.getAttribute("id"));
+			log.info("session:java:id: " + session.getAttribute("id"));
 			/*
 			String id=(String)session.getAttribute("id");
 			String aname=(String)session.getAttribute("name");
@@ -42,19 +45,19 @@ public class insertCourse extends HttpServlet {
 			String mobile=(String)session.getAttribute("mobile");
 			*/
 			String dept=request.getParameter("department");
-		String name=request.getParameter("name");
-		System.out.println(dept);
-		System.out.println(name);
+		String doamin=request.getParameter("doamin");
+		log.info(dept);
+		log.info(doamin);
 
 		AllMethods am=new AllMethods();
 		int s;
 		
-			s = am.addCoure(dept,name);
+			s = am.addCourse(dept,doamin);
 		
 		if(s>0)
 		{
 	    	String msg="added successfully";
-			System.out.println(msg);
+			log.info(msg);
 			/*
 			session.setAttribute("id", id);
 			session.setAttribute("name", aname);
@@ -68,19 +71,19 @@ public class insertCourse extends HttpServlet {
 		else
 		{
 	    	String msg="already existed";
-			System.out.println(msg);
+			log.info(msg);
 	    	response.sendRedirect("insertCourse.jsp?msg="+msg);
 		}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 
 	    	String msg="error occured";
-			System.out.println(msg);
+			log.info(msg);
 	    	response.sendRedirect("insertCourse.jsp?msg="+msg);
 		}
 		catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
 		

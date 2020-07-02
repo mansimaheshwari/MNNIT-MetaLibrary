@@ -1,20 +1,22 @@
 
-<%
+<%@page import="org.apache.log4j.Logger" %>
+<%final Logger log = Logger.getLogger("deleteDomain.jsp");
 
-System.out.println("session:admin:id: " + session.getAttribute("id"));
+
+log.info("session:admin:id: " + session.getAttribute("id"));
 
 
 if(session.getAttribute("id")==null)
 {
 	String msg="you have signed out";
-	System.out.println(msg);
+	log.info(msg);
 	response.sendRedirect("index.jsp?msg="+msg);
 	
 	
 }
 else
 {
-	System.out.println("valid session");
+	log.info("valid session");
 
 %>
 
@@ -31,7 +33,7 @@ else
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Delete Department</title>
+<title>Delete Domain</title>
 
 </head>
 
@@ -64,7 +66,7 @@ else
 	
 
                             <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from delete....." + s);
+                            	log.info("from delete....." + s);
                             	
                             	if(s!=null){
                             %>

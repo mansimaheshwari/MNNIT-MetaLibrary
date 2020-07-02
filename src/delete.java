@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -23,6 +25,7 @@ import experiments.AllMethods;
 @WebServlet("/delete")
 public class delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("delete.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -47,33 +50,33 @@ public class delete extends HttpServlet {
 			{
 				String tid=request.getParameter("tid");
 				rs=am.deleteTeacher(tid);
-				System.out.println(tid);
+				log.info(tid);
 				path="Teacher";
 			}
 			else if(desig.equals("student"))
 			{
 				String sid=request.getParameter("sid");
 				rs=am.deleteStudent(sid);
-				System.out.println(sid);
+				log.info(sid);
 				path="Student";
 			}
 			else if(desig.equals("book"))
 			{
 				String isbn=request.getParameter("isbn");
 				rs=am.deleteBook(isbn);
-				System.out.println(isbn);
+				log.info(isbn);
 				path="Book";
 			}
 			else if(desig.equals("repo"))
 			{
 				String rid=request.getParameter("rid");
 				rs=am.deleteRepo(rid);
-				System.out.println(rid);
+				log.info(rid);
 				
 				String stype=(String)session.getAttribute("signintype");
 				if(stype.equals("teacher"))
 						{
-					System.out.println(rid);
+					log.info(rid);
 					RequestDispatcher rd=request.getRequestDispatcher("tdeleteRepo.jsp?msg=deleted");
 			    	rd.forward(request, response);
 					
@@ -87,14 +90,14 @@ public class delete extends HttpServlet {
 			{
 				String id=request.getParameter("id");
 				rs=am.deleteReview(id);
-				System.out.println(id);
+				log.info(id);
 				path="Review";
 			}
 			else if(desig.equals("dept"))
 			{
 				String dept=request.getParameter("dept");
 				rs=am.deleteDept(dept);
-				System.out.println(dept);
+				log.info(dept);
 				path="Dept";
 			}
 			else if(desig.equals("domain"))
@@ -102,7 +105,7 @@ public class delete extends HttpServlet {
 				String domain=request.getParameter("domain");
 				String dept=request.getParameter("department");
 				rs=am.deleteDomain(dept,domain);
-				System.out.println(domain);
+				log.info(domain);
 				path="Domain";
 			}
 			
@@ -114,7 +117,7 @@ public class delete extends HttpServlet {
 			{
             	s="cannot be deleted";	
 			}
-				System.out.println(s);
+				log.info(s);
 		    	response.sendRedirect("delete"+path+".jsp?msg="+s);
 			
 	} catch (IOException | SQLException e) {
@@ -126,7 +129,7 @@ public class delete extends HttpServlet {
 	}catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
 	}

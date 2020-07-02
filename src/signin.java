@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -28,6 +30,7 @@ import experiments.AllMethods;
 @WebServlet("/signin")
 public class signin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("signin.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,10 +71,10 @@ public class signin extends HttpServlet {
     				String image=am.getImage(blob);
     				session.setAttribute("image", image);    				
 
-    	            System.out.println("AllMethods...");
+    	            log.info("AllMethods...");
     				
     	            session.setAttribute("details", rs);
-    	            System.out.println("hiiii....");
+    	            log.info("hiiii....");
     				if(designation.equals("Student"))
     				{
         				session.setAttribute("id", rs.getString("sid"));
@@ -102,7 +105,7 @@ public class signin extends HttpServlet {
 			}
             else
             {
-            	String s="invalid username and password combinatio";
+            	String s="invalid username and password combination";
             	response.sendRedirect("index.jsp?msg="+s);       	
             }
 		}

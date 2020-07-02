@@ -15,13 +15,12 @@
 
                         <p>24x7 Live help</p>
                         <p><a href="contact-us.jsp">Contact us<br></a></p>
-                        <p><a href="feedback.jsp">Feedback</a></p>
                 </div>
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Get In Touch</h4>
                     <p>Address: MNNIT Allahabad, Teliar Ganj, Prayagraj, U.P.</p>
                     <p>Phone: 0532 - 2545404/07, 2540233, 2545729</p>
-                    <p>Email: <a href="#!">mnnitmetalibrary@mnnit.ac.in</a></p>
+                    <p>Email: <a href="#!">mnnitmetalibrary@mnnit.ac.in</a><br>..(for site related issues)</p>
                 </div>
                 <div class="col-md-4">
                     <h4>SOCIAL MEDIA</h4>

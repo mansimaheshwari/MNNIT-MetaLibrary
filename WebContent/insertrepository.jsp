@@ -1,20 +1,24 @@
 
-<%
+<%@page import="org.apache.log4j.Logger"%>
 
-System.out.println("session:admin:id: " + session.getAttribute("id"));
+<%final Logger log = Logger.getLogger("insertrepository.jsp");
+
+log.info("invalid department selected");
+
+log.info("session:admin:id: " + session.getAttribute("id"));
 
 
 if(session.getAttribute("id")==null)
 {
 	String msg="you have signed out";
-	System.out.println(msg);
+	log.info(msg);
 	response.sendRedirect("index.jsp?msg="+msg);
 	
 	
 }
 else
 {
-	System.out.println("valid session");
+	log.info("valid session");
 
 %>
 
@@ -100,7 +104,7 @@ alert("${msg}");
 
 
                             <% String str=(String)request.getParameter("msg");
-                            	System.out.println("from profile....." + str);
+                            	log.info("from profile....." + str);
                             	
                             	if(str!=null){
                             %>
@@ -147,7 +151,7 @@ alert("${msg}");
 			<th><input type="reset" value="reset" ></input> </th>
 		</tr>
 		<tr>
-			<th colspan="2" align="center"><a href="checkProfile.jsp">Done Adding Books</a>
+			<th colspan="2" align="center"><a href="checkProfile.jsp">Done Adding Material</a>
 			</th>
 		</tr>
 	

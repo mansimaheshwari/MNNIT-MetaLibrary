@@ -7,9 +7,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 //import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 //import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
 
 public class DBConn {
+	protected static Logger log = Logger.getLogger("DBConn.java");
 	
 	public static Connection getConn() throws IOException, ClassNotFoundException, SQLException
 	{
@@ -32,11 +35,11 @@ public class DBConn {
 
 		Class.forName("com.mysql.jdbc.Driver");
 
-		System.out.println("load");
+		log.info("load");
 
 	    Connection con=DriverManager.getConnection("jdbc:mysql:///mnnitmetalibrary","root","root");
 
-		System.out.println("connection created");
+		log.info("connection created");
 		return con;
 	}
 

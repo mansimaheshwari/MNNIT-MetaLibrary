@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -25,6 +27,7 @@ import experiments.AllMethods;
 @MultipartConfig   
 public class insertBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("insertBook.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -67,9 +70,7 @@ public class insertBook extends HttpServlet {
 			if(s>0)
 			{
 		    	String msg="inserted successfully";
-		    	System.out.println();
-		    	System.out.println("inserted successfully");
-		    	System.out.println();
+		    	log.info("inserted successfully");
 	           	response.sendRedirect("insertbook.jsp?msg="+msg);
 			}
 			else
@@ -83,7 +84,7 @@ public class insertBook extends HttpServlet {
 		catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
         

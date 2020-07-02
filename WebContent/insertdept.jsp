@@ -1,18 +1,19 @@
 
-<%
+<%@page import="org.apache.log4j.Logger" %>
+<%final Logger log = Logger.getLogger("insertdept.jsp");
 
-System.out.println("session:admin:id: " + session.getAttribute("id"));
+log.info("session:admin:id: " + session.getAttribute("id"));
 
 
 if(session.getAttribute("id")==null)
 {
 	String s="you have logged out";
-	System.out.println(s);
+	log.info(s);
 	response.sendRedirect("index.jsp?msg=" + s);
 }
 else
 {
-	System.out.println("valid session");
+	log.info("valid session");
 
 %>
 
@@ -60,7 +61,7 @@ else
 
 
                             <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from insert....." + s);
+                            	log.info("from insert....." + s);
                             	
                             	if(s!=null){
                             %>

@@ -1,4 +1,6 @@
 
+<%@page import="org.apache.log4j.Logger" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,16 +11,15 @@
 </head>
 <body>
 
-<%
-
+<%final Logger log = Logger.getLogger("logout.jsp");
 if(session!=null)
 {
-	System.out.println("logging out : "+session.getAttribute("id"));
+	log.info("logging out : "+session.getAttribute("id"));
 	session.setAttribute("id",null);
 }
 session.invalidate();
 
-System.out.println("session invalidated" );
+log.info("session invalidated" );
 	
 	//String msg="logging out";
 	//response.sendRedirect("index.jsp?msg="+msg);

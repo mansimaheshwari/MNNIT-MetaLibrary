@@ -1,18 +1,16 @@
 
-<%
-
-System.out.println("session:admin:id: " + session.getAttribute("id"));
-
+<%@page import="org.apache.log4j.Logger"%>
+<%final Logger log = Logger.getLogger("studyMaterial.jsp");
 if(session.getAttribute("id")==null)
 {
 	String s="you have logged out";
-	System.out.println(s);
+	log.info(s);
 	response.sendRedirect("index.jsp?msg=" + s);
 	
 }
 else
 {
-	System.out.println("valid session");
+	log.info("valid session");
 
 %>
 
@@ -44,7 +42,7 @@ alert("${msg}");
 
 
                             <% s=(String)request.getParameter("msg");
-                            	System.out.println("from profile....." + s);
+                            	log.info("from profile....." + s);
                             	
                             	if(s!=null){
                             %>
@@ -52,11 +50,12 @@ alert("${msg}");
                     alert("<%=s%>");
                     </script>
 
-                    <% } %>
+                    <% } 
 
-
-<jsp:include page="adminheader.jsp"/>
-
+	log.info("session:teacher:id: " + session.getAttribute("id"));
+%>
+	<jsp:include page="teachheader.jsp"/>
+	
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
                 <!--== breadcrumbs ==-->
@@ -176,10 +175,8 @@ alert("${msg}");
                                 <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Department</th>
-                                                    <th>Subject</th>
-                                                    <th>Type</th>
-                                                    <th>Teacher</th>
+                                                    <th>Teacher Name/Department</th>
+                                                    <th>Subject Name/Department</th>
 													<th>File name</th>
 													<th>Download</th>
                                                 </tr>
@@ -200,10 +197,8 @@ alert("${msg}");
 			%>
 
                                                 <tr>
-                                                	<td><%=rrepo.getString("dept")%></td>
-                                                    <td><%=rrepo.getString("domain")%></td>
-                                                    <td><%=rrepo.getString("types")%></td>
-                                                    <td><%=rrepo.getString("tname")%></td>
+                                                	<td><%=rrepo.getString("tname")%> (<%=rrepo.getString("dept")%>)</td>
+                                                    <td><%=rrepo.getString("domain")%> (<%=rrepo.getString("rdept")%>)</td>
                                                     <td><%=rrepo.getString("rname")%></td>
                                                     <td>
                                         	<form method="post" action="downloadrepository">
@@ -246,10 +241,8 @@ alert("${msg}");
                             <div class="bor"><table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Department</th>
-                                                    <th>Subject</th>
-                                                    <th>Type</th>
-                                                    <th>Teacher</th>
+                                                    <th>Teacher Name/Department</th>
+                                                    <th>Subject Name/Department</th>
 													<th>File name</th>
 													<th>Download</th>
                                                 </tr>
@@ -270,10 +263,8 @@ alert("${msg}");
 			%>
 
                                                 <tr>
-                                                	<td><%=rrepo.getString("dept")%></td>
-                                                    <td><%=rrepo.getString("domain")%></td>
-                                                    <td><%=rrepo.getString("types")%></td>
-                                                    <td><%=rrepo.getString("tname")%></td>
+                                                	<td><%=rrepo.getString("tname")%> (<%=rrepo.getString("dept")%>)</td>
+                                                    <td><%=rrepo.getString("domain")%> (<%=rrepo.getString("rdept")%>)</td>
                                                     <td><%=rrepo.getString("rname")%></td>
                                                     <td>
                                         	<form method="post" action="downloadrepository">
@@ -315,10 +306,8 @@ alert("${msg}");
                                 <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Department</th>
-                                                    <th>Subject</th>
-                                                    <th>Type</th>
-                                                    <th>Teacher</th>
+                                                    <th>Teacher Name/Department</th>
+                                                    <th>Subject Name/Department</th>
 													<th>File name</th>
 													<th>Download</th>
                                                 </tr>
@@ -339,10 +328,8 @@ alert("${msg}");
 			%>
 
                                                 <tr>
-                                                	<td><%=rrepo.getString("dept")%></td>
-                                                    <td><%=rrepo.getString("domain")%></td>
-                                                    <td><%=rrepo.getString("types")%></td>
-                                                    <td><%=rrepo.getString("tname")%></td>
+                                                	<td><%=rrepo.getString("tname")%> (<%=rrepo.getString("dept")%>)</td>
+                                                    <td><%=rrepo.getString("domain")%> (<%=rrepo.getString("rdept")%>)</td>
                                                     <td><%=rrepo.getString("rname")%></td>
                                                     <td>
                                         	<form method="post" action="downloadrepository">

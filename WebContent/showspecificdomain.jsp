@@ -1,5 +1,7 @@
 
 <%@page import="java.sql.*" %>
+<%@page import="org.apache.log4j.Logger" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -10,8 +12,9 @@
 </head>
 <body>
 
-                            <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from profile....." + s);
+<%final Logger log = Logger.getLogger("showspecificdomain.jsp");
+String s=(String)request.getParameter("msg");
+                            	log.info("from profile....." + s);
                             	
                             	if(s!=null){
                             %>

@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.mysql.jdbc.Clob;
 
 import experiments.AllMethods;
@@ -26,6 +28,7 @@ import experiments.AllMethods;
 @WebServlet("/cv")
 public class showResume_cv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("showResume_cv.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,14 +45,14 @@ public class showResume_cv extends HttpServlet {
 			{
 				String tid=request.getParameter("tid");
 				rs=am.getTeacher(tid);
-				System.out.println(tid);
+				log.info(tid);
 				val="profile";
 			}
 			else if(desig.equals("student"))
 			{
 				String sid=request.getParameter("sid");
 				rs=am.getStudent(sid);
-				System.out.println(sid);
+				log.info(sid);
 				val="profile";
 			}
 			/*
@@ -57,14 +60,14 @@ public class showResume_cv extends HttpServlet {
 			{
 				String isbn=request.getParameter("isbn");
 				rs=am.getBook(isbn);
-				System.out.println(isbn);
+				log.info(isbn);
 				val="book";
 			}
 			else if(desig.equals("repo"))
 			{
 				String rid=request.getParameter("rid");
 				rs=am.getrepo(rid);
-				System.out.println(rid);
+				log.info(rid);
 				val="repo";
 			}
 			*/
@@ -75,7 +78,7 @@ public class showResume_cv extends HttpServlet {
 	            InputStream inputStream = blob.getBinaryStream();
 	            int fileLength = inputStream.available();
 	             
-	            System.out.println("fileLength = " + fileLength);
+	            log.info("fileLength = " + fileLength);
 	             
 	            // set content properties and header attributes for the response
 				response.setContentType("text/html");

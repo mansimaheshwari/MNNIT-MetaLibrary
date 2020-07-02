@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -23,6 +25,8 @@ import experiments.AllMethods;
 @WebServlet("/getData")
 public class getData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("getData.java");
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,8 +38,8 @@ public class getData extends HttpServlet {
 		String domain=request.getParameter("domain");
 		String types=request.getParameter("types");
 		String teacher=request.getParameter("teacher");
-		System.out.println(domain);
-		System.out.println("type..." + types);
+		log.info(domain);
+		log.info("type..." + types);
 		ResultSet rs=null;
 		try
 		{
@@ -50,7 +54,7 @@ public class getData extends HttpServlet {
 			}
 			else
 			{
-				System.out.println(teacher);
+				log.info(teacher);
 				AllMethods am=new AllMethods();
 				rs=am.getrepo(dept,domain,teacher,types);
 				

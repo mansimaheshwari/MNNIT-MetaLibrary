@@ -118,6 +118,7 @@ response.setDateHeader("Expires", 0);
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4>All Courses</h4><a href="showAllDeptDomain.jsp">
                                         <ul>
+                                                        <li>--Select a valid department--</li>
                                                         <li>Biotechnology</li>
 														<li>Chemical Engineering</li>
                                                         <li>Civil Engineering</li>
@@ -147,26 +148,14 @@ response.setDateHeader("Expires", 0);
                 <div class="log-in-pop-left">
                     <h1>Hello...</h1>
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
-                    <h4>Login with social media</h4>
-                    <ul>
-                        <li><a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i> Facebook</a>
-                        </li>
-                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google"></i> Google+</a>
-                        </li>
-                        <li><a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i> Twitter</a>
-                        </li>
-                    </ul>
+                    <h4><a href="register.jsp" >Create a new account</a></h4><br><br><br><br><br><br><br>
                 </div>
                 <div class="log-in-pop-right">
                     <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
                     </a>
                     <h4>Login</h4>
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
-                    
-                    
-                    
-                    
-<form class="s12" method="post" action="signin" id="loginform">
+					<form class="s12" method="post" action="signin" id="loginform">
                         <div>
                             <div class="input-field s12">
                                 <input type="email" id="email" name="email" data-ng-model="name" class="validate">
@@ -215,17 +204,9 @@ response.setDateHeader("Expires", 0);
         <div id="modal3" class="modal fade" role="dialog">
             <div class="log-in-pop">
                 <div class="log-in-pop-left">
-                    <h1>Hello... </h1>
+                    <h1>Hello...</h1>
                     <p>Don't have an account? Create your account. It's take less then a minutes</p>
-                    <h4>Login with social media</h4>
-                    <ul>
-                        <li><a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i> Facebook</a>
-                        </li>
-                        <li><a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google"></i> Google+</a>
-                        </li>
-                        <li><a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i> Twitter</a>
-                        </li>
-                    </ul>
+                    <h4><a href="register.jsp" >Create a new account</a></h4><br><br><br><br><br><br><br>
                 </div>
                 <div class="log-in-pop-right">
                     <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
@@ -323,7 +304,7 @@ alert("${msg}");
                             <ul>
                                 <li><a href="#">Address: MNNIT Allahabad, Teliar Ganj, Prayagraj, U.P.</a>
                                 </li>
-                                <li><a href="tel://0099999999" class="contact-icon">Phone: 0532 - 2545404/07, 2540233, 2545729</a>
+                                <li><a href="#">Phone No.: 0532 - 2545404/07, 2540233, 2545729</a>
                                 </li>
                             </ul>
                         </div>
@@ -349,7 +330,7 @@ alert("${msg}");
         </div>
 
         <!-- LOGO AND MENU SECTION -->
-        <div class="top-logo" data-spy="affix" data-offset-top="250">
+        <div class="top-logo" data-spy="affix" data-offset-top="100">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -409,6 +390,7 @@ alert("${msg}");
                             <form action="getdeptdomain" method="post">
                                 <div class="sf-type">
                                 <select id="deptmt" name="deptmt">
+                                	<option value="">--Select a valid Department--</option>
                                 	<option value="Biotechnology">Biotechnology</option>
                                 	<option value="Chemical Engineering">Chemical Engineering</option>
                                 	<option value="Civil Engineering">Civil Engineering</option>

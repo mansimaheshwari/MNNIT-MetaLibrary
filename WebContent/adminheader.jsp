@@ -1,5 +1,6 @@
 
 <%@page import="java.sql.*" %>
+<%@page import="org.apache.log4j.Logger" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -52,8 +53,8 @@ alert("${msg}");
 
 
 	
-	<%
-	System.out.println("session:java:id: " + session.getAttribute("id"));
+	<final Logger log = Logger.getLogger("admin.jsp");
+	log.info("session:java:id: " + session.getAttribute("id"));
 	%>
 	
     <!--== MAIN CONTRAINER ==-->
@@ -146,7 +147,7 @@ alert("${msg}");
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="studyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
+                        <li><a href="aStudyMaterial.jsp" class="collapsible-header"><i class="fa fa-commenting-o" aria-hidden="true"></i>Study Material</a>
                         </li>
                     </ul>
                 </div>

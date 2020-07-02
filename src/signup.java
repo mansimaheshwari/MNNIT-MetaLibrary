@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -25,6 +27,7 @@ import experiments.AllMethods;
 @MultipartConfig   
 public class signup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("signup.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,21 +44,21 @@ public class signup extends HttpServlet {
         Part pic = request.getPart("pic");
         Part profile = request.getPart("profile");
 		String designation=request.getParameter("desn");
-		System.out.println(reg);
-		System.out.println(name);
-		System.out.println(email);
-		System.out.println(cpass);
-		System.out.println(dept);
-		System.out.println(designation);
+		log.info(reg);
+		log.info(name);
+		log.info(email);
+		log.info(cpass);
+		log.info(dept);
+		log.info(designation);
 
 		
 		InputStream ispic=null;
 
         if (pic != null) {
             // prints out some information for debugging
-            System.out.println(pic.getName());
-            System.out.println(pic.getSize());
-            System.out.println(pic.getContentType());
+            log.info(pic.getName());
+            log.info(pic.getSize());
+            log.info(pic.getContentType());
              
             // obtains input stream of the upload file
             ispic = pic.getInputStream();

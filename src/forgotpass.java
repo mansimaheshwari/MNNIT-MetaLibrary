@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -17,7 +20,7 @@ import experiments.AllMethods;
 @WebServlet("/forgotpass")
 public class forgotpass extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	protected static Logger log = Logger.getLogger("forgotpass.java");
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -30,21 +33,21 @@ public class forgotpass extends HttpServlet {
 		String mob=request.getParameter("m");
 		String designation=request.getParameter("d");
 		
-		System.out.println(reg);
-		System.out.println(name);
-		System.out.println(email);
-		System.out.println(mob);
-		System.out.println(designation);
+		log.info(reg);
+		log.info(name);
+		log.info(email);
+		log.info(mob);
+		log.info(designation);
 
 		try 
 		{
 			AllMethods am=new AllMethods();
 			String s=am.forgotpass(reg,name,email,mob,designation);
-			System.out.println(reg);
-			System.out.println(name);
-			System.out.println(email);
-			System.out.println(mob);
-			System.out.println(designation);
+			log.info(reg);
+			log.info(name);
+			log.info(email);
+			log.info(mob);
+			log.info(designation);
 			
 			if(s != null)
 			{

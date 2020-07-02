@@ -1,6 +1,7 @@
 <%@page import="experiments.DBConn"%>
 <%@page import="experiments.AllMethods"%>
 <%@page import="java.sql.*" %>
+<%@page import="org.apache.log4j.Logger" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,6 +19,7 @@
             
 
                 var regex = /^[a-zA-Z ]*$/;
+                var regexemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
                 //alert("hi");
               
@@ -34,6 +36,11 @@
                 else if (email == null || email == "") {
                 alert("email field can't blank...");
                 reviewf.el.focus();
+                return false;
+                }
+                else if(regexemail.test(email) == false){
+                alert("enter a valid mail id");
+                reviewf.nm.focus();
                 return false;
                 }
                 else if (review == null || review == "") {
@@ -65,9 +72,10 @@
 
 
                             <% String s=(String)request.getParameter("msg");
-                            	System.out.println("from index....." + s);
-                            	
+                               Logger log = Logger.getLogger("index.jsp");
+                            		log.info(s);
                             	if(s!=null){
+                            		log.info(s);
                             %>
                     <script>
                     alert("<%=s%>");
@@ -93,22 +101,22 @@
                 <div class="item slider1 active">
                     <img src="images/slider/1.jpg" alt="">
                     <div class="carousel-caption slider-con">
-                        <h2>Welcome to <span>MNNIT</span></h2>
-                        <p>it provides online platform</p>
+                        <h2>Welcome to <span><br>MNNIT Meta Library</span></h2>
+                        <p>It provides a common online platform for students and teachers to facilitate Digital Library.</p>
                     </div>
                 </div>
                 <div class="item">
                     <img src="images/slider/2.jpg" alt="">
                     <div class="carousel-caption slider-con">
                         <h2>Repository for <span>Students</span></h2>
-                        <p>students can download books,notes,videos,papers</p>
+                        <p>Students can download books,teachers notes,lecture videos,papers.</p>
                     </div>
                 </div>
                 <div class="item">
                     <img src="images/slider/3.jpg" alt="">
                     <div class="carousel-caption slider-con">
                         <h2>Platform for <span>Teachers</span></h2>
-                        <p>teachers can upload books,notes,videos,papers</p>
+                        <p>Teachers can upload and download books,personal notes,lecture videos,papers</p>
                     </div>
                 </div>
             </div>
@@ -173,7 +181,7 @@
     </section>
 
 
-    <!--SECTION START-->
+    <!-- REVIEW SECTION START -->
     <section class="c-all h-quote">
         <div class="container">
             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -183,7 +191,9 @@
                     <p>no need to sign up for giving feedback </p>
                     <p class="help-line">Mail ID : 
                     <a href="https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
-                    <span>admin@mnnit.ac.in</span></a> </p> <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </div>
+                    <span>admin@mnnit.ac.in</span></a></p>
+                    <p>To directly contact the admin</p>
+                    <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="n-form-com admiss-form">

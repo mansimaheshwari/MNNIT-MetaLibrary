@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>
 <%@page import="experiments.*" %>
+<%@page import="org.apache.log4j.Logger" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +16,11 @@
 <jsp:include page="header.jsp"/>
 
 
-<% 
+<%final Logger log = Logger.getLogger("faculties.jsp");
+
 	String dept=request.getParameter("deptm");
 	
-	System.out.println(dept);
+	log.info(dept);
 	AllMethods am=new AllMethods();
 	ResultSet rs=am.allTeacher(dept);
 

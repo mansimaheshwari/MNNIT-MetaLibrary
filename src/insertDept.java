@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -20,6 +22,7 @@ import experiments.AllMethods;
 @WebServlet("/addDept")
 public class insertDept extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("insertDept.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +39,7 @@ public class insertDept extends HttpServlet {
 			}
 			
 		String dept=request.getParameter("dept");
-		System.out.println(dept);
+		log.info(dept);
 
 		AllMethods am=new AllMethods();
 		int s;
@@ -52,20 +55,20 @@ public class insertDept extends HttpServlet {
 		else
 		{
 	    	String msg="already existed";
-			System.out.println(msg);
+			log.info(msg);
 	    	response.sendRedirect("insertdept.jsp?msg="+msg);
 		}
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 
 	    	String msg="error occured";
-			System.out.println(msg);
+			log.info(msg);
 	    	response.sendRedirect("insertdept.jsp?msg="+msg);
 	    	
 		}
 		catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
 		

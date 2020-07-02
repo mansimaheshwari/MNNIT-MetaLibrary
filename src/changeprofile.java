@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -19,6 +21,8 @@ import experiments.AllMethods;
 @WebServlet("/changeprofile")
 public class changeprofile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("changeprofile.java");
+
   
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,8 +47,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		String pass=request.getParameter("pass");
-		System.out.println(phone);
-		System.out.println(pass);
+		log.info(phone);
+		log.info(pass);
 
 		AllMethods am=new AllMethods();
 		int s=0;
@@ -52,26 +56,26 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		{
 			s=am.teachChange(id,phone,pass);
 			
-			System.out.println("teacher");
+			log.info("teacher");
 			path="tprofile";  				
 
 		}
 		else if(stype.equals("student"))
 		{	
 			s=am.stuChange(id,phone,pass);
-			System.out.println("student");
+			log.info("student");
 			path="sprofile";
 		}
 		else if(stype.equals("admin"))
 		{	
 			s=am.adminChange(id,phone,pass);
-			System.out.println("admin");
+			log.info("admin");
 			path="aprofile";
 		}
 		if(s>0)
 		{
 	    	String msg="changed successfully";
-			System.out.println(msg);
+			log.info(msg);
 	    	session.setAttribute("mobile",phone);
 	    	session.setAttribute("pass",pass);
 			RequestDispatcher rd=request.getRequestDispatcher(path+".jsp?msg="+msg);
@@ -82,13 +86,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	    	String msg="error occured";
-				System.out.println(msg);
+				log.info(msg);
 		    	response.sendRedirect(path+".jsp?msg="+msg);
 		}
 		catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
 		

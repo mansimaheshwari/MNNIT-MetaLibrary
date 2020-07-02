@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import experiments.AllMethods;
 
 /**
@@ -26,6 +28,7 @@ import experiments.AllMethods;
 @MultipartConfig
 public class changeres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("changeres.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -62,12 +65,12 @@ public class changeres extends HttpServlet {
 			ResultSet rs=null;
 			if(stype!=null){
 
-				System.out.println("not null");
+				log.info("not null");
 				if(stype.equals("teacher"))
 				{
 					rs=am.getTeacher(id);
 					s=am.teachChange(id,bytes);
-					System.out.println("teacher");
+					log.info("teacher");
 					path="tprofile";  				
 
 				}
@@ -110,13 +113,13 @@ public class changeres extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	    	String msg="error occured";
-				System.out.println(msg);
+				log.info(msg);
 		    	response.sendRedirect(path+".jsp?msg="+msg);
 		}
 		catch(Exception e)
 		{
 	    	String msg="you have signed out";
-			System.out.println(msg);
+			log.info(msg);
 			response.sendRedirect("index.jsp?msg="+msg);
 		}
 		

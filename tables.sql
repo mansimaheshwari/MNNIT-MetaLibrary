@@ -77,10 +77,6 @@ insert into domain values("Computer Networking","Computer Science and Engineerin
 	("no subjects inserted","Electrical Engineering"),
 	("no subjects inserted","Biotechnology")
 	;
-	
-	
-	("","Electrical Engineering"),
-	("","Biotechnology"),
 
 	
 	
@@ -92,7 +88,7 @@ drop table teacher;
 CREATE TABLE teacher (
   tid varchar(8) NOT NULL primary key,
   tname varchar(50) NOT NULL,
-  temail varchar(20) NOT NULL unique,
+  temail varchar(50) NOT NULL unique,
   tpass varchar(15) NOT NULL,
   tmobile varchar(10) DEFAULT NULL,
   dept varchar(50) NOT NULL,
@@ -104,7 +100,7 @@ drop table student;
 CREATE TABLE student (
   sid varchar(8) NOT NULL  primary key,
   sname varchar(50) NOT NULL,
-  semail varchar(20) NOT NULL unique,
+  semail varchar(50) NOT NULL unique,
   spass varchar(15) NOT NULL,
   smobile varchar(10) DEFAULT NULL,
   dept varchar(50) NOT NULL,
@@ -112,7 +108,7 @@ CREATE TABLE student (
   profile MEDIUMTEXT NOT NULL
 );
 
-       
+         
 drop table admin;
 CREATE TABLE admin (
   aid int(6) NOT NULL AUTO_INCREMENT primary key,
@@ -121,7 +117,7 @@ CREATE TABLE admin (
   apass varchar(15) NOT NULL,
   amobile varchar(10) DEFAULT NULL
 );
-insert  into admin values (1,'mansi','mansi@gmail.com','mansi123','8160704377');
+insert  into admin values (1,'admin','admin@mnnit.ac.in','admin@123','8160704377');
 
         
 
@@ -150,6 +146,7 @@ drop table repository;
 CREATE TABLE repository (
   rid int(13) NOT NULL  primary key auto_increment,
   rname varchar(70) NOT NULL,
+  rdept varchar(50) NOT NULL,
   domain varchar(50) NOT NULL references domain(domain),
   types varchar(50) NOT NULL references types(types),
   tid varchar(8) NOT NULL references teacher(tid),

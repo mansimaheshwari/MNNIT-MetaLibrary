@@ -32,8 +32,8 @@
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12 new-con new-con3">
                             <h4>CONTACT INFO</h4>
-                            <p> <a href="tel://0099999999" class="contact-icon">Phone: <font color="blue">0532 - 2545404/07, 2540233, 2545729</font></a>
-                                <br> <a href="mailto:secretary@mnnit.ac.in" class="contact-icon">Email: <font color="blue">secretary@mnnit.ac.in</font></a> </p>
+                            <p> <a class="contact-icon">Phone:0532 - 2545404/07, 2540233, 2545729</font></a>
+                            <br> <a class="contact-icon">Email: secretary@mnnit.ac.in</font></a> </p>
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12 new-con new-con4">
                             <h4>Website</h4>

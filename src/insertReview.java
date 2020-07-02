@@ -1,17 +1,15 @@
 
 
 import java.io.IOException;
-import java.sql.Blob;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 
 import experiments.AllMethods;
 
@@ -19,8 +17,9 @@ import experiments.AllMethods;
  * Servlet implementation class review
  */
 @WebServlet("/review")
-public class review extends HttpServlet {
+public class insertReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected static Logger log = Logger.getLogger("insertReview.java");
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +42,7 @@ public class review extends HttpServlet {
             if (c>0) 
             {
             	s="review submitted";	
+            	log.info(s);
 
 			}
             else
@@ -56,11 +56,5 @@ public class review extends HttpServlet {
         	String s="review not submitted";
 			response.sendRedirect("index.jsp?msg="+s); 
 		}
-		
-		
 	}
-	
-	
-	
-
 }
