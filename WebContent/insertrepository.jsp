@@ -125,19 +125,19 @@ alert("${msg}");
 	<table   cellpadding=10 cellspacing=10><caption ><h3 align="center">INSERT REPORITORY FORM</h3></caption>
 		
 		<tr>
-			<td>select the department:</td>
+			<td>Select the Department:</td>
 			<td><select id="department" name="department"></select></td>
 		</tr>
 		<tr>
-			<td>select the domain:</td>
+			<td>Select the Domain:</td>
 			<td><select id="domain" name="domain"></select></td>
 		</tr>
 		<tr>
-			<td>select the type of material:</td>
+			<td>Select the type of Material:</td>
 			<td><select id="types" name="types"></select></td>
 		</tr>
 		<tr>
-			<td>enter the name of material topic along with the extension:</td>
+			<td>Enter the name of topic along with the extension:</td>
 			<td><input type="text" id="name" name="name" placeholder="e.g.  ncert.pdf" required/></select></td>
 		</tr>
 		<tr>

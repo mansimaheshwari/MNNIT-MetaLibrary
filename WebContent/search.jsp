@@ -58,15 +58,15 @@ else
 <form  action="getData" method="post">
 	<table   cellpadding=10 cellspacing=10>
 		<tr>
-			<td>select the department:</td>
+			<td>Select the Department:</td>
 			<td><select id="department" name="department"></select></td>
 		</tr>
 		<tr>
-			<td>select the domain:</td>
+			<td>Select the Domain:</td>
 			<td><select id="domain" name="domain"></select></td>
 		</tr>
 		<tr>
-			<td>select the type of material:</td>
+			<td>Select the type of Material:</td>
 			<td><select id="types" name="types"></select></td>
 		</tr>
 		<tr class="t" hidden="true">

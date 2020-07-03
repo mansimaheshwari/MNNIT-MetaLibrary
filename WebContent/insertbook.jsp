@@ -93,15 +93,15 @@ else
 	<table   cellpadding=10 cellspacing=10><caption ></caption>
 		
 		<tr>
-			<td>select the department:</td>
+			<td>Select the Department:</td>
 			<td><select id="department" name="department"></select></td>
 		</tr>
 		<tr>
-			<td>select the domain:</td>
+			<td>Select the Domain:</td>
 			<td><select id="domain" name="domain"></select></td>
 		</tr>
 		<tr>
-			<td>enter the ISBN no:</td>
+			<td>Enter the ISBN no:</td>
 			<td><input type="number" name="isbn" id="isbn" maxlength="13" required/></td>
 		</tr>
 		<tr>
